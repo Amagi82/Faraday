@@ -2,6 +2,7 @@ package konvert.base
 
 import konvert.Constants
 import konvert.Units
+import konvert.derived.Catalysis
 
 /**
  * In chemistry, the amount of substance in a given sample of matter is defined as the number of
@@ -25,15 +26,14 @@ import konvert.Units
  * @see https://en.wikipedia.org/wiki/Amount_of_substance
  * */
 inline class ChemicalAmount(val moles: Double) : Units<ChemicalAmount> {
-    override val value: Double get() = moles
-    override fun plus(other: ChemicalAmount): ChemicalAmount = ChemicalAmount(moles + other.moles)
-    override fun minus(other: ChemicalAmount): ChemicalAmount = ChemicalAmount(moles - other.moles)
-    override fun times(factor: Number): ChemicalAmount = ChemicalAmount(moles * factor.toDouble())
-    override fun div(factor: Number): ChemicalAmount = ChemicalAmount(moles / factor.toDouble())
+    override val value get() = moles
+    override fun invoke(value: Double) = ChemicalAmount(value)
+
+    operator fun div(time: Time) = Catalysis(katals = moles / time.seconds)
 
     companion object {
         val AVOGADRO_CONSTANT get() = Constants.AVOGADRO_CONSTANT
     }
 }
 
-val Number.moles: ChemicalAmount get() = ChemicalAmount(moles = toDouble())
+val Number.moles get() = ChemicalAmount(moles = toDouble())

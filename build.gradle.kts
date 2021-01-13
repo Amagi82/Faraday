@@ -1,5 +1,5 @@
 plugins {
-    kotlin("multiplatform") version "1.4.0"
+    kotlin("multiplatform") version "1.4.21"
 }
 group = "amagi82"
 version = "0.1"
@@ -11,12 +11,10 @@ buildscript {
     repositories {
         mavenCentral()
     }
-    dependencies {
-        classpath("org.junit.jupiter:junit-jupiter:5.4.2")
-    }
 }
 kotlin {
     jvm {
+//        withJava()
         compilations.all {
             kotlinOptions.jvmTarget = "1.8"
         }
@@ -39,7 +37,6 @@ kotlin {
         isMingwX64 -> mingwX64("native")
         else -> throw GradleException("Host OS is not supported in Kotlin/Native.")
     }
-
 
     sourceSets {
         val commonMain by getting
