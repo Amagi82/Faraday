@@ -1,6 +1,5 @@
 package faraday.derived.mechanical
 
-import faraday.Prefixes
 import faraday.Units
 import faraday.base.Distance
 import faraday.base.Mass

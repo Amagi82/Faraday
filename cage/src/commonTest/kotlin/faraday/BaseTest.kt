@@ -1,7 +1,6 @@
 package faraday
 
 import kotlin.math.absoluteValue
-import kotlin.reflect.cast
 import kotlin.test.assertTrue
 import kotlin.test.asserter
 
