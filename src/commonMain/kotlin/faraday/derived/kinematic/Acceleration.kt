@@ -1,9 +1,9 @@
-package konvert.derived.kinematic
+package faraday.derived.kinematic
 
-import konvert.Units
-import konvert.base.Mass
-import konvert.base.Time
-import konvert.derived.Force
+import faraday.Units
+import faraday.base.Mass
+import faraday.base.Time
+import faraday.derived.Force
 
 /**
  * In mechanics, acceleration is the rate of change of the velocity of an object with respect to
@@ -21,10 +21,13 @@ import konvert.derived.Force
  * @see https://en.wikipedia.org/wiki/Acceleration
  * */
 inline class Acceleration(val metersPerSecondSquared: Double) : Units<Acceleration> {
-    override val value get() = metersPerSecondSquared
     val G get() = metersPerSecondSquared / EARTH_GRAVITY
 
-    override fun invoke(value: Double) = Acceleration(value)
+    override fun plus(other: Acceleration) = Acceleration(metersPerSecondSquared = metersPerSecondSquared + other.metersPerSecondSquared)
+    override fun minus(other: Acceleration) = Acceleration(metersPerSecondSquared = metersPerSecondSquared - other.metersPerSecondSquared)
+    override fun times(factor: Number) = Acceleration(metersPerSecondSquared = metersPerSecondSquared * factor.toDouble())
+    override fun div(factor: Number) = Acceleration(metersPerSecondSquared = metersPerSecondSquared / factor.toDouble())
+    override fun compareTo(other: Acceleration): Int = metersPerSecondSquared.compareTo(other.metersPerSecondSquared)
 
     operator fun times(mass: Mass): Force = mass * this
     operator fun times(time: Time) = Velocity(metersPerSecond = metersPerSecondSquared * time.seconds)
