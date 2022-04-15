@@ -22,6 +22,10 @@ value class Temperature(val kelvin: Double) : Units<Temperature> {
     val celsius get() = kelvin + KELVIN_TO_CELSIUS
     val fahrenheit get() = celsius * 1.8 + 32
 
+    init {
+        if (kelvin < 0) throw IllegalStateException("Temperature cannot be below absolute zero")
+    }
+
     override fun plus(other: Temperature) = Temperature(kelvin = kelvin + other.kelvin)
     override fun minus(other: Temperature) = Temperature(kelvin = kelvin - other.kelvin)
     override fun times(factor: Number) = Temperature(kelvin = kelvin * factor.toDouble())
@@ -33,12 +37,6 @@ value class Temperature(val kelvin: Double) : Units<Temperature> {
     }
 }
 
-val Number.kelvin get() = Temperature(kelvin = toDouble()).validate()
-val Number.celsius get() = Temperature(kelvin = toDouble() - Temperature.KELVIN_TO_CELSIUS).validate()
-val Number.fahrenheit get() = Temperature(kelvin = (toDouble() + 459.67) / 1.8).validate()
-
-//TODO: Inline classes will permit init blocks as of v1.4.30, so this can be moved inside at that time
-private fun Temperature.validate(): Temperature {
-    if (kelvin < 0) throw IllegalStateException("Temperature cannot be below absolute zero")
-    return this
-}
+val Number.kelvin get() = Temperature(kelvin = toDouble())
+val Number.celsius get() = Temperature(kelvin = toDouble() - Temperature.KELVIN_TO_CELSIUS)
+val Number.fahrenheit get() = Temperature(kelvin = (toDouble() + 459.67) / 1.8)
