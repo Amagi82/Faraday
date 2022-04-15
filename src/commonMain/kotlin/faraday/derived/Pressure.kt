@@ -46,6 +46,7 @@ value class Pressure(val pascals: Double) : Units<Pressure> {
     val bar get() = pascals / 100_000
     val psi get() = pascals / PSI
     val atm get() = pascals / ATM
+    val mmHg get() = pascals / MillimetersOfMercury
 
     override fun plus(other: Pressure) = Pressure(pascals = pascals + other.pascals)
     override fun minus(other: Pressure) = Pressure(pascals = pascals - other.pascals)
@@ -56,6 +57,7 @@ value class Pressure(val pascals: Double) : Units<Pressure> {
     companion object {
         const val ATM = 101_325
         const val PSI = 6894.757
+        const val MillimetersOfMercury = 133.322
     }
 }
 
@@ -67,5 +69,7 @@ val Number.kilopascals get() = Pressure(pascals = toDouble() * Prefixes.KILO)
 val Number.gigapascals get() = Pressure(pascals = toDouble() * Prefixes.GIGA)
 val Number.poundsPerSquareInch get() = Pressure(pascals = toDouble() * Pressure.PSI)
 val Number.atmospheres get() = Pressure(pascals = toDouble() * Pressure.ATM)
+val Number.bar get() = Pressure(pascals = toDouble() * 100_000)
+val Number.mmHg get() = Pressure(pascals = toDouble() * Pressure.MillimetersOfMercury)
 
 val Number.joulesPerCubicMeter get() = EnergyDensity(toDouble())
