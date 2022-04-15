@@ -34,10 +34,10 @@ value class Angle(val radians: Double) : Units<Angle> {
 
     //TODO: init blocks permitted in v1.4.30, move % CIRCLE inside when released
 
-    override fun plus(other: Angle) = Angle(radians = (radians + other.radians) % (2 * PI))
-    override fun minus(other: Angle) = Angle(radians = ((if(radians > other.radians) 0.0 else TURN) + radians - other.radians) % (2 * PI))
-    override fun times(factor: Number) = Angle(radians = (radians * factor.toDouble()) % (2 * PI))
-    override fun div(factor: Number) = Angle(radians = (radians / factor.toDouble()) % (2 * PI))
+    override fun plus(other: Angle) = Angle(radians = (radians + other.radians) % TURN)
+    override fun minus(other: Angle) = Angle(radians = ((if(radians > other.radians) 0.0 else TURN) + radians - other.radians) % TURN)
+    override fun times(factor: Number) = Angle(radians = (radians * factor.toDouble()) % TURN)
+    override fun div(factor: Number) = Angle(radians = (radians / factor.toDouble()) % TURN)
     override fun compareTo(other: Angle): Int = radians.compareTo(other.radians)
 
     companion object {
