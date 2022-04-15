@@ -1,6 +1,7 @@
 package faraday.derived.molar
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * Molar concentration (also called molarity, amount concentration or substance concentration) is a
@@ -13,7 +14,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Molar_concentration
  * */
-inline class Molarity(val molesPerCubicMeter: Double) : Units<Molarity> {
+@JvmInline
+value class Molarity(val molesPerCubicMeter: Double) : Units<Molarity> {
     override fun plus(other: Molarity) = Molarity(molesPerCubicMeter = molesPerCubicMeter + other.molesPerCubicMeter)
     override fun minus(other: Molarity) = Molarity(molesPerCubicMeter = molesPerCubicMeter - other.molesPerCubicMeter)
     override fun times(factor: Number) = Molarity(molesPerCubicMeter = molesPerCubicMeter * factor.toDouble())

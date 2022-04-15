@@ -1,6 +1,7 @@
 package faraday.derived.mechanical
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * The area density (also known as areal density, surface density, superficial density, areic
@@ -11,7 +12,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Area_density
  * */
-inline class AreaDensity(val kgPerSquareMeter: Double) : Units<AreaDensity> {
+@JvmInline
+value class AreaDensity(val kgPerSquareMeter: Double) : Units<AreaDensity> {
     override fun plus(other: AreaDensity) = AreaDensity(kgPerSquareMeter = kgPerSquareMeter + other.kgPerSquareMeter)
     override fun minus(other: AreaDensity) = AreaDensity(kgPerSquareMeter = kgPerSquareMeter - other.kgPerSquareMeter)
     override fun times(factor: Number) = AreaDensity(kgPerSquareMeter = kgPerSquareMeter * factor.toDouble())

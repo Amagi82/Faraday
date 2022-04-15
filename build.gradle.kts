@@ -1,5 +1,5 @@
 plugins {
-    kotlin("multiplatform") version "1.4.21"
+    kotlin("multiplatform") version "1.6.20"
 }
 group = "amagi82"
 version = "0.1"

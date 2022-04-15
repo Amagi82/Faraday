@@ -6,6 +6,7 @@ import faraday.base.Distance
 import faraday.base.ElectricCurrent
 import faraday.base.Time
 import faraday.derived.mechanical.Volume
+import kotlin.jvm.JvmInline
 
 /**
  * In physics, energy is the quantitative property that must be transferred to an object in order to
@@ -28,7 +29,8 @@ import faraday.derived.mechanical.Volume
  *
  * @see https://en.wikipedia.org/wiki/Energy
  * */
-inline class Energy(val joules: Double) : Units<Energy> {
+@JvmInline
+value class Energy(val joules: Double) : Units<Energy> {
     val kilojoules get() = joules / Prefixes.KILO
     val megajoules get() = joules / Prefixes.MEGA
     val gigajoules get() = joules / Prefixes.GIGA

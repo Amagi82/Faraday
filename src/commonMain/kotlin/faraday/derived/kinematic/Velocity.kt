@@ -7,6 +7,7 @@ import faraday.base.Distance
 import faraday.base.Mass
 import faraday.base.Time
 import faraday.derived.mechanical.Momentum
+import kotlin.jvm.JvmInline
 
 /**
  * In everyday use and in kinematics, the speed of an object is the magnitude of the change of its
@@ -25,7 +26,8 @@ import faraday.derived.mechanical.Momentum
  *
  * @see https://en.wikipedia.org/wiki/Speed
  * */
-inline class Velocity(val metersPerSecond: Double) : Units<Velocity> {
+@JvmInline
+value class Velocity(val metersPerSecond: Double) : Units<Velocity> {
     val kilometersPerSecond get() = metersPerSecond / Prefixes.KILO
     val kilometersPerHour get() = metersPerSecond / KPH
     val milesPerHour get() = metersPerSecond / MPH

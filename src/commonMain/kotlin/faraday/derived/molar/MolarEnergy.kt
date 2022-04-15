@@ -1,11 +1,13 @@
 package faraday.derived.molar
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * @see https://en.wikipedia.org/wiki/Energy
  * */
-inline class MolarEnergy(val joulesPerMole: Double) : Units<MolarEnergy> {
+@JvmInline
+value class MolarEnergy(val joulesPerMole: Double) : Units<MolarEnergy> {
     override fun plus(other: MolarEnergy) = MolarEnergy(joulesPerMole = joulesPerMole + other.joulesPerMole)
     override fun minus(other: MolarEnergy) = MolarEnergy(joulesPerMole = joulesPerMole - other.joulesPerMole)
     override fun times(factor: Number) = MolarEnergy(joulesPerMole = joulesPerMole * factor.toDouble())

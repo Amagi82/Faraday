@@ -1,6 +1,7 @@
 package faraday.derived.electromagnetic
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * An electric field surrounds an electric charge, and exerts force on other charges in the field,
@@ -10,7 +11,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Electric_field
  * */
-inline class ElectricFieldStrength(val voltsPerMeter: Double) : Units<ElectricFieldStrength> {
+@JvmInline
+value class ElectricFieldStrength(val voltsPerMeter: Double) : Units<ElectricFieldStrength> {
     override fun plus(other: ElectricFieldStrength) = ElectricFieldStrength(voltsPerMeter = voltsPerMeter + other.voltsPerMeter)
     override fun minus(other: ElectricFieldStrength) = ElectricFieldStrength(voltsPerMeter = voltsPerMeter - other.voltsPerMeter)
     override fun times(factor: Number) = ElectricFieldStrength(voltsPerMeter = voltsPerMeter * factor.toDouble())

@@ -3,6 +3,7 @@ package faraday.derived.mechanical
 import faraday.Units
 import faraday.base.Mass
 import faraday.derived.kinematic.Velocity
+import kotlin.jvm.JvmInline
 
 /**
  * In Newtonian mechanics, linear momentum, translational momentum, or simply momentum
@@ -12,7 +13,8 @@ import faraday.derived.kinematic.Velocity
  *
  * @see https://en.wikipedia.org/wiki/Momentum
  * */
-inline class Momentum(val newtonSeconds: Double) : Units<Momentum> {
+@JvmInline
+value class Momentum(val newtonSeconds: Double) : Units<Momentum> {
     override fun plus(other: Momentum) = Momentum(newtonSeconds = newtonSeconds + other.newtonSeconds)
     override fun minus(other: Momentum) = Momentum(newtonSeconds = newtonSeconds - other.newtonSeconds)
     override fun times(factor: Number) = Momentum(newtonSeconds = newtonSeconds * factor.toDouble())

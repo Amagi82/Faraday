@@ -1,6 +1,7 @@
 package faraday.derived.thermodynamic
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * The specific heat capacity,(symbol Cp) of a substance is the heat capacity of a sample of the
@@ -10,7 +11,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Specific_heat_capacity
  * */
-inline class SpecificHeatCapacity(val joulesPerKilogramKelvin: Double) : Units<SpecificHeatCapacity> {
+@JvmInline
+value class SpecificHeatCapacity(val joulesPerKilogramKelvin: Double) : Units<SpecificHeatCapacity> {
     override fun plus(other: SpecificHeatCapacity) = SpecificHeatCapacity(joulesPerKilogramKelvin = joulesPerKilogramKelvin + other.joulesPerKilogramKelvin)
     override fun minus(other: SpecificHeatCapacity) = SpecificHeatCapacity(joulesPerKilogramKelvin = joulesPerKilogramKelvin - other.joulesPerKilogramKelvin)
     override fun times(factor: Number) = SpecificHeatCapacity(joulesPerKilogramKelvin = joulesPerKilogramKelvin * factor.toDouble())

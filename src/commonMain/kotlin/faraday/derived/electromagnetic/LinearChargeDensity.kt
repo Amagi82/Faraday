@@ -1,11 +1,13 @@
 package faraday.derived.electromagnetic
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * @see https://en.wikipedia.org/wiki/Linear_density
  * */
-inline class LinearChargeDensity(val coulombsPerMeter: Double) : Units<LinearChargeDensity> {
+@JvmInline
+value class LinearChargeDensity(val coulombsPerMeter: Double) : Units<LinearChargeDensity> {
     override fun plus(other: LinearChargeDensity) = LinearChargeDensity(coulombsPerMeter = coulombsPerMeter + other.coulombsPerMeter)
     override fun minus(other: LinearChargeDensity) = LinearChargeDensity(coulombsPerMeter = coulombsPerMeter - other.coulombsPerMeter)
     override fun times(factor: Number) = LinearChargeDensity(coulombsPerMeter = coulombsPerMeter * factor.toDouble())

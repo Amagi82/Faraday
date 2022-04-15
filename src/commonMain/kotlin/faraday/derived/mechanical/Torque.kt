@@ -3,6 +3,7 @@ package faraday.derived.mechanical
 import faraday.Units
 import faraday.base.Distance
 import faraday.derived.Force
+import kotlin.jvm.JvmInline
 
 /**
  * Torque is the rotational equivalent of linear force. It is also referred to as the moment,
@@ -16,7 +17,8 @@ import faraday.derived.Force
  *
  * @see https://en.wikipedia.org/wiki/Torque
  * */
-inline class Torque(val newtonMeters: Double) : Units<Torque> {
+@JvmInline
+value class Torque(val newtonMeters: Double) : Units<Torque> {
     val poundFeet get() = newtonMeters / POUND_FOOT
     val inchPound get() = newtonMeters / INCH_POUND
 

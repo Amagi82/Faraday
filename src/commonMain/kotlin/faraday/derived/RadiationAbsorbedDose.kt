@@ -1,6 +1,7 @@
 package faraday.derived
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * Absorbed dose is a dose quantity which is the measure of the energy deposited in matter
@@ -16,7 +17,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Absorbed_dose
  * */
-inline class RadiationAbsorbedDose(val grays: Double) : Units<RadiationAbsorbedDose> {
+@JvmInline
+value class RadiationAbsorbedDose(val grays: Double) : Units<RadiationAbsorbedDose> {
     val ergsPerGram get() = grays / 1e-4
     val rads get() = grays / RAD
 

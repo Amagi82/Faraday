@@ -1,6 +1,7 @@
 package faraday.derived.mechanical
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * In chemistry, the mass fraction of a substance within a mixture is the ratio of the mass
@@ -17,7 +18,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Mass_fraction_(chemistry)
  * */
-inline class MassFraction(val ppm: Double) : Units<MassFraction> {
+@JvmInline
+value class MassFraction(val ppm: Double) : Units<MassFraction> {
     val percent get() = ppm / 10_000
 
     override fun plus(other: MassFraction) = MassFraction(ppm = ppm + other.ppm)

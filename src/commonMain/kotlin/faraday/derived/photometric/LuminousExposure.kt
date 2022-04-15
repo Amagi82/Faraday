@@ -3,6 +3,7 @@ package faraday.derived.photometric
 import faraday.Units
 import faraday.base.Time
 import faraday.derived.Illuminance
+import kotlin.jvm.JvmInline
 
 /**
  * In photography, exposure is the amount of light per unit area (the image plane illuminance
@@ -13,7 +14,8 @@ import faraday.derived.Illuminance
  *
  * @see https://en.wikipedia.org/wiki/Exposure_(photography)#Photometric_and_radiometric_exposure
  * */
-inline class LuminousExposure(val luxSeconds: Double) : Units<LuminousExposure> {
+@JvmInline
+value class LuminousExposure(val luxSeconds: Double) : Units<LuminousExposure> {
     override fun plus(other: LuminousExposure): LuminousExposure = LuminousExposure(luxSeconds + other.luxSeconds)
     override fun minus(other: LuminousExposure): LuminousExposure = LuminousExposure(luxSeconds - other.luxSeconds)
     override fun times(factor: Number): LuminousExposure = LuminousExposure(luxSeconds * factor.toDouble())

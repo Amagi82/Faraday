@@ -1,6 +1,7 @@
 package faraday.derived.mechanical
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * Power density is the amount of power (time rate of energy transfer) per unit volume.
@@ -15,7 +16,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Power_density
  * */
-inline class PowerDensity(val wattsPerCubicMeter: Double) : Units<PowerDensity> {
+@JvmInline
+value class PowerDensity(val wattsPerCubicMeter: Double) : Units<PowerDensity> {
     override fun plus(other: PowerDensity) = PowerDensity(wattsPerCubicMeter = wattsPerCubicMeter + other.wattsPerCubicMeter)
     override fun minus(other: PowerDensity) = PowerDensity(wattsPerCubicMeter = wattsPerCubicMeter - other.wattsPerCubicMeter)
     override fun times(factor: Number) = PowerDensity(wattsPerCubicMeter = wattsPerCubicMeter * factor.toDouble())

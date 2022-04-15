@@ -4,6 +4,7 @@ import faraday.Constants
 import faraday.Units
 import faraday.base.ElectricCurrent
 import faraday.base.Time
+import kotlin.jvm.JvmInline
 
 /**
  * Electric charge is the physical property of matter that causes it to experience a force when placed
@@ -38,7 +39,8 @@ import faraday.base.Time
  *
  * @see https://en.wikipedia.org/wiki/Electric_charge
  * */
-inline class ElectricCharge(val coulombs: Double) : Units<ElectricCharge> {
+@JvmInline
+value class ElectricCharge(val coulombs: Double) : Units<ElectricCharge> {
     override fun plus(other: ElectricCharge) = ElectricCharge(coulombs = coulombs + other.coulombs)
     override fun minus(other: ElectricCharge) = ElectricCharge(coulombs = coulombs - other.coulombs)
     override fun times(factor: Number) = ElectricCharge(coulombs = coulombs * factor.toDouble())

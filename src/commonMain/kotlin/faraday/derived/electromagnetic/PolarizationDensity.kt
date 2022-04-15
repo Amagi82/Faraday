@@ -1,6 +1,7 @@
 package faraday.derived.electromagnetic
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * In classical electromagnetism, polarization density (or electric polarization, or simply polarization)
@@ -11,7 +12,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Polarization_density
  * */
-inline class PolarizationDensity(val coulombsPerSquareMeter: Double) : Units<PolarizationDensity> {
+@JvmInline
+value class PolarizationDensity(val coulombsPerSquareMeter: Double) : Units<PolarizationDensity> {
     override fun plus(other: PolarizationDensity) = PolarizationDensity(coulombsPerSquareMeter = coulombsPerSquareMeter + other.coulombsPerSquareMeter)
     override fun minus(other: PolarizationDensity) = PolarizationDensity(coulombsPerSquareMeter = coulombsPerSquareMeter - other.coulombsPerSquareMeter)
     override fun times(factor: Number) = PolarizationDensity(coulombsPerSquareMeter = coulombsPerSquareMeter * factor.toDouble())

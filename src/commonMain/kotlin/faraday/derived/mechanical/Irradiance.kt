@@ -1,6 +1,7 @@
 package faraday.derived.mechanical
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * In radiometry, irradiance is the radiant flux (power) received by a surface per unit area.
@@ -10,7 +11,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Irradiance
  * */
-inline class Irradiance(val wattsPerSquareMeter: Double) : Units<Irradiance> {
+@JvmInline
+value class Irradiance(val wattsPerSquareMeter: Double) : Units<Irradiance> {
     override fun plus(other: Irradiance) = Irradiance(wattsPerSquareMeter = wattsPerSquareMeter + other.wattsPerSquareMeter)
     override fun minus(other: Irradiance) = Irradiance(wattsPerSquareMeter = wattsPerSquareMeter - other.wattsPerSquareMeter)
     override fun times(factor: Number) = Irradiance(wattsPerSquareMeter = wattsPerSquareMeter * factor.toDouble())

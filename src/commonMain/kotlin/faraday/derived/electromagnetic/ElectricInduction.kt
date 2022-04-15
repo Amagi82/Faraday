@@ -1,6 +1,7 @@
 package faraday.derived.electromagnetic
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * In physics, the electric displacement field (denoted by D) or electric induction is a vector field
@@ -12,7 +13,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Electric_displacement_field
  * */
-inline class ElectricInduction(val coulombsPerSquareMeter: Double) : Units<ElectricInduction> {
+@JvmInline
+value class ElectricInduction(val coulombsPerSquareMeter: Double) : Units<ElectricInduction> {
     override fun plus(other: ElectricInduction) = ElectricInduction(coulombsPerSquareMeter = coulombsPerSquareMeter + other.coulombsPerSquareMeter)
     override fun minus(other: ElectricInduction) = ElectricInduction(coulombsPerSquareMeter = coulombsPerSquareMeter - other.coulombsPerSquareMeter)
     override fun times(factor: Number) = ElectricInduction(coulombsPerSquareMeter = coulombsPerSquareMeter * factor.toDouble())

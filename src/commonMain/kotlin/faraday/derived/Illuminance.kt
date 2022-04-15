@@ -3,6 +3,7 @@ package faraday.derived
 import faraday.Units
 import faraday.base.Time
 import faraday.derived.photometric.LuminousExposure
+import kotlin.jvm.JvmInline
 
 /**
  * In photometry, illuminance is the total luminous flux incident on a surface, per unit area.
@@ -22,7 +23,8 @@ import faraday.derived.photometric.LuminousExposure
  *
  * @see https://en.wikipedia.org/wiki/Illuminance
  * */
-inline class Illuminance(val lux: Double) : Units<Illuminance> {
+@JvmInline
+value class Illuminance(val lux: Double) : Units<Illuminance> {
     override fun plus(other: Illuminance) = Illuminance(lux = lux + other.lux)
     override fun minus(other: Illuminance) = Illuminance(lux = lux - other.lux)
     override fun times(factor: Number) = Illuminance(lux = lux * factor.toDouble())

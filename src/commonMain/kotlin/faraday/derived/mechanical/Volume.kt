@@ -1,11 +1,11 @@
 package faraday.derived.mechanical
 
-import faraday.Prefixes
 import faraday.Units
 import faraday.base.Distance
 import faraday.base.Mass
 import faraday.base.Time
 import faraday.derived.kinematic.VolumetricFlowRate
+import kotlin.jvm.JvmInline
 
 /**
  * Volume is the quantity of three-dimensional space enclosed by a closed surface, for example, the
@@ -26,7 +26,8 @@ import faraday.derived.kinematic.VolumetricFlowRate
  *
  * @see https://en.wikipedia.org/wiki/Volume
  * */
-inline class Volume(val cubicMeters: Double) : Units<Volume> {
+@JvmInline
+value class Volume(val cubicMeters: Double) : Units<Volume> {
     val cubicCentimeters get() = cubicMeters / CUBIC_CENTIMETER
     val liters get() = cubicMeters / LITER
 

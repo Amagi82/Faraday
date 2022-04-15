@@ -1,6 +1,7 @@
 package faraday.derived.molar
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * In chemistry, the molar mass is defined as the mass of a sample of that compound divided by the
@@ -13,7 +14,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Molar_mass
  * */
-inline class MolarMass(val kilogramsPerMole: Double) : Units<MolarMass> {
+@JvmInline
+value class MolarMass(val kilogramsPerMole: Double) : Units<MolarMass> {
     override fun plus(other: MolarMass) = MolarMass(kilogramsPerMole = kilogramsPerMole + other.kilogramsPerMole)
     override fun minus(other: MolarMass) = MolarMass(kilogramsPerMole = kilogramsPerMole - other.kilogramsPerMole)
     override fun times(factor: Number) = MolarMass(kilogramsPerMole = kilogramsPerMole * factor.toDouble())

@@ -1,6 +1,7 @@
 package faraday.derived.photometric
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * Luminous efficacy is a measure of how well a light source produces visible light. It is the ratio
@@ -13,7 +14,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Luminous_efficacy
  * */
-inline class LuminousEfficacy(val lumensPerWatt: Double) : Units<LuminousEfficacy> {
+@JvmInline
+value class LuminousEfficacy(val lumensPerWatt: Double) : Units<LuminousEfficacy> {
     override fun plus(other: LuminousEfficacy): LuminousEfficacy = LuminousEfficacy(lumensPerWatt + other.lumensPerWatt)
     override fun minus(other: LuminousEfficacy): LuminousEfficacy = LuminousEfficacy(lumensPerWatt - other.lumensPerWatt)
     override fun times(factor: Number): LuminousEfficacy = LuminousEfficacy(lumensPerWatt * factor.toDouble())

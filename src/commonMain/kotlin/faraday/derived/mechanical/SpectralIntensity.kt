@@ -1,6 +1,7 @@
 package faraday.derived.mechanical
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * Spectral intensity is the radiant intensity per unit frequency or wavelength, depending on whether
@@ -8,7 +9,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Radiant_intensity
  * */
-inline class SpectralIntensity(val wattsPerSteradianMeter: Double) : Units<SpectralIntensity> {
+@JvmInline
+value class SpectralIntensity(val wattsPerSteradianMeter: Double) : Units<SpectralIntensity> {
     override fun plus(other: SpectralIntensity) = SpectralIntensity(wattsPerSteradianMeter = wattsPerSteradianMeter + other.wattsPerSteradianMeter)
     override fun minus(other: SpectralIntensity) = SpectralIntensity(wattsPerSteradianMeter = wattsPerSteradianMeter - other.wattsPerSteradianMeter)
     override fun times(factor: Number) = SpectralIntensity(wattsPerSteradianMeter = wattsPerSteradianMeter * factor.toDouble())

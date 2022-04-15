@@ -1,6 +1,7 @@
 package faraday.derived.molar
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * The molar conductivity of an electrolyte solution is defined as its conductivity divided by
@@ -8,7 +9,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Molar_conductivity
  * */
-inline class MolarConductivity(val siemensSquareMetersPerMole: Double) : Units<MolarConductivity> {
+@JvmInline
+value class MolarConductivity(val siemensSquareMetersPerMole: Double) : Units<MolarConductivity> {
     override fun plus(other: MolarConductivity) = MolarConductivity(siemensSquareMetersPerMole = siemensSquareMetersPerMole + other.siemensSquareMetersPerMole)
     override fun minus(other: MolarConductivity) = MolarConductivity(siemensSquareMetersPerMole = siemensSquareMetersPerMole - other.siemensSquareMetersPerMole)
     override fun times(factor: Number) = MolarConductivity(siemensSquareMetersPerMole = siemensSquareMetersPerMole * factor.toDouble())

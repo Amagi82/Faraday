@@ -3,6 +3,7 @@ package faraday.derived
 import faraday.Units
 import faraday.base.ElectricCurrent
 import faraday.base.Time
+import kotlin.jvm.JvmInline
 
 /**
  * An electric potential (also called the electric field potential, potential drop or the electrostatic potential)
@@ -35,7 +36,8 @@ import faraday.base.Time
  *
  * @see https://en.wikipedia.org/wiki/Electric_potential
  * */
-inline class Voltage(val volts: Double) : Units<Voltage> {
+@JvmInline
+value class Voltage(val volts: Double) : Units<Voltage> {
     override fun plus(other: Voltage) = Voltage(volts = volts + other.volts)
     override fun minus(other: Voltage) = Voltage(volts = volts - other.volts)
     override fun times(factor: Number) = Voltage(volts = volts * factor.toDouble())

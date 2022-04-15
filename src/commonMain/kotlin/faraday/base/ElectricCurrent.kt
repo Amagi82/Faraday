@@ -3,6 +3,7 @@ package faraday.base
 import faraday.Prefixes
 import faraday.Units
 import faraday.derived.*
+import kotlin.jvm.JvmInline
 
 /**
  * An electric current is the rate of flow of electric charge past a point or region. An
@@ -19,7 +20,8 @@ import faraday.derived.*
  *
  * @see https://en.wikipedia.org/wiki/Electric_current
  * */
-inline class ElectricCurrent(val amperes: Double) : Units<ElectricCurrent> {
+@JvmInline
+value class ElectricCurrent(val amperes: Double) : Units<ElectricCurrent> {
     val milliAmps get() = amperes / Prefixes.MILLI
 
     override fun plus(other: ElectricCurrent) = ElectricCurrent(amperes = amperes + other.amperes)

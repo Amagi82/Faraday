@@ -2,6 +2,7 @@ package faraday.derived
 
 import faraday.Units
 import faraday.derived.mechanical.Area
+import kotlin.jvm.JvmInline
 
 /**
  * The magnetic field can be defined in several equivalent ways based on the effects it has on its environment.
@@ -39,7 +40,8 @@ import faraday.derived.mechanical.Area
  *
  * @see https://en.wikipedia.org/wiki/Magnetic_field#The_B-field
  * */
-inline class MagneticInduction(val teslas: Double) : Units<MagneticInduction> {
+@JvmInline
+value class MagneticInduction(val teslas: Double) : Units<MagneticInduction> {
     val gauss get() = teslas / 1e-4
 
     override fun plus(other: MagneticInduction) = MagneticInduction(teslas = teslas + other.teslas)

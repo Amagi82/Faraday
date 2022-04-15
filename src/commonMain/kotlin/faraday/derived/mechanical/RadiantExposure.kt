@@ -1,6 +1,7 @@
 package faraday.derived.mechanical
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * In radiometry, radiant exposure or fluence is the radiant energy received by a surface per unit
@@ -10,7 +11,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Radiant_exposure
  * */
-inline class RadiantExposure(val joulesPerSquareMeter: Double) : Units<RadiantExposure> {
+@JvmInline
+value class RadiantExposure(val joulesPerSquareMeter: Double) : Units<RadiantExposure> {
     override fun plus(other: RadiantExposure) = RadiantExposure(joulesPerSquareMeter = joulesPerSquareMeter + other.joulesPerSquareMeter)
     override fun minus(other: RadiantExposure) = RadiantExposure(joulesPerSquareMeter = joulesPerSquareMeter - other.joulesPerSquareMeter)
     override fun times(factor: Number) = RadiantExposure(joulesPerSquareMeter = joulesPerSquareMeter * factor.toDouble())

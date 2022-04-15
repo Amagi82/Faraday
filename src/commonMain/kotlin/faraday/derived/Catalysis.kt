@@ -3,6 +3,7 @@ package faraday.derived
 import faraday.Units
 import faraday.base.ChemicalAmount
 import faraday.base.Time
+import kotlin.jvm.JvmInline
 
 /**
  * Catalysis is the process of increasing the rate of a chemical reaction by adding a
@@ -27,7 +28,8 @@ import faraday.base.Time
  *
  * @see https://en.wikipedia.org/wiki/Catalysis
  * */
-inline class Catalysis(val katals: Double) : Units<Catalysis> {
+@JvmInline
+value class Catalysis(val katals: Double) : Units<Catalysis> {
     override fun plus(other: Catalysis) = Catalysis(katals = katals + other.katals)
     override fun minus(other: Catalysis) = Catalysis(katals = katals - other.katals)
     override fun times(factor: Number) = Catalysis(katals = katals * factor.toDouble())

@@ -1,6 +1,7 @@
 package faraday.derived.electromagnetic
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * In physics, the magnetomotive force (mmf) is a quantity appearing in the equation for the magnetic
@@ -9,7 +10,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Magnetomotive_force
  * */
-inline class MagnetomotiveForce(val ampereRadians: Double) : Units<MagnetomotiveForce> {
+@JvmInline
+value class MagnetomotiveForce(val ampereRadians: Double) : Units<MagnetomotiveForce> {
     override fun plus(other: MagnetomotiveForce) = MagnetomotiveForce(ampereRadians = ampereRadians + other.ampereRadians)
     override fun minus(other: MagnetomotiveForce) = MagnetomotiveForce(ampereRadians = ampereRadians - other.ampereRadians)
     override fun times(factor: Number) = MagnetomotiveForce(ampereRadians = ampereRadians * factor.toDouble())

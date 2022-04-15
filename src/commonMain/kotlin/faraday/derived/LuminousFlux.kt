@@ -6,6 +6,7 @@ import faraday.base.Time
 import faraday.derived.mechanical.Area
 import faraday.derived.photometric.LuminousEfficacy
 import faraday.derived.photometric.LuminousEnergy
+import kotlin.jvm.JvmInline
 
 /**
  * In photometry, luminous flux or luminous power is the measure of the perceived power of
@@ -16,7 +17,8 @@ import faraday.derived.photometric.LuminousEnergy
  *
  * @see https://en.wikipedia.org/wiki/Luminous_flux
  * */
-inline class LuminousFlux(val lumens: Double) : Units<LuminousFlux> {
+@JvmInline
+value class LuminousFlux(val lumens: Double) : Units<LuminousFlux> {
     override fun plus(other: LuminousFlux) = LuminousFlux(lumens = lumens + other.lumens)
     override fun minus(other: LuminousFlux) = LuminousFlux(lumens = lumens - other.lumens)
     override fun times(factor: Number) = LuminousFlux(lumens = lumens * factor.toDouble())

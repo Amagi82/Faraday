@@ -3,6 +3,7 @@ package faraday.derived.mechanical
 import faraday.Units
 import faraday.base.Mass
 import faraday.base.Time
+import kotlin.jvm.JvmInline
 
 /**
  * In physics and engineering, mass flow rate is the mass of a substance which passes per unit of
@@ -10,7 +11,8 @@ import faraday.base.Time
  *
  * @see https://en.wikipedia.org/wiki/Mass_flow_rate
  * */
-inline class MassFlowRate(val kilogramsPerSecond: Double) : Units<MassFlowRate> {
+@JvmInline
+value class MassFlowRate(val kilogramsPerSecond: Double) : Units<MassFlowRate> {
     override fun plus(other: MassFlowRate) = MassFlowRate(kilogramsPerSecond = kilogramsPerSecond + other.kilogramsPerSecond)
     override fun minus(other: MassFlowRate) = MassFlowRate(kilogramsPerSecond = kilogramsPerSecond - other.kilogramsPerSecond)
     override fun times(factor: Number) = MassFlowRate(kilogramsPerSecond = kilogramsPerSecond * factor.toDouble())

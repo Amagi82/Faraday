@@ -2,6 +2,7 @@ package faraday.derived
 
 import faraday.Units
 import faraday.derived.Angle.Companion.TURN
+import kotlin.jvm.JvmInline
 import kotlin.math.PI
 
 /**
@@ -21,7 +22,8 @@ import kotlin.math.PI
  * @see https://en.wikipedia.org/wiki/Angle
  * @see https://en.wikipedia.org/wiki/Angular_unit
  * */
-inline class Angle(val radians: Double) : Units<Angle> {
+@JvmInline
+value class Angle(val radians: Double) : Units<Angle> {
     val milliRadians get() = radians * 1000
     val degrees get() = radians / DEGREE
     val arcMinutes get() = radians / ARC_MINUTE

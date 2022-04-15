@@ -1,6 +1,7 @@
 package faraday.derived.electromagnetic
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * Radiation exposure is a measure of the ionization of air due to ionizing radiation from photons;
@@ -14,7 +15,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Radiation_exposure
  * */
-inline class RadiationExposure(val coulombsPerKg: Double) : Units<RadiationExposure> {
+@JvmInline
+value class RadiationExposure(val coulombsPerKg: Double) : Units<RadiationExposure> {
     val rontgens get() = coulombsPerKg / RONTGEN
 
     override fun plus(other: RadiationExposure) = RadiationExposure(coulombsPerKg = coulombsPerKg + other.coulombsPerKg)

@@ -1,6 +1,7 @@
 package faraday.derived.electromagnetic
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * Electrical resistivity (also called specific electrical resistance or volume resistivity) and its
@@ -13,7 +14,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Electrical_resistivity_and_conductivity
  * */
-inline class ElectricalResistivity(val ohmMeters: Double) : Units<ElectricalResistivity> {
+@JvmInline
+value class ElectricalResistivity(val ohmMeters: Double) : Units<ElectricalResistivity> {
     override fun plus(other: ElectricalResistivity) = ElectricalResistivity(ohmMeters = ohmMeters + other.ohmMeters)
     override fun minus(other: ElectricalResistivity) = ElectricalResistivity(ohmMeters = ohmMeters - other.ohmMeters)
     override fun times(factor: Number) = ElectricalResistivity(ohmMeters = ohmMeters * factor.toDouble())

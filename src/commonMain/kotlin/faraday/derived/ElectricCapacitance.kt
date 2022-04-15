@@ -1,6 +1,7 @@
 package faraday.derived
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * Capacitance is the ratio of the change in electric charge of a system to the corresponding change
@@ -22,7 +23,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Capacitance
  * */
-inline class ElectricCapacitance(val farads: Double) : Units<ElectricCapacitance> {
+@JvmInline
+value class ElectricCapacitance(val farads: Double) : Units<ElectricCapacitance> {
     override fun plus(other: ElectricCapacitance) = ElectricCapacitance(farads = farads + other.farads)
     override fun minus(other: ElectricCapacitance) = ElectricCapacitance(farads = farads - other.farads)
     override fun times(factor: Number) = ElectricCapacitance(farads = farads * factor.toDouble())

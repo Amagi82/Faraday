@@ -2,6 +2,7 @@ package faraday.derived
 
 import faraday.Prefixes
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * Pressure (symbol: p or P) is the force applied perpendicular to the surface of an object
@@ -37,7 +38,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Energy_density
  * */
-inline class Pressure(val pascals: Double) : Units<Pressure> {
+@JvmInline
+value class Pressure(val pascals: Double) : Units<Pressure> {
     val joulesPerCubicMeter: Double get() = pascals
     val kilopascals get() = pascals / Prefixes.KILO
     val gigapascals get() = pascals / Prefixes.GIGA

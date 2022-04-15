@@ -1,6 +1,7 @@
 package faraday.derived.kinematic
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * In physics, angular velocity refers to how fast an object rotates or revolves relative
@@ -14,7 +15,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Angular_velocity
  * */
-inline class AngularVelocity(val radiansPerSecond: Double) : Units<AngularVelocity> {
+@JvmInline
+value class AngularVelocity(val radiansPerSecond: Double) : Units<AngularVelocity> {
     override fun plus(other: AngularVelocity) = AngularVelocity(radiansPerSecond = radiansPerSecond + other.radiansPerSecond)
     override fun minus(other: AngularVelocity) = AngularVelocity(radiansPerSecond = radiansPerSecond - other.radiansPerSecond)
     override fun times(factor: Number) = AngularVelocity(radiansPerSecond = radiansPerSecond * factor.toDouble())

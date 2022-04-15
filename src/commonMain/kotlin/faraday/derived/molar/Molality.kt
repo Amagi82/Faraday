@@ -1,6 +1,7 @@
 package faraday.derived.molar
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * Molality, also called molal concentration, is a measure of the concentration of a solute in a
@@ -9,7 +10,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Molality
  * */
-inline class Molality(val molesPerKilogram: Double) : Units<Molality> {
+@JvmInline
+value class Molality(val molesPerKilogram: Double) : Units<Molality> {
     override fun plus(other: Molality) = Molality(molesPerKilogram = molesPerKilogram + other.molesPerKilogram)
     override fun minus(other: Molality) = Molality(molesPerKilogram = molesPerKilogram - other.molesPerKilogram)
     override fun times(factor: Number) = Molality(molesPerKilogram = molesPerKilogram * factor.toDouble())

@@ -1,6 +1,7 @@
 package faraday.derived.photometric
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * Luminance is a photometric measure of the luminous intensity per unit area of light travelling
@@ -9,7 +10,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Luminance
  * */
-inline class Luminance(val candelasPerSquareMeter: Double) : Units<Luminance> {
+@JvmInline
+value class Luminance(val candelasPerSquareMeter: Double) : Units<Luminance> {
     override fun plus(other: Luminance): Luminance = Luminance(candelasPerSquareMeter + other.candelasPerSquareMeter)
     override fun minus(other: Luminance): Luminance = Luminance(candelasPerSquareMeter - other.candelasPerSquareMeter)
     override fun times(factor: Number): Luminance = Luminance(candelasPerSquareMeter * factor.toDouble())

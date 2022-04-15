@@ -1,6 +1,7 @@
 package faraday.derived.mechanical
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * In radiometry, radiance is the radiant flux emitted, reflected, transmitted or received by a given
@@ -13,7 +14,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Radiance
  * */
-inline class Radiance(val wattsPerSteradianSquareMeter: Double) : Units<Radiance> {
+@JvmInline
+value class Radiance(val wattsPerSteradianSquareMeter: Double) : Units<Radiance> {
     override fun plus(other: Radiance) = Radiance(wattsPerSteradianSquareMeter = wattsPerSteradianSquareMeter + other.wattsPerSteradianSquareMeter)
     override fun minus(other: Radiance) = Radiance(wattsPerSteradianSquareMeter = wattsPerSteradianSquareMeter - other.wattsPerSteradianSquareMeter)
     override fun times(factor: Number) = Radiance(wattsPerSteradianSquareMeter = wattsPerSteradianSquareMeter * factor.toDouble())

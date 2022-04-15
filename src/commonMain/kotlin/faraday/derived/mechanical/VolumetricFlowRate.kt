@@ -2,6 +2,7 @@ package faraday.derived.mechanical
 
 import faraday.Units
 import faraday.base.Time
+import kotlin.jvm.JvmInline
 
 /**
  * In physics and engineering, in particular fluid dynamics, the volumetric flow rate
@@ -10,7 +11,8 @@ import faraday.base.Time
  *
  * @see https://en.wikipedia.org/wiki/Volumetric_flow_rate
  * */
-inline class VolumetricFlowRate(val cubicMetersPerSecond: Double) : Units<VolumetricFlowRate> {
+@JvmInline
+value class VolumetricFlowRate(val cubicMetersPerSecond: Double) : Units<VolumetricFlowRate> {
     val litersPerMinute get() = cubicMetersPerSecond / (1000 / Time.MINUTE)
     val cubicFeetPerMinute get() = cubicMetersPerSecond / (Volume.CUBIC_FOOT / Time.MINUTE)
     val cubicFeetPerSecond get() = cubicMetersPerSecond / Volume.CUBIC_FOOT

@@ -1,6 +1,7 @@
 package faraday.derived.electromagnetic
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * In electromagnetism, permeability is the measure of the resistance of a material against the
@@ -12,7 +13,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Permeability_(electromagnetism)
  * */
-inline class MagneticPermeability(val henrysPerMeter: Double) : Units<MagneticPermeability> {
+@JvmInline
+value class MagneticPermeability(val henrysPerMeter: Double) : Units<MagneticPermeability> {
     override fun plus(other: MagneticPermeability) = MagneticPermeability(henrysPerMeter = henrysPerMeter + other.henrysPerMeter)
     override fun minus(other: MagneticPermeability) = MagneticPermeability(henrysPerMeter = henrysPerMeter - other.henrysPerMeter)
     override fun times(factor: Number) = MagneticPermeability(henrysPerMeter = henrysPerMeter * factor.toDouble())

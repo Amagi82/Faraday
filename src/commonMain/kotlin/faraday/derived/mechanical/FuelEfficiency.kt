@@ -2,6 +2,7 @@ package faraday.derived.mechanical
 
 import faraday.Units
 import faraday.base.Distance
+import kotlin.jvm.JvmInline
 
 /**
  * Fuel efficiency is a form of thermal efficiency, meaning the ratio of effort to result of a
@@ -12,7 +13,8 @@ import faraday.base.Distance
  *
  * @see https://en.wikipedia.org/wiki/Fuel_efficiency
  * */
-inline class FuelEfficiency(val metersPerCubicMeter: Double) : Units<FuelEfficiency> {
+@JvmInline
+value class FuelEfficiency(val metersPerCubicMeter: Double) : Units<FuelEfficiency> {
     val milesPerGallon get() = metersPerCubicMeter / MPG
     val milesPerImpGallon get() = metersPerCubicMeter / MPG_UK
     val kilometersPerLiter get() = metersPerCubicMeter / KM_PER_LITER

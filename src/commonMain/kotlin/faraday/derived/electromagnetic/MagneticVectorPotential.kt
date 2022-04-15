@@ -1,6 +1,7 @@
 package faraday.derived.electromagnetic
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * Magnetic vector potential, A, is the vector quantity in classical electromagnetism defined so that
@@ -12,7 +13,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Magnetic_vector_potential
  * */
-inline class MagneticVectorPotential(val webersPerMeter: Double) : Units<MagneticVectorPotential> {
+@JvmInline
+value class MagneticVectorPotential(val webersPerMeter: Double) : Units<MagneticVectorPotential> {
     override fun plus(other: MagneticVectorPotential) = MagneticVectorPotential(webersPerMeter = webersPerMeter + other.webersPerMeter)
     override fun minus(other: MagneticVectorPotential) = MagneticVectorPotential(webersPerMeter = webersPerMeter - other.webersPerMeter)
     override fun times(factor: Number) = MagneticVectorPotential(webersPerMeter = webersPerMeter * factor.toDouble())

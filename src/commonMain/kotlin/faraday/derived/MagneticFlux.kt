@@ -4,6 +4,7 @@ import faraday.Units
 import faraday.base.ElectricCurrent
 import faraday.base.Time
 import faraday.derived.mechanical.Area
+import kotlin.jvm.JvmInline
 
 /**
  * In physics, specifically electromagnetism, the magnetic flux (often denoted Φ or ΦB) through
@@ -15,7 +16,8 @@ import faraday.derived.mechanical.Area
  *
  * @see https://en.wikipedia.org/wiki/Magnetic_flux
  * */
-inline class MagneticFlux(val webers: Double) : Units<MagneticFlux> {
+@JvmInline
+value class MagneticFlux(val webers: Double) : Units<MagneticFlux> {
     val maxwells get() = webers / 1e-8
     override fun plus(other: MagneticFlux) = MagneticFlux(webers = webers + other.webers)
     override fun minus(other: MagneticFlux) = MagneticFlux(webers = webers - other.webers)

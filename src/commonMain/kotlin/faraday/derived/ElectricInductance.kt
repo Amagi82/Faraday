@@ -3,6 +3,7 @@ package faraday.derived
 import faraday.Units
 import faraday.base.ElectricCurrent
 import faraday.base.Time
+import kotlin.jvm.JvmInline
 
 /**
  * In electromagnetism and electronics, inductance is the tendency of an electrical conductor to oppose
@@ -25,7 +26,8 @@ import faraday.base.Time
  *
  * @see https://en.wikipedia.org/wiki/Inductance
  * */
-inline class ElectricInductance(val henrys: Double) : Units<ElectricInductance> {
+@JvmInline
+value class ElectricInductance(val henrys: Double) : Units<ElectricInductance> {
     override fun plus(other: ElectricInductance) = ElectricInductance(henrys = henrys + other.henrys)
     override fun minus(other: ElectricInductance) = ElectricInductance(henrys = henrys - other.henrys)
     override fun times(factor: Number) = ElectricInductance(henrys = henrys * factor.toDouble())

@@ -4,6 +4,7 @@ import faraday.Units
 import faraday.base.Mass
 import faraday.base.Time
 import faraday.derived.Force
+import kotlin.jvm.JvmInline
 
 /**
  * In mechanics, acceleration is the rate of change of the velocity of an object with respect to
@@ -20,7 +21,8 @@ import faraday.derived.Force
  *
  * @see https://en.wikipedia.org/wiki/Acceleration
  * */
-inline class Acceleration(val metersPerSecondSquared: Double) : Units<Acceleration> {
+@JvmInline
+value class Acceleration(val metersPerSecondSquared: Double) : Units<Acceleration> {
     val G get() = metersPerSecondSquared / EARTH_GRAVITY
 
     override fun plus(other: Acceleration) = Acceleration(metersPerSecondSquared = metersPerSecondSquared + other.metersPerSecondSquared)

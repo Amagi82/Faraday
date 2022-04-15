@@ -1,6 +1,7 @@
 package faraday.derived.molar
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * The molar heat capacity of a chemical substance is the amount of energy that must be added, in
@@ -11,7 +12,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Molar_heat_capacity
  * */
-inline class MolarHeatCapacity(val joulesPerKelvinMole: Double) : Units<MolarHeatCapacity> {
+@JvmInline
+value class MolarHeatCapacity(val joulesPerKelvinMole: Double) : Units<MolarHeatCapacity> {
     override fun plus(other: MolarHeatCapacity) = MolarHeatCapacity(joulesPerKelvinMole = joulesPerKelvinMole + other.joulesPerKelvinMole)
     override fun minus(other: MolarHeatCapacity) = MolarHeatCapacity(joulesPerKelvinMole = joulesPerKelvinMole - other.joulesPerKelvinMole)
     override fun times(factor: Number) = MolarHeatCapacity(joulesPerKelvinMole = joulesPerKelvinMole * factor.toDouble())

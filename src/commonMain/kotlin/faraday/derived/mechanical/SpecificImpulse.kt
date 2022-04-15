@@ -1,6 +1,7 @@
 package faraday.derived.mechanical
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * Specific impulse (usually abbreviated Isp) is a measure of how effectively a rocket uses propellant
@@ -35,7 +36,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Specific_impulse
  * */
-inline class SpecificImpulse(val isp: Double) : Units<SpecificImpulse> {
+@JvmInline
+value class SpecificImpulse(val isp: Double) : Units<SpecificImpulse> {
     override fun plus(other: SpecificImpulse) = SpecificImpulse(isp = isp + other.isp)
     override fun minus(other: SpecificImpulse) = SpecificImpulse(isp = isp - other.isp)
     override fun times(factor: Number) = SpecificImpulse(isp = isp * factor.toDouble())

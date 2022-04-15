@@ -1,6 +1,7 @@
 package faraday.derived.mechanical
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * Spectral radiance is the radiance of a surface per unit frequency or wavelength, depending
@@ -8,7 +9,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Radiance
  * */
-inline class SpectralRadiance(val wattsPerSteradianCubicMeter: Double) : Units<SpectralRadiance> {
+@JvmInline
+value class SpectralRadiance(val wattsPerSteradianCubicMeter: Double) : Units<SpectralRadiance> {
     override fun plus(other: SpectralRadiance) = SpectralRadiance(wattsPerSteradianCubicMeter = wattsPerSteradianCubicMeter + other.wattsPerSteradianCubicMeter)
     override fun minus(other: SpectralRadiance) = SpectralRadiance(wattsPerSteradianCubicMeter = wattsPerSteradianCubicMeter - other.wattsPerSteradianCubicMeter)
     override fun times(factor: Number) = SpectralRadiance(wattsPerSteradianCubicMeter = wattsPerSteradianCubicMeter * factor.toDouble())

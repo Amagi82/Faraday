@@ -5,6 +5,7 @@ import faraday.base.Distance
 import faraday.base.Mass
 import faraday.derived.kinematic.Acceleration
 import faraday.derived.mechanical.Area
+import kotlin.jvm.JvmInline
 
 /**
  * In physics, a force is any interaction that, when unopposed, will change the motion of an object.
@@ -28,7 +29,8 @@ import faraday.derived.mechanical.Area
  *
  * @see https://en.wikipedia.org/wiki/Force
  * */
-inline class Force(val newtons: Double) : Units<Force> {
+@JvmInline
+value class Force(val newtons: Double) : Units<Force> {
     val lbs get() = newtons / POUND
 
     override fun plus(other: Force) = Force(newtons = newtons + other.newtons)

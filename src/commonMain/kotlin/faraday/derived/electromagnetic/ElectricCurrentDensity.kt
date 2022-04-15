@@ -1,6 +1,7 @@
 package faraday.derived.electromagnetic
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * In electromagnetism, current density is the amount of charge per unit time that flows through
@@ -11,7 +12,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Current_density
  * */
-inline class ElectricCurrentDensity(val amperesPerSquareMeter: Double) : Units<ElectricCurrentDensity> {
+@JvmInline
+value class ElectricCurrentDensity(val amperesPerSquareMeter: Double) : Units<ElectricCurrentDensity> {
     override fun plus(other: ElectricCurrentDensity) = ElectricCurrentDensity(amperesPerSquareMeter = amperesPerSquareMeter + other.amperesPerSquareMeter)
     override fun minus(other: ElectricCurrentDensity) = ElectricCurrentDensity(amperesPerSquareMeter = amperesPerSquareMeter - other.amperesPerSquareMeter)
     override fun times(factor: Number) = ElectricCurrentDensity(amperesPerSquareMeter = amperesPerSquareMeter * factor.toDouble())

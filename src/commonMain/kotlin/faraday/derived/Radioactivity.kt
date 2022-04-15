@@ -1,6 +1,7 @@
 package faraday.derived
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * Specific activity is the activity per quantity of a radionuclide and is a physical property
@@ -26,7 +27,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Specific_activity
  * */
-inline class Radioactivity(val becquerels: Double) : Units<Radioactivity> {
+@JvmInline
+value class Radioactivity(val becquerels: Double) : Units<Radioactivity> {
     val curies get() = becquerels / CURIE
     val rutherfords get() = becquerels / RUTHERFORD
 

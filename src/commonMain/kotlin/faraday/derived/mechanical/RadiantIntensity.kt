@@ -1,6 +1,7 @@
 package faraday.derived.mechanical
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * In radiometry, radiant intensity is the radiant flux emitted, reflected, transmitted or received,
@@ -10,7 +11,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Radiant_intensity
  * */
-inline class RadiantIntensity(val wattsPerSteradian: Double) : Units<RadiantIntensity> {
+@JvmInline
+value class RadiantIntensity(val wattsPerSteradian: Double) : Units<RadiantIntensity> {
     override fun plus(other: RadiantIntensity) = RadiantIntensity(wattsPerSteradian = wattsPerSteradian + other.wattsPerSteradian)
     override fun minus(other: RadiantIntensity) = RadiantIntensity(wattsPerSteradian = wattsPerSteradian - other.wattsPerSteradian)
     override fun times(factor: Number) = RadiantIntensity(wattsPerSteradian = wattsPerSteradian * factor.toDouble())

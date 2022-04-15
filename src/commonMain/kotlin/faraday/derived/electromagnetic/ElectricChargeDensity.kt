@@ -1,6 +1,7 @@
 package faraday.derived.electromagnetic
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * In electromagnetism, charge density is the amount of electric charge per unit length, surface
@@ -15,7 +16,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Charge_density
  * */
-inline class ElectricChargeDensity(val coulombsPerCubicMeter: Double) : Units<ElectricChargeDensity> {
+@JvmInline
+value class ElectricChargeDensity(val coulombsPerCubicMeter: Double) : Units<ElectricChargeDensity> {
     override fun plus(other: ElectricChargeDensity) = ElectricChargeDensity(coulombsPerCubicMeter = coulombsPerCubicMeter + other.coulombsPerCubicMeter)
     override fun minus(other: ElectricChargeDensity) = ElectricChargeDensity(coulombsPerCubicMeter = coulombsPerCubicMeter - other.coulombsPerCubicMeter)
     override fun times(factor: Number) = ElectricChargeDensity(coulombsPerCubicMeter = coulombsPerCubicMeter * factor.toDouble())

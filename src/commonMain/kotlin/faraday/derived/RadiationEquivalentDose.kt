@@ -1,6 +1,7 @@
 package faraday.derived
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * Equivalent dose is a dose quantity H representing the stochastic health effects of low levels
@@ -11,7 +12,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Equivalent_dose
  * */
-inline class RadiationEquivalentDose(val sieverts: Double) : Units<RadiationEquivalentDose> {
+@JvmInline
+value class RadiationEquivalentDose(val sieverts: Double) : Units<RadiationEquivalentDose> {
     val rems get() = sieverts / REM
 
     override fun plus(other: RadiationEquivalentDose) = RadiationEquivalentDose(sieverts = sieverts + other.sieverts)

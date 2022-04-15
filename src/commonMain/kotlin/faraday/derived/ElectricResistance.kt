@@ -3,6 +3,7 @@ package faraday.derived
 import faraday.Units
 import faraday.base.ElectricCurrent
 import faraday.base.Time
+import kotlin.jvm.JvmInline
 
 /**
  * In electronics and electromagnetism, the electrical resistance of an object is a measure of its
@@ -36,7 +37,8 @@ import faraday.base.Time
  *
  * @see https://en.wikipedia.org/wiki/Electrical_resistance_and_conductance
  * */
-inline class ElectricResistance(val ohms: Double) : Units<ElectricResistance> {
+@JvmInline
+value class ElectricResistance(val ohms: Double) : Units<ElectricResistance> {
     override fun plus(other: ElectricResistance) = ElectricResistance(ohms = ohms + other.ohms)
     override fun minus(other: ElectricResistance) = ElectricResistance(ohms = ohms - other.ohms)
     override fun times(factor: Number) = ElectricResistance(ohms = ohms * factor.toDouble())

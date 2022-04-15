@@ -1,6 +1,7 @@
 package faraday.derived.electromagnetic
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * The magnetic moment is the magnetic strength and orientation of a magnet or other object that
@@ -11,7 +12,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Magnetic_moment
  * */
-inline class MagneticMoment(val weberMeters: Double) : Units<MagneticMoment> {
+@JvmInline
+value class MagneticMoment(val weberMeters: Double) : Units<MagneticMoment> {
     override fun plus(other: MagneticMoment) = MagneticMoment(weberMeters = weberMeters + other.weberMeters)
     override fun minus(other: MagneticMoment) = MagneticMoment(weberMeters = weberMeters - other.weberMeters)
     override fun times(factor: Number) = MagneticMoment(weberMeters = weberMeters * factor.toDouble())

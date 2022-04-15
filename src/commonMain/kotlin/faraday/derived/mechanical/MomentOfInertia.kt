@@ -1,6 +1,7 @@
 package faraday.derived.mechanical
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * The moment of inertia, otherwise known as the mass moment of inertia, angular mass or rotational
@@ -11,7 +12,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Moment_of_inertia
  * */
-inline class MomentOfInertia(val kilogramMetersPerSecond: Double) : Units<MomentOfInertia> {
+@JvmInline
+value class MomentOfInertia(val kilogramMetersPerSecond: Double) : Units<MomentOfInertia> {
     override fun plus(other: MomentOfInertia) = MomentOfInertia(kilogramMetersPerSecond = kilogramMetersPerSecond + other.kilogramMetersPerSecond)
     override fun minus(other: MomentOfInertia) = MomentOfInertia(kilogramMetersPerSecond = kilogramMetersPerSecond - other.kilogramMetersPerSecond)
     override fun times(factor: Number) = MomentOfInertia(kilogramMetersPerSecond = kilogramMetersPerSecond * factor.toDouble())

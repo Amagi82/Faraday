@@ -1,6 +1,7 @@
 package faraday.derived.electromagnetic
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * In accelerator physics, rigidity is the effect of particular magnetic fields on the motion of the
@@ -13,7 +14,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Rigidity_(electromagnetism)
  * */
-inline class MagneticRigidity(val teslaMeters: Double) : Units<MagneticRigidity> {
+@JvmInline
+value class MagneticRigidity(val teslaMeters: Double) : Units<MagneticRigidity> {
     override fun plus(other: MagneticRigidity) = MagneticRigidity(teslaMeters = teslaMeters + other.teslaMeters)
     override fun minus(other: MagneticRigidity) = MagneticRigidity(teslaMeters = teslaMeters - other.teslaMeters)
     override fun times(factor: Number) = MagneticRigidity(teslaMeters = teslaMeters * factor.toDouble())

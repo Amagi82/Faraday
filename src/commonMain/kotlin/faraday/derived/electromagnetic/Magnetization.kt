@@ -1,6 +1,7 @@
 package faraday.derived.electromagnetic
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * In classical electromagnetism, magnetization or magnetic polarization is the vector field that
@@ -22,7 +23,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Magnetization
  * */
-inline class Magnetization(val amperesPerMeter: Double) : Units<Magnetization> {
+@JvmInline
+value class Magnetization(val amperesPerMeter: Double) : Units<Magnetization> {
     override fun plus(other: Magnetization) = Magnetization(amperesPerMeter = amperesPerMeter + other.amperesPerMeter)
     override fun minus(other: Magnetization) = Magnetization(amperesPerMeter = amperesPerMeter - other.amperesPerMeter)
     override fun times(factor: Number) = Magnetization(amperesPerMeter = amperesPerMeter * factor.toDouble())

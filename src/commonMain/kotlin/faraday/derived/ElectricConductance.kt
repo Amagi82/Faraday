@@ -1,6 +1,7 @@
 package faraday.derived
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * In electronics and electromagnetism, the electrical resistance of an object is a measure of its
@@ -34,7 +35,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Electrical_resistance_and_conductance
  * */
-inline class ElectricConductance(val siemens: Double) : Units<ElectricConductance> {
+@JvmInline
+value class ElectricConductance(val siemens: Double) : Units<ElectricConductance> {
     override fun plus(other: ElectricConductance) = ElectricConductance(siemens = siemens + other.siemens)
     override fun minus(other: ElectricConductance) = ElectricConductance(siemens = siemens - other.siemens)
     override fun times(factor: Number) = ElectricConductance(siemens = siemens * factor.toDouble())

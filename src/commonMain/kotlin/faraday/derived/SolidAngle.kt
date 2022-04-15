@@ -2,6 +2,7 @@ package faraday.derived
 
 import faraday.Units
 import faraday.base.LuminousIntensity
+import kotlin.jvm.JvmInline
 
 /**
  * In geometry, a solid angle (symbol: Ω) is a measure of the amount of the field of view from some particular
@@ -22,7 +23,8 @@ import faraday.base.LuminousIntensity
  *
  * @see https://en.wikipedia.org/wiki/Solid_angle
  * */
-inline class SolidAngle(val steradians: Double) : Units<SolidAngle> {
+@JvmInline
+value class SolidAngle(val steradians: Double) : Units<SolidAngle> {
     override fun plus(other: SolidAngle) = SolidAngle(steradians = steradians + other.steradians)
     override fun minus(other: SolidAngle) = SolidAngle(steradians = steradians - other.steradians)
     override fun times(factor: Number) = SolidAngle(steradians = steradians * factor.toDouble())

@@ -3,6 +3,7 @@ package faraday.base
 import faraday.Constants
 import faraday.Units
 import faraday.derived.Catalysis
+import kotlin.jvm.JvmInline
 
 
 /**
@@ -26,7 +27,8 @@ import faraday.derived.Catalysis
  *
  * @see https://en.wikipedia.org/wiki/Amount_of_substance
  * */
-inline class ChemicalAmount(val moles: Double) : Units<ChemicalAmount> {
+@JvmInline
+value class ChemicalAmount(val moles: Double) : Units<ChemicalAmount> {
     override fun plus(other: ChemicalAmount) = ChemicalAmount(moles = moles + other.moles)
     override fun minus(other: ChemicalAmount) = ChemicalAmount(moles = moles - other.moles)
     override fun times(factor: Number) = ChemicalAmount(moles = moles * factor.toDouble())

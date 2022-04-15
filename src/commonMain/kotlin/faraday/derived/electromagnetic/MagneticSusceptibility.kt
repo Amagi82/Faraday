@@ -1,6 +1,7 @@
 package faraday.derived.electromagnetic
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * In electromagnetism, the magnetic susceptibility is a measure of how much a material will become
@@ -12,7 +13,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Magnetic_susceptibility
  * */
-inline class MagneticSusceptibility(val metersPerHenry: Double) : Units<MagneticSusceptibility> {
+@JvmInline
+value class MagneticSusceptibility(val metersPerHenry: Double) : Units<MagneticSusceptibility> {
     override fun plus(other: MagneticSusceptibility) = MagneticSusceptibility(metersPerHenry = metersPerHenry + other.metersPerHenry)
     override fun minus(other: MagneticSusceptibility) = MagneticSusceptibility(metersPerHenry = metersPerHenry - other.metersPerHenry)
     override fun times(factor: Number) = MagneticSusceptibility(metersPerHenry = metersPerHenry * factor.toDouble())

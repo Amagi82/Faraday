@@ -3,6 +3,7 @@ package faraday.derived.photometric
 import faraday.Units
 import faraday.base.Time
 import faraday.derived.LuminousFlux
+import kotlin.jvm.JvmInline
 
 /**
  * In photometry, luminous energy is the perceived energy of light. This is sometimes called the
@@ -17,7 +18,8 @@ import faraday.derived.LuminousFlux
  *
  * @see https://en.wikipedia.org/wiki/Luminous_energy
  * */
-inline class LuminousEnergy(val lumenSeconds: Double) : Units<LuminousEnergy> {
+@JvmInline
+value class LuminousEnergy(val lumenSeconds: Double) : Units<LuminousEnergy> {
     override fun plus(other: LuminousEnergy): LuminousEnergy = LuminousEnergy(lumenSeconds + other.lumenSeconds)
     override fun minus(other: LuminousEnergy): LuminousEnergy = LuminousEnergy(lumenSeconds - other.lumenSeconds)
     override fun times(factor: Number): LuminousEnergy = LuminousEnergy(lumenSeconds * factor.toDouble())

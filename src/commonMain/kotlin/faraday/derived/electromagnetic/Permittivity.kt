@@ -1,6 +1,7 @@
 package faraday.derived.electromagnetic
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * In electromagnetism, the absolute permittivity, often simply called permittivity and denoted by the
@@ -11,7 +12,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Permittivity
  * */
-inline class Permittivity(val faradsPerMeter: Double) : Units<Permittivity> {
+@JvmInline
+value class Permittivity(val faradsPerMeter: Double) : Units<Permittivity> {
     override fun plus(other: Permittivity) = Permittivity(faradsPerMeter = faradsPerMeter + other.faradsPerMeter)
     override fun minus(other: Permittivity) = Permittivity(faradsPerMeter = faradsPerMeter - other.faradsPerMeter)
     override fun times(factor: Number) = Permittivity(faradsPerMeter = faradsPerMeter * factor.toDouble())

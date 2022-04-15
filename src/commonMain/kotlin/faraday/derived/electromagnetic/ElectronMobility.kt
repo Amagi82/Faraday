@@ -1,6 +1,7 @@
 package faraday.derived.electromagnetic
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * In solid-state physics, the electron mobility characterises how quickly an electron can move through
@@ -12,7 +13,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Electron_mobility
  * */
-inline class ElectronMobility(val squareMetersPerVoltSecond: Double) : Units<ElectronMobility> {
+@JvmInline
+value class ElectronMobility(val squareMetersPerVoltSecond: Double) : Units<ElectronMobility> {
     override fun plus(other: ElectronMobility) = ElectronMobility(squareMetersPerVoltSecond = squareMetersPerVoltSecond + other.squareMetersPerVoltSecond)
     override fun minus(other: ElectronMobility) = ElectronMobility(squareMetersPerVoltSecond = squareMetersPerVoltSecond - other.squareMetersPerVoltSecond)
     override fun times(factor: Number) = ElectronMobility(squareMetersPerVoltSecond = squareMetersPerVoltSecond * factor.toDouble())

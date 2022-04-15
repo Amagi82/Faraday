@@ -1,6 +1,7 @@
 package faraday.derived.mechanical
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * Surface tension is the tendency of liquid surfaces to shrink into the minimum surface area
@@ -12,7 +13,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Surface_tension
  * */
-inline class SurfaceTension(val newtonsPerMeter: Double) : Units<SurfaceTension> {
+@JvmInline
+value class SurfaceTension(val newtonsPerMeter: Double) : Units<SurfaceTension> {
     override fun plus(other: SurfaceTension) = SurfaceTension(newtonsPerMeter = newtonsPerMeter + other.newtonsPerMeter)
     override fun minus(other: SurfaceTension) = SurfaceTension(newtonsPerMeter = newtonsPerMeter - other.newtonsPerMeter)
     override fun times(factor: Number) = SurfaceTension(newtonsPerMeter = newtonsPerMeter * factor.toDouble())

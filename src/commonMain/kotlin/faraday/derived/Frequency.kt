@@ -1,6 +1,7 @@
 package faraday.derived
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * Frequency is the number of occurrences of a repeating event per unit of time. It is also
@@ -16,7 +17,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Frequency
  * */
-inline class Frequency(val hertz: Double) : Units<Frequency> {
+@JvmInline
+value class Frequency(val hertz: Double) : Units<Frequency> {
     override fun plus(other: Frequency) = Frequency(hertz = hertz + other.hertz)
     override fun minus(other: Frequency) = Frequency(hertz = hertz - other.hertz)
     override fun times(factor: Number) = Frequency(hertz = hertz * factor.toDouble())

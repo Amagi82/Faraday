@@ -2,6 +2,7 @@ package faraday.derived.mechanical
 
 import faraday.Units
 import faraday.base.Mass
+import kotlin.jvm.JvmInline
 
 /**
  * The density (more precisely, the volumetric mass density; also known as specific mass), of a
@@ -11,7 +12,8 @@ import faraday.base.Mass
  *
  * @see https://en.wikipedia.org/wiki/Density
  * */
-inline class Density(val kgPerCubicMeter: Double) : Units<Density> {
+@JvmInline
+value class Density(val kgPerCubicMeter: Double) : Units<Density> {
     val gramsPerCubicCentimeter get() = kgPerCubicMeter / 1000
     val kgPerLiter get() = kgPerCubicMeter / 1000
     val gramsPerMilliliter get() = kgPerCubicMeter / 1000

@@ -1,6 +1,7 @@
 package faraday.derived.thermodynamic
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * A temperature gradient is a physical quantity that describes in which direction and at what
@@ -10,7 +11,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Temperature_gradient
  * */
-inline class TemperatureGradient(val kelvinsPerMeter: Double) : Units<TemperatureGradient> {
+@JvmInline
+value class TemperatureGradient(val kelvinsPerMeter: Double) : Units<TemperatureGradient> {
     override fun plus(other: TemperatureGradient) = TemperatureGradient(kelvinsPerMeter = kelvinsPerMeter + other.kelvinsPerMeter)
     override fun minus(other: TemperatureGradient) = TemperatureGradient(kelvinsPerMeter = kelvinsPerMeter - other.kelvinsPerMeter)
     override fun times(factor: Number) = TemperatureGradient(kelvinsPerMeter = kelvinsPerMeter * factor.toDouble())

@@ -4,6 +4,7 @@ import faraday.Units
 import faraday.base.Distance
 import faraday.derived.MagneticFlux
 import faraday.derived.MagneticInduction
+import kotlin.jvm.JvmInline
 
 /**
  * Area is the quantity that expresses the extent of a two-dimensional figure or shape or planar lamina,
@@ -21,7 +22,8 @@ import faraday.derived.MagneticInduction
  *
  * @see https://en.wikipedia.org/wiki/Area
  * */
-inline class Area(val squareMeters: Double) : Units<Area> {
+@JvmInline
+value class Area(val squareMeters: Double) : Units<Area> {
     val hectares get() = squareMeters / HECTARE
     val squareKilometers get() = squareMeters / SQ_KILO
     val squareCentimeters get() = squareMeters / SQ_CENTI

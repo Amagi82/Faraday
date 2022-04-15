@@ -5,6 +5,7 @@ import faraday.Units
 import faraday.base.Distance
 import faraday.base.ElectricCurrent
 import faraday.base.Time
+import kotlin.jvm.JvmInline
 
 /**
  * In physics, power is the amount of energy transferred or converted per unit time. In the International
@@ -24,7 +25,8 @@ import faraday.base.Time
  * @see https://en.wikipedia.org/wiki/Power_(physics)
  * @see https://en.wikipedia.org/wiki/Electric_power
  * */
-inline class Power(val watts: Double) : Units<Power> {
+@JvmInline
+value class Power(val watts: Double) : Units<Power> {
     val milliwatts get() = watts / Prefixes.MILLI
     val kilowatts get() = watts / Prefixes.KILO
     val megawatts get() = watts / Prefixes.MEGA

@@ -1,6 +1,7 @@
 package faraday.derived.mechanical
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * In radiometry, radiant flux or radiant power is the radiant energy emitted, reflected,
@@ -10,7 +11,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Radiant_flux
  * */
-inline class SpectralPower(val wattsPerMeter: Double) : Units<SpectralPower> {
+@JvmInline
+value class SpectralPower(val wattsPerMeter: Double) : Units<SpectralPower> {
     override fun plus(other: SpectralPower) = SpectralPower(wattsPerMeter = wattsPerMeter + other.wattsPerMeter)
     override fun minus(other: SpectralPower) = SpectralPower(wattsPerMeter = wattsPerMeter - other.wattsPerMeter)
     override fun times(factor: Number) = SpectralPower(wattsPerMeter = wattsPerMeter * factor.toDouble())

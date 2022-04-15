@@ -1,6 +1,7 @@
 package faraday.base
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * Temperature is a physical property of matter that quantitatively expresses hot and cold. It
@@ -16,7 +17,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Temperature
  * */
-inline class Temperature(val kelvin: Double) : Units<Temperature> {
+@JvmInline
+value class Temperature(val kelvin: Double) : Units<Temperature> {
     val celsius get() = kelvin + KELVIN_TO_CELSIUS
     val fahrenheit get() = celsius * 1.8 + 32
 

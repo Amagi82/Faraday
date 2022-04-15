@@ -1,6 +1,7 @@
 package faraday.derived.mechanical
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * In thermodynamics, the specific volume of a substance is the ratio of the substance's volume to
@@ -9,7 +10,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Specific_volume
  * */
-inline class SpecificVolume(val cubicMetersPerKilogram: Double) : Units<SpecificVolume> {
+@JvmInline
+value class SpecificVolume(val cubicMetersPerKilogram: Double) : Units<SpecificVolume> {
     override fun plus(other: SpecificVolume) = SpecificVolume(cubicMetersPerKilogram = cubicMetersPerKilogram + other.cubicMetersPerKilogram)
     override fun minus(other: SpecificVolume) = SpecificVolume(cubicMetersPerKilogram = cubicMetersPerKilogram - other.cubicMetersPerKilogram)
     override fun times(factor: Number) = SpecificVolume(cubicMetersPerKilogram = cubicMetersPerKilogram * factor.toDouble())

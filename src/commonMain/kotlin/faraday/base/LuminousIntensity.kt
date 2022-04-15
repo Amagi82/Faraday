@@ -5,6 +5,7 @@ import faraday.derived.LuminousFlux
 import faraday.derived.SolidAngle
 import faraday.derived.mechanical.Area
 import faraday.derived.photometric.Luminance
+import kotlin.jvm.JvmInline
 
 /**
  * In photometry, luminous intensity is a measure of the wavelength-weighted power emitted
@@ -23,7 +24,8 @@ import faraday.derived.photometric.Luminance
  *
  * @see https://en.wikipedia.org/wiki/Luminous_intensity
  * */
-inline class LuminousIntensity(val candelas: Double) : Units<LuminousIntensity> {
+@JvmInline
+value class LuminousIntensity(val candelas: Double) : Units<LuminousIntensity> {
     override fun plus(other: LuminousIntensity) = LuminousIntensity(candelas = candelas + other.candelas)
     override fun minus(other: LuminousIntensity) = LuminousIntensity(candelas = candelas - other.candelas)
     override fun times(factor: Number) = LuminousIntensity(candelas = candelas * factor.toDouble())

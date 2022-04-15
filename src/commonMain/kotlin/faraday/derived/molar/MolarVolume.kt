@@ -1,6 +1,7 @@
 package faraday.derived.molar
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * The molar volume is the volume occupied divided by the amount of substance (of a chemical element
@@ -11,7 +12,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Molar_volume
  * */
-inline class MolarVolume(val cubicMetersPerMole: Double) : Units<MolarVolume> {
+@JvmInline
+value class MolarVolume(val cubicMetersPerMole: Double) : Units<MolarVolume> {
     override fun plus(other: MolarVolume) = MolarVolume(cubicMetersPerMole = cubicMetersPerMole + other.cubicMetersPerMole)
     override fun minus(other: MolarVolume) = MolarVolume(cubicMetersPerMole = cubicMetersPerMole - other.cubicMetersPerMole)
     override fun times(factor: Number) = MolarVolume(cubicMetersPerMole = cubicMetersPerMole * factor.toDouble())

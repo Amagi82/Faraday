@@ -1,6 +1,7 @@
 package faraday.derived.kinematic
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * In physics, angular acceleration refers to the time rate of change of angular velocity.
@@ -13,7 +14,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Angular_acceleration
  * */
-inline class AngularAcceleration(val radiansPerSecondSquared: Double) : Units<AngularAcceleration> {
+@JvmInline
+value class AngularAcceleration(val radiansPerSecondSquared: Double) : Units<AngularAcceleration> {
     override fun plus(other: AngularAcceleration) = AngularAcceleration(radiansPerSecondSquared = radiansPerSecondSquared + other.radiansPerSecondSquared)
     override fun minus(other: AngularAcceleration) = AngularAcceleration(radiansPerSecondSquared = radiansPerSecondSquared - other.radiansPerSecondSquared)
     override fun times(factor: Number) = AngularAcceleration(radiansPerSecondSquared = radiansPerSecondSquared * factor.toDouble())

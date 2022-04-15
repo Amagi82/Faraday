@@ -1,6 +1,7 @@
 package faraday.derived.thermodynamic
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * The thermal conductivity of a material is a measure of its ability to conduct heat. It is
@@ -15,7 +16,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Thermal_conductivity
  * */
-inline class ThermalConductivity(val wattsPerMeterKelvin: Double) : Units<ThermalConductivity> {
+@JvmInline
+value class ThermalConductivity(val wattsPerMeterKelvin: Double) : Units<ThermalConductivity> {
     override fun plus(other: ThermalConductivity) = ThermalConductivity(wattsPerMeterKelvin = wattsPerMeterKelvin + other.wattsPerMeterKelvin)
     override fun minus(other: ThermalConductivity) = ThermalConductivity(wattsPerMeterKelvin = wattsPerMeterKelvin - other.wattsPerMeterKelvin)
     override fun times(factor: Number) = ThermalConductivity(wattsPerMeterKelvin = wattsPerMeterKelvin * factor.toDouble())

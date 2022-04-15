@@ -1,6 +1,7 @@
 package faraday.derived.thermodynamic
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * Heat capacity or thermal capacity is a physical property of matter, defined as the amount of heat
@@ -8,7 +9,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Heat_capacity
  * */
-inline class HeatCapacity(val joulesPerKelvin: Double) : Units<HeatCapacity> {
+@JvmInline
+value class HeatCapacity(val joulesPerKelvin: Double) : Units<HeatCapacity> {
     override fun plus(other: HeatCapacity) = HeatCapacity(joulesPerKelvin = joulesPerKelvin + other.joulesPerKelvin)
     override fun minus(other: HeatCapacity) = HeatCapacity(joulesPerKelvin = joulesPerKelvin - other.joulesPerKelvin)
     override fun times(factor: Number) = HeatCapacity(joulesPerKelvin = joulesPerKelvin * factor.toDouble())

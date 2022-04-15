@@ -1,6 +1,7 @@
 package faraday.derived.electromagnetic
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * Electrical conductivity or specific conductance is the reciprocal of electrical resistivity.
@@ -10,7 +11,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Electrical_resistivity_and_conductivity
  * */
-inline class ElectricalConductivity(val siemensPerMeter: Double) : Units<ElectricalConductivity> {
+@JvmInline
+value class ElectricalConductivity(val siemensPerMeter: Double) : Units<ElectricalConductivity> {
     override fun plus(other: ElectricalConductivity) = ElectricalConductivity(siemensPerMeter = siemensPerMeter + other.siemensPerMeter)
     override fun minus(other: ElectricalConductivity) = ElectricalConductivity(siemensPerMeter = siemensPerMeter - other.siemensPerMeter)
     override fun times(factor: Number) = ElectricalConductivity(siemensPerMeter = siemensPerMeter * factor.toDouble())

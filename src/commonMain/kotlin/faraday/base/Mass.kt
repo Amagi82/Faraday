@@ -7,6 +7,7 @@ import faraday.derived.Force
 import faraday.derived.kinematic.Velocity
 import faraday.derived.mechanical.Momentum
 import faraday.derived.mechanical.Volume
+import kotlin.jvm.JvmInline
 
 /**
  * Mass is both a property of a physical body and a measure of its resistance to acceleration
@@ -22,7 +23,8 @@ import faraday.derived.mechanical.Volume
  *
  * @see https://en.wikipedia.org/wiki/Mass
  * */
-inline class Mass(val kilograms: Double) : Units<Mass> {
+@JvmInline
+value class Mass(val kilograms: Double) : Units<Mass> {
     val grams get() = kilograms * 1000
     val milligrams get() = kilograms * 1e6
     val carats get() = kilograms / CARAT

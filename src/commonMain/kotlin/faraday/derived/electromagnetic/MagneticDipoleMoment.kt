@@ -1,6 +1,7 @@
 package faraday.derived.electromagnetic
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  *  The component of the magnetic moment that can be represented by an equivalent magnetic dipole: a
@@ -17,7 +18,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Magnetic_moment
  * */
-inline class MagneticDipoleMoment(val joulesPerTesla: Double) : Units<MagneticDipoleMoment> {
+@JvmInline
+value class MagneticDipoleMoment(val joulesPerTesla: Double) : Units<MagneticDipoleMoment> {
     override fun plus(other: MagneticDipoleMoment) = MagneticDipoleMoment(joulesPerTesla = joulesPerTesla + other.joulesPerTesla)
     override fun minus(other: MagneticDipoleMoment) = MagneticDipoleMoment(joulesPerTesla = joulesPerTesla - other.joulesPerTesla)
     override fun times(factor: Number) = MagneticDipoleMoment(joulesPerTesla = joulesPerTesla * factor.toDouble())

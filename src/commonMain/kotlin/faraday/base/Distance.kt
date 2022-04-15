@@ -8,6 +8,7 @@ import faraday.derived.kinematic.Velocity
 import faraday.derived.mechanical.Area
 import faraday.derived.mechanical.FuelEfficiency
 import faraday.derived.mechanical.Volume
+import kotlin.jvm.JvmInline
 import kotlin.math.PI
 
 /**
@@ -27,7 +28,8 @@ import kotlin.math.PI
  *
  * @see https://en.wikipedia.org/wiki/Length
  * */
-inline class Distance(val meters: Double) : Units<Distance> {
+@JvmInline
+value class Distance(val meters: Double) : Units<Distance> {
     val angstroms get() = meters / ANGSTROM
     val millimeters get() = meters / Prefixes.MILLI
     val centimeters get() = meters / Prefixes.CENTI

@@ -1,6 +1,7 @@
 package faraday.derived.mechanical
 
 import faraday.Units
+import kotlin.jvm.JvmInline
 
 /**
  * Specific energy or massic energy is energy per unit mass. It is also sometimes called
@@ -13,7 +14,8 @@ import faraday.Units
  *
  * @see https://en.wikipedia.org/wiki/Specific_energy
  * */
-inline class SpecificEnergy(val joulesPerKilogram: Double) : Units<SpecificEnergy> {
+@JvmInline
+value class SpecificEnergy(val joulesPerKilogram: Double) : Units<SpecificEnergy> {
     override fun plus(other: SpecificEnergy) = SpecificEnergy(joulesPerKilogram = joulesPerKilogram + other.joulesPerKilogram)
     override fun minus(other: SpecificEnergy) = SpecificEnergy(joulesPerKilogram = joulesPerKilogram - other.joulesPerKilogram)
     override fun times(factor: Number) = SpecificEnergy(joulesPerKilogram = joulesPerKilogram * factor.toDouble())

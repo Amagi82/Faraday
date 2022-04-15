@@ -3,6 +3,7 @@ package faraday.derived.kinematic
 import faraday.Units
 import faraday.base.Time
 import faraday.derived.mechanical.Volume
+import kotlin.jvm.JvmInline
 
 /**
  * In physics and engineering, in particular fluid dynamics and hydrometry, the volumetric flow rate
@@ -12,7 +13,8 @@ import faraday.derived.mechanical.Volume
  *
  * @see https://en.wikipedia.org/wiki/Volumetric_flow_rate
  * */
-inline class VolumetricFlowRate(val cubicMetersPerSecond: Double) : Units<VolumetricFlowRate> {
+@JvmInline
+value class VolumetricFlowRate(val cubicMetersPerSecond: Double) : Units<VolumetricFlowRate> {
     override fun plus(other: VolumetricFlowRate) = VolumetricFlowRate(cubicMetersPerSecond = cubicMetersPerSecond + other.cubicMetersPerSecond)
     override fun minus(other: VolumetricFlowRate) = VolumetricFlowRate(cubicMetersPerSecond = cubicMetersPerSecond - other.cubicMetersPerSecond)
     override fun times(factor: Number) = VolumetricFlowRate(cubicMetersPerSecond = cubicMetersPerSecond * factor.toDouble())

@@ -6,6 +6,7 @@ import faraday.derived.*
 import faraday.derived.kinematic.Velocity
 import faraday.derived.photometric.LuminousEnergy
 import faraday.derived.photometric.LuminousExposure
+import kotlin.jvm.JvmInline
 
 /**
  * Time is the indefinite continued progress of existence and events that occur in an apparently
@@ -27,7 +28,8 @@ import faraday.derived.photometric.LuminousExposure
  *
  * @see https://en.wikipedia.org/wiki/Time
  * */
-inline class Time(val seconds: Double) : Units<Time> {
+@JvmInline
+value class Time(val seconds: Double) : Units<Time> {
     val nanoseconds get() = seconds / Prefixes.NANO
     val microseconds get() = seconds / Prefixes.MICRO
     val milliseconds get() = seconds / Prefixes.MILLI
