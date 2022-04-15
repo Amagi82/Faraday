@@ -19,6 +19,8 @@ import kotlin.jvm.JvmInline
  * */
 @JvmInline
 value class Frequency(val hertz: Double) : Units<Frequency> {
+    val rpm get() = hertz / 60
+
     override fun plus(other: Frequency) = Frequency(hertz = hertz + other.hertz)
     override fun minus(other: Frequency) = Frequency(hertz = hertz - other.hertz)
     override fun times(factor: Number) = Frequency(hertz = hertz * factor.toDouble())
@@ -27,3 +29,4 @@ value class Frequency(val hertz: Double) : Units<Frequency> {
 }
 
 val Number.hertz get() = Frequency(toDouble())
+val Number.rpm get() = Frequency(toDouble() * 60)
