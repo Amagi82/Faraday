@@ -1,7 +1,6 @@
 package faraday.derived
 
 import faraday.Units
-import faraday.derived.Angle.Companion.TURN
 import kotlin.jvm.JvmInline
 import kotlin.math.PI
 
@@ -23,7 +22,9 @@ import kotlin.math.PI
  * @see https://en.wikipedia.org/wiki/Angular_unit
  * */
 @JvmInline
-value class Angle(val radians: Double) : Units<Angle> {
+value class Angle private constructor(val radians: Double) : Units<Angle> {
+    constructor(radians: Number) : this(radians = radians.toDouble() % TURN)
+
     val milliRadians get() = radians * 1000
     val degrees get() = radians / DEGREE
     val arcMinutes get() = radians / ARC_MINUTE
@@ -32,10 +33,8 @@ value class Angle(val radians: Double) : Units<Angle> {
     val microArcSeconds get() = radians / MICRO_ARC_SECOND
     val gradians get() = radians / GRADIAN
 
-    //TODO: init blocks permitted in v1.4.30, move % CIRCLE inside when released
-
     override fun plus(other: Angle) = Angle(radians = (radians + other.radians) % TURN)
-    override fun minus(other: Angle) = Angle(radians = ((if(radians > other.radians) 0.0 else TURN) + radians - other.radians) % TURN)
+    override fun minus(other: Angle) = Angle(radians = ((if (radians > other.radians) 0.0 else TURN) + radians - other.radians) % TURN)
     override fun times(factor: Number) = Angle(radians = (radians * factor.toDouble()) % TURN)
     override fun div(factor: Number) = Angle(radians = (radians / factor.toDouble()) % TURN)
     override fun compareTo(other: Angle): Int = radians.compareTo(other.radians)
@@ -51,9 +50,9 @@ value class Angle(val radians: Double) : Units<Angle> {
     }
 }
 
-val Number.radians get() = Angle(radians = toDouble() % TURN)
-val Number.degrees get() = Angle(radians = (toDouble() * Angle.DEGREE) % TURN)
-val Number.arcMinutes get() = Angle(radians = (toDouble() * Angle.ARC_MINUTE) % TURN)
-val Number.arcSeconds get() = Angle(radians = (toDouble() * Angle.ARC_SECOND) % TURN)
-val Number.milliArcSeconds get() = Angle(radians = (toDouble() * Angle.MILLI_ARC_SECOND) % TURN)
-val Number.microArcSeconds get() = Angle(radians = (toDouble() * Angle.MICRO_ARC_SECOND) % TURN)
+val Number.radians get() = Angle(radians = toDouble())
+val Number.degrees get() = Angle(radians = (toDouble() * Angle.DEGREE))
+val Number.arcMinutes get() = Angle(radians = (toDouble() * Angle.ARC_MINUTE))
+val Number.arcSeconds get() = Angle(radians = (toDouble() * Angle.ARC_SECOND))
+val Number.milliArcSeconds get() = Angle(radians = (toDouble() * Angle.MILLI_ARC_SECOND))
+val Number.microArcSeconds get() = Angle(radians = (toDouble() * Angle.MICRO_ARC_SECOND))
