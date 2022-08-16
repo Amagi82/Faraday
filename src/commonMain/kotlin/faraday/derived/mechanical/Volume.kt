@@ -4,6 +4,8 @@ import faraday.Units
 import faraday.base.Distance
 import faraday.base.Mass
 import faraday.base.Time
+import faraday.derived.Energy
+import faraday.derived.Pressure
 import faraday.derived.kinematic.VolumetricFlowRate
 import kotlin.jvm.JvmInline
 
@@ -62,6 +64,7 @@ value class Volume(val cubicMeters: Double) : Units<Volume> {
     override fun compareTo(other: Volume): Int = cubicMeters.compareTo(other.cubicMeters)
 
     operator fun times(density: Density) = Mass(kilograms = cubicMeters * density.kgPerCubicMeter)
+    operator fun times(pressure: Pressure): Energy = pressure * this
     operator fun div(flowRate: VolumetricFlowRate) = Time(seconds = cubicMeters / flowRate.cubicMetersPerSecond)
 
     companion object {

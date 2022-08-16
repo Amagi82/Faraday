@@ -2,6 +2,7 @@ package faraday.derived
 
 import faraday.Prefixes
 import faraday.Units
+import faraday.derived.mechanical.Volume
 import kotlin.jvm.JvmInline
 
 /**
@@ -53,6 +54,8 @@ value class Pressure(val pascals: Double) : Units<Pressure> {
     override fun times(factor: Number) = Pressure(pascals = pascals * factor.toDouble())
     override fun div(factor: Number) = Pressure(pascals = pascals / factor.toDouble())
     override fun compareTo(other: Pressure): Int = pascals.compareTo(other.pascals)
+
+    operator fun times(volume: Volume) = Energy(joules = pascals * volume.cubicMeters)
 
     companion object {
         const val ATM = 101_325

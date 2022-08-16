@@ -59,6 +59,7 @@ value class Energy(val joules: Double) : Units<Energy> {
     operator fun div(distance: Distance) = Force(newtons = joules / distance.meters)
     operator fun div(volume: Volume) = EnergyDensity(pascals = joules / volume.cubicMeters)
     operator fun div(current: ElectricCurrent) = MagneticFlux(webers = joules / current.amperes)
+    operator fun div(energyDensity: EnergyDensity) = Volume(cubicMeters = joules / energyDensity.pascals)
 
     fun toMass() = Mass(joules / Velocity.LIGHT.pow(2))
 }
