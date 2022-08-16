@@ -1,6 +1,7 @@
 package faraday.base
 
 import faraday.Units
+import faraday.derived.Energy
 import faraday.derived.kinematic.Acceleration
 import faraday.derived.mechanical.Density
 import faraday.derived.Force
@@ -8,6 +9,7 @@ import faraday.derived.kinematic.Velocity
 import faraday.derived.mechanical.Momentum
 import faraday.derived.mechanical.Volume
 import kotlin.jvm.JvmInline
+import kotlin.math.pow
 
 /**
  * Mass is both a property of a physical body and a measure of its resistance to acceleration
@@ -40,6 +42,8 @@ value class Mass(val kilograms: Double) : Units<Mass> {
     operator fun times(acceleration: Acceleration) = Force(newtons = kilograms * acceleration.metersPerSecondSquared)
     operator fun times(velocity: Velocity) = Momentum(newtonSeconds = kilograms * velocity.metersPerSecond)
     operator fun div(density: Density) = Volume(cubicMeters = density.kgPerCubicMeter / kilograms)
+
+    fun toEnergy() = Energy(joules = kilograms * Velocity.LIGHT.pow(2))
 
     companion object {
         const val CARAT = 2e-4

@@ -4,9 +4,12 @@ import faraday.Prefixes
 import faraday.Units
 import faraday.base.Distance
 import faraday.base.ElectricCurrent
+import faraday.base.Mass
 import faraday.base.Time
+import faraday.derived.kinematic.Velocity
 import faraday.derived.mechanical.Volume
 import kotlin.jvm.JvmInline
+import kotlin.math.pow
 
 /**
  * In physics, energy is the quantitative property that must be transferred to an object in order to
@@ -56,6 +59,8 @@ value class Energy(val joules: Double) : Units<Energy> {
     operator fun div(distance: Distance) = Force(newtons = joules / distance.meters)
     operator fun div(volume: Volume) = EnergyDensity(pascals = joules / volume.cubicMeters)
     operator fun div(current: ElectricCurrent) = MagneticFlux(webers = joules / current.amperes)
+
+    fun toMass() = Mass(joules / Velocity.LIGHT.pow(2))
 }
 
 val Number.joules get() = Energy(toDouble())
