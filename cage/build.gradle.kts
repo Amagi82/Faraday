@@ -1,6 +1,6 @@
 plugins {
-    kotlin("multiplatform") //version "1.4.21"
-    kotlin("kapt") //version "1.4.21"
+    kotlin("multiplatform")
+    kotlin("kapt")
 }
 
 group = "amagi82"
@@ -14,7 +14,7 @@ kotlin {
     jvm {
 //        withJava()
         compilations.all {
-            kotlinOptions.jvmTarget = "1.8"
+            kotlinOptions.jvmTarget = "11"
         }
     }
     js {
@@ -64,8 +64,5 @@ kotlin {
         }
         val nativeMain by getting
         val nativeTest by getting
-        all {
-            languageSettings.enableLanguageFeature("InlineClasses")
-        }
     }
 }
