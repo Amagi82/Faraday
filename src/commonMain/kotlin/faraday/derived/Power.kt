@@ -5,6 +5,7 @@ import faraday.Units
 import faraday.base.Distance
 import faraday.base.ElectricCurrent
 import faraday.base.Time
+import faraday.derived.kinematic.Acceleration
 import kotlin.jvm.JvmInline
 
 /**
@@ -36,7 +37,9 @@ value class Power(val watts: Double) : Units<Power> {
     val btusPerSecond get() = watts / 1.05505585262e3
     val btusPerMinute get() = btusPerSecond / Time.MINUTE
     val btusPerHour get() = btusPerSecond / Time.HOUR
-    val horsepower get() = watts / HORSEPOWER
+    val horsepower get() = watts / MECHANICAL_HORSEPOWER
+    val metricHorsepower get() = watts / METRIC_HORSEPOWER
+    val ps get() = metricHorsepower
 
     override fun plus(other: Power) = Power(watts = watts + other.watts)
     override fun minus(other: Power) = Power(watts = watts - other.watts)
@@ -49,8 +52,8 @@ value class Power(val watts: Double) : Units<Power> {
     operator fun div(voltage: Voltage) = ElectricCurrent(amperes = watts / voltage.volts)
 
     companion object {
-        // Mechanical horsepower
-        const val HORSEPOWER = 550 * Distance.FOOT * Weight.POUND
+        const val MECHANICAL_HORSEPOWER = 550 * Distance.FOOT * Weight.POUND
+        const val METRIC_HORSEPOWER = 75 * Acceleration.EARTH_GRAVITY
     }
 }
 typealias RadiantFlux = Power
@@ -62,4 +65,5 @@ val Number.megawatts get() = Power(watts = toDouble() * Prefixes.MEGA)
 val Number.gigawatts get() = Power(watts = toDouble() * Prefixes.GIGA)
 val Number.terawatts get() = Power(watts = toDouble() * Prefixes.TERA)
 
-val Number.horsepower get() = Power(watts = toDouble() * Power.HORSEPOWER)
+val Number.horsepower get() = Power(watts = toDouble() * Power.MECHANICAL_HORSEPOWER)
+val Number.metricHorsepower get() = Power(watts = toDouble() * Power.METRIC_HORSEPOWER)
