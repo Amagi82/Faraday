@@ -16,23 +16,22 @@ annotation class Unit(val unit: String, val factor: Double)
 annotation class Conversion(val numerator: KClass<*>, val denominator: KClass<*>)
 
 
-
-fun conversion(){
+fun conversion() {
     FaradayUnits.ConversionBuilder().times<Distance>().div<Area>().equals<Volume>()
 }
 
 
-
 @FaradayUnit(
     siUnit = "meters",
-    metricUnits = [MetricFactor.NANO, MetricFactor.MICRO, MetricFactor.MILLI, MetricFactor.CENTI, MetricFactor.KILO],
+    metricUnits = [MetricFactor.Nano, MetricFactor.Micro, MetricFactor.Milli, MetricFactor.Centi, MetricFactor.Kilo],
     additionalUnits = [Unit(unit = "angstroms", factor = Distance.ANGSTROM)],
     conversions = [Conversion(numerator = Volume::class, denominator = Area::class)]
 )
-interface Distance: FaradayUnits{
+interface Distance : FaradayUnits {
     companion object {
         const val LIGHT_SECOND = 299_792_458.0
-//        const val LIGHT_YEAR = LIGHT_SECOND * Time.JULIAN_YEAR
+
+        //        const val LIGHT_YEAR = LIGHT_SECOND * Time.JULIAN_YEAR
         const val ASTRONOMICAL_UNIT = 149_597_870_700.0
         const val PARSEC = (648_000.0 / PI) * ASTRONOMICAL_UNIT
         const val ANGSTROM = 1e-10
@@ -45,19 +44,19 @@ interface Distance: FaradayUnits{
     }
 }
 
-interface FaradayUnits{
+interface FaradayUnits {
     class Conversion
-    class ConversionBuilder(){
-        fun <T: FaradayUnits> times(): ConversionBuilder{
-
+    class ConversionBuilder() {
+        fun <T : FaradayUnits> times(): ConversionBuilder {
+            TODO()
         }
 
-        fun <T: FaradayUnits> div(): ConversionBuilder{
-
+        fun <T : FaradayUnits> div(): ConversionBuilder {
+            TODO()
         }
 
-        fun <T: FaradayUnits> equals(): Conversion{
-
+        fun <T : FaradayUnits> equals(): Conversion {
+            TODO()
         }
     }
 }
@@ -68,7 +67,7 @@ interface FaradayUnits{
     additionalUnits = [],
     conversions = []
 )
-interface Area: FaradayUnits{
+interface Area : FaradayUnits {
     companion object {
         const val HECTARE = 1e4
         const val SQ_KILO = 1e6
@@ -87,7 +86,7 @@ interface Area: FaradayUnits{
     additionalUnits = [],
     conversions = []
 )
-interface Volume: FaradayUnits{
+interface Volume : FaradayUnits {
     companion object {
         const val LITER = 1e-3
         const val CUBIC_CENTIMETER = 1e-6
@@ -120,24 +119,24 @@ interface Volume: FaradayUnits{
 
 
 enum class MetricFactor(val factor: Double) {
-    YOCTO(factor = 1e-24),
-    ZEPTO(factor = 1e-21),
-    ATTO(factor = 1e-18),
-    FEMTO(factor = 1e-15),
-    PICO(factor = 1e-12),
-    NANO(factor = 1e-9),
-    MICRO(factor = 1e-6),
-    MILLI(factor = 1e-3),
-    CENTI(factor = 1e-2),
-    DECI(factor = 1e-1),
-    DECA(factor = 1e1),
-    HECTO(factor = 1e2),
-    KILO(factor = 1e3),
-    MEGA(factor = 1e6),
-    GIGA(factor = 1e9),
-    TERA(factor = 1e12),
-    PETA(factor = 1e15),
-    EXA(factor = 1e18),
-    ZETTA(factor = 1e21),
-    YOTTA(factor = 1e24)
+    Yocto(factor = 1e-24),
+    Zepto(factor = 1e-21),
+    Atto(factor = 1e-18),
+    Femto(factor = 1e-15),
+    Pico(factor = 1e-12),
+    Nano(factor = 1e-9),
+    Micro(factor = 1e-6),
+    Milli(factor = 1e-3),
+    Centi(factor = 1e-2),
+    Deci(factor = 1e-1),
+    Deca(factor = 1e1),
+    Hecto(factor = 1e2),
+    Kilo(factor = 1e3),
+    Mega(factor = 1e6),
+    Giga(factor = 1e9),
+    Tera(factor = 1e12),
+    Peta(factor = 1e15),
+    Exa(factor = 1e18),
+    Zetta(factor = 1e21),
+    Yotta(factor = 1e24)
 }
