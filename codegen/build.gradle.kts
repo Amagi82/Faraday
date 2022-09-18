@@ -12,5 +12,5 @@ repositories {
 
 dependencies {
     implementation(kotlin("stdlib"))
-    implementation("com.squareup:kotlinpoet:1.7.2")
+    implementation("com.squareup:kotlinpoet:1.12.0")
 }
