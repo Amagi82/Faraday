@@ -1,199 +1,195 @@
 package faraday
 
-import com.squareup.kotlinpoet.*
-import com.squareup.kotlinpoet.ParameterizedTypeName.Companion.parameterizedBy
 import java.io.File
 import kotlin.Unit
+import kotlin.properties.PropertyDelegateProvider
 import kotlin.properties.ReadOnlyProperty
-import kotlin.reflect.KProperty
 
-fun main() {
-    buildAll()
-}
-
-fun buildAll() {
-    buildUnits {
-        val mass by unit(name = "Mass", baseUnit = "kilograms") {
-            val carat = constant(name = "CARAT", value = 2e-4)
-            val pound = constant(name = "POUND", value = 0.45359237)
-            unit("grams", unitModifier = Multiplier(1000), createNumberExtension = true)
-            unit("pounds", unitModifier = Divisor(pound.value), createNumberExtension = true)
-        }
-        val volume by unit(name = "Volume", baseUnit = "cubicMeters")
-        val density by unit(name = "Density", baseUnit = "kilogramsPerCubicMeter")
-
-        conversion(density.equalTo(volume / mass))
-    }
-}
 
 fun buildUnits(block: UnitsWithConversions.() -> Unit) = UnitsWithConversions().apply(block).generate()
 
-data class UnitsWithConversions(val units: MutableList<UnitType> = mutableListOf(), val conversions: MutableList<UnitConversion> = mutableListOf()) {
+data class UnitsWithConversions(
+    private val units: MutableList<UnitType> = mutableListOf(),
+    val conversions: MutableList<UnitConversion> = mutableListOf(),
+    private val constants: MutableList<Constant> = mutableListOf()
+) {
     fun generate() {
         val baseDir = File("codegen/build/generated/kotlin/faraday").apply(File::mkdirs)
 
-        val unitsInterface = ClassName("faraday", "Units")
-        val t = TypeVariableName("T")
-        val baseUnitsInterface = TypeSpec.interfaceBuilder(unitsInterface.simpleName)
-            .addTypeVariable(TypeVariableName("T", unitsInterface.parameterizedBy(t)))
-            .addSuperinterface(Comparable::class.asClassName().parameterizedBy(t))
-            .addFunction(
-                FunSpec.builder("plus")
-                    .addModifiers(KModifier.OPERATOR, KModifier.ABSTRACT)
-                    .addParameter("other", t)
-                    .returns(t)
-                    .build()
-            )
-            .addFunction(
-                FunSpec.builder("minus")
-                    .addModifiers(KModifier.OPERATOR, KModifier.ABSTRACT)
-                    .addParameter("other", t)
-                    .returns(t)
-                    .build()
-            )
-            .addFunction(
-                FunSpec.builder("times")
-                    .addModifiers(KModifier.OPERATOR, KModifier.ABSTRACT)
-                    .addParameter("other", Number::class)
-                    .returns(t)
-                    .build()
-            )
-            .addFunction(
-                FunSpec.builder("div")
-                    .addModifiers(KModifier.OPERATOR, KModifier.ABSTRACT)
-                    .addParameter("other", Number::class)
-                    .returns(t)
-                    .build()
-            )
-            .build()
-        FileSpec.builder(unitsInterface.packageName, unitsInterface.simpleName)
-            .addType(baseUnitsInterface)
-            .build()
-            .writeTo(baseDir)
+        File(baseDir, "Units.kt").also(File::createNewFile).writeText(
+            """
+            package faraday
+            
+            interface Units<T : Units<T>> : Comparable<T> {
+                operator fun plus(other: T): T
+                operator fun minus(other: T): T
+                operator fun times(factor: Number): T
+                operator fun div(factor: Number): T
+            }
+            """.trimIndent()
+        )
 
-        units.forEach { unit ->
-            val unitClass = ClassName("faraday", unit.name)
-            FileSpec.builder(unitClass.packageName, unit.name)
-                .addType(
-                    TypeSpec.valueClassBuilder(unit.name)
-                        .addAnnotation(JvmInline::class)
-                        .primaryConstructor(
-                            FunSpec.constructorBuilder()
-                                .addParameter(unit.baseUnit, Double::class)
-                                .build()
-                        )
-                        .addSuperinterface(unitsInterface.parameterizedBy(unitClass))
-                        .addProperty(
-                            PropertySpec.builder(unit.baseUnit, Double::class)
-                                .initializer(unit.baseUnit)
-                                .build()
-                        )
-                        .addProperties(
-                            unit.units.map {
-                                PropertySpec.builder(it.name, Double::class)
-                                    .getter(
-                                        FunSpec.getterBuilder()
-                                            .addStatement("return %S", "${unit.baseUnit} / ${it.modifier.factor}")
-                                            .build()
-                                    )
-                                    .build()
+        units.forEach { unitType ->
+            val (unitName, baseUnit, subUnits, constants, createNumberExtension) = unitType
+            File(baseDir, "$unitName.kt").also(File::createNewFile).writeText(
+                buildString {
+                    appendLine("package faraday")
+                    appendLine()
+                    appendLine("import kotlin.jvm.JvmInline")
+                    appendLine()
+                    appendLine("@JvmInline")
+                    appendLine("value class $unitName(val $baseUnit: Double) : Units<$unitName> {")
+                    subUnits.forEach { appendLine("\tval ${it.name} get() = $baseUnit / ${it.factor}") }
+                    appendLine()
+                    appendLine("\toverride fun plus(other: $unitName) = $unitName($baseUnit = $baseUnit + other.$baseUnit)")
+                    appendLine("\toverride fun minus(other: $unitName) = $unitName($baseUnit = $baseUnit - other.$baseUnit)")
+                    appendLine("\toverride fun times(factor: Number) = $unitName($baseUnit = $baseUnit * factor.toDouble())")
+                    appendLine("\toverride fun div(factor: Number) = $unitName($baseUnit = $baseUnit / factor.toDouble())")
+                    appendLine("\toverride fun compareTo(other: $unitName): Int = $baseUnit.compareTo(other.$baseUnit)")
+
+                    val unitConversions = conversions.flatMap { it.generateOperators(unitName) }
+                    if (unitConversions.isNotEmpty()) {
+                        appendLine()
+                        unitConversions.forEach { conversion ->
+                            appendLine(conversion)
+                        }
+                    }
+
+                    if (constants.isNotEmpty()) {
+                        appendLine()
+                        appendLine("\tcompanion object {")
+                        constants.forEach {
+                            appendLine("\t\tconst val ${it.name} = ${it.value}")
+                        }
+                        appendLine("\t}")
+                    }
+                    appendLine("}")
+                    if (createNumberExtension) {
+                        appendLine()
+                        appendLine("val Number.$baseUnit get() = $unitName($baseUnit = toDouble())")
+                        subUnits.forEach {
+                            if (it.createNumberExtension) {
+                                appendLine("val Number.${it.name} get() = $unitName($baseUnit = toDouble() * ${it.factor})")
                             }
-                        )
-                        .addFunction(
-                            FunSpec.builder("plus")
-                                .addModifiers(KModifier.OVERRIDE)
-                                .addParameter("other", unitClass)
-                                .addStatement("return %T(${unit.baseUnit} = ${unit.baseUnit} + other.${unit.baseUnit})", unitClass)
-                                .build()
-                        )
-                        .addFunction(
-                            FunSpec.builder("minus")
-                                .addModifiers(KModifier.OVERRIDE)
-                                .addParameter("other", unitClass)
-                                .addStatement("return %T(${unit.baseUnit} = ${unit.baseUnit} - other.${unit.baseUnit})", unitClass)
-                                .build()
-                        )
-                        .addFunction(
-                            FunSpec.builder("times")
-                                .addModifiers(KModifier.OVERRIDE)
-                                .addParameter("factor", Number::class)
-                                .addStatement("return %T(${unit.baseUnit} = ${unit.baseUnit} * factor.toDouble())", unitClass)
-                                .build()
-                        )
-                        .addFunction(
-                            FunSpec.builder("div")
-                                .addModifiers(KModifier.OVERRIDE)
-                                .addParameter("factor", Number::class)
-                                .addStatement("return %T(${unit.baseUnit} = ${unit.baseUnit} / factor.toDouble())", unitClass)
-                                .build()
-                        )
-                        .addFunction(
-                            FunSpec.builder("compareTo")
-                                .addModifiers(KModifier.OVERRIDE)
-                                .addParameter("other", unitClass)
-                                .returns(Int::class)
-                                .addStatement("return ${unit.baseUnit}.compareTo(other.${unit.baseUnit})")
-                                .build()
-                        )
-                        .build()
-                )
-                .build()
-                .writeTo(baseDir)
-
-
-//            file.bufferedWriter().use { out ->
-//                out.write("package faraday")
-//            }
+                        }
+                    }
+                }
+            )
         }
     }
+
+    fun unit(base: String, enableExtensions: Boolean, block: UnitType.() -> Unit = {}) = PropertyDelegateProvider { _: Any?, property ->
+        check(base.isNotEmpty()) { "base unit missing for ${property.name}" }
+        check(property.name.isNotEmpty()) { "Property name missing for $base" }
+        val unit = UnitType(name = property.name.replaceFirstChar(Char::uppercaseChar), baseUnit = base, enableExtensions = enableExtensions).apply(block)
+            .also(units::add)
+        ReadOnlyProperty<Any?, UnitType> { _, _ -> unit }
+    }
+
+    fun constant(value: Double) = PropertyDelegateProvider { _: Any?, property ->
+        val constant = Constant(name = property.name.uppercase(), value = value).also(constants::add)
+        ReadOnlyProperty<Any?, Constant> { _, _ -> constant }
+    }
+
+    infix fun UnitType.equalTo(other: ConversionsExpression) = UnitConversion(this, other)
 }
 
+/**
+ * [name] e.g. Distance
+ * [baseUnit] e.g. meters
+ * [subUnits] e.g. millimeters, centimeters, kilometers, etc
+ * [constants] e.g. LIGHT_YEAR
+ */
 data class UnitType(
     val name: String,
     val baseUnit: String,
-    val units: MutableList<UnitSubtype> = mutableListOf(),
-    val constants: MutableList<UnitConstant> = mutableListOf()
+    val subUnits: MutableList<UnitSubtype> = mutableListOf(),
+    val constants: MutableList<UnitConstant> = mutableListOf(),
+    val enableExtensions: Boolean
 ) {
-    fun unit(unit: String, unitModifier: UnitModifier, createNumberExtension: Boolean = false) {
-        units.add(UnitSubtype(name = unit, modifier = unitModifier, createNumberExtension = createNumberExtension))
+    fun unit(unit: String, factor: Number, createNumberExtension: Boolean = false) = unit(unit, UnitValue(factor.toDouble()), createNumberExtension)
+    fun unit(unit: String, factor: Factor, createNumberExtension: Boolean = false) {
+        subUnits.add(UnitSubtype(name = unit, factor = factor, createNumberExtension = createNumberExtension))
     }
 
-    fun constant(name: String, value: Number) = UnitConstant(name = name, value = value).also(constants::add)
+    fun constant(name: String, value: Number) = UnitConstant(name = name, unitTypeName = this.name, value = value.toDouble()).also(constants::add)
 
     operator fun times(other: UnitType) = ConversionsExpression.Multiplier(a = this, b = other)
 
     operator fun div(other: UnitType) = ConversionsExpression.Divider(numerator = this, denominator = other)
-
-    fun equalTo(other: ConversionsExpression) = UnitConversion(unit = this, expression = other)
 }
 
-data class UnitSubtype(val name: String, val modifier: UnitModifier, val createNumberExtension: Boolean)
-data class UnitConstant(val name: String, val value: Number)
-
-sealed interface UnitModifier {
-    val factor: Number
+data class UnitSubtype(val name: String, val factor: Factor, val createNumberExtension: Boolean)
+data class UnitConstant(val name: String, val unitTypeName: String, override val value: Double) : Factor {
+    override fun toString(): String = "$unitTypeName.$name"
 }
 
-data class Multiplier(override val factor: Number) : UnitModifier
-data class Divisor(override val factor: Number) : UnitModifier
+data class UnitValue(override val value: Double) : Factor {
+    override fun toString(): String = "$value"
+}
 
-data class UnitConversion(val unit: UnitType, val expression: ConversionsExpression)
+data class Constant(val name: String, override val value: Double) : Factor {
+    override fun toString(): String = "Constants.$name"
+}
+
+sealed interface Factor {
+    val value: Double
+}
+
+data class UnitConversion(val result: UnitType, val expression: ConversionsExpression) {
+    fun generateOperators(unitName: String): List<String> = when (expression) {
+        is ConversionsExpression.Multiplier -> {
+            // r / b = a
+            // r / a = b
+            // a * b = r
+            // b * a = r
+            when (unitName) {
+                result.name -> listOf(
+                    divOperator(n = result, d = expression.b, r = expression.a),
+                    divOperator(n = result, d = expression.a, r = expression.b)
+                )
+
+                expression.a.name -> listOf(timesOperator(a = expression.a, b = expression.b, r = result))
+                expression.b.name -> listOf(timesOperator(a = expression.b, b = expression.a, r = result))
+                else -> listOf()
+            }
+        }
+
+        is ConversionsExpression.Divider -> {
+            // r * d = n
+            // n / d = r
+            // n / r = d
+            // d * r = n
+            when (unitName) {
+                result.name -> listOf(timesOperator(a = result, b = expression.denominator, r = expression.numerator))
+                expression.numerator.name -> listOf(
+                    divOperator(n = expression.numerator, d = expression.denominator, r = result),
+                    divOperator(n = expression.numerator, d = result, r = expression.denominator)
+                )
+
+                expression.denominator.name -> listOf(timesOperator(a = expression.denominator, b = result, r = expression.numerator))
+                else -> listOf()
+            }
+        }
+    }
+
+    private fun timesOperator(a: UnitType, b: UnitType, r: UnitType) =
+        "\toperator fun times(${b.name.replaceFirstChar(Char::lowercaseChar)}: ${b.name}) = ${r.name}(${r.baseUnit} = ${a.baseUnit} * ${b.name.replaceFirstChar(Char::lowercaseChar)}.${b.baseUnit})"
+
+    private fun divOperator(n: UnitType, d: UnitType, r: UnitType) =
+        "\toperator fun div(${d.name.replaceFirstChar(Char::lowercaseChar)}: ${d.name}) = ${r.name}(${r.baseUnit} = ${n.baseUnit} * ${d.name.replaceFirstChar(Char::lowercaseChar)}.${d.baseUnit})"
+}
 
 sealed interface ConversionsExpression {
-    data class Multiplier(val a: UnitType, val b: UnitType) : ConversionsExpression
-    data class Divider(val numerator: UnitType, val denominator: UnitType) : ConversionsExpression
+    data class Multiplier(val a: UnitType, val b: UnitType) : ConversionsExpression {
+        override fun contains(unit: UnitType): Boolean = unit == a || unit == b
+    }
 
-    fun equalTo(other: UnitType) = UnitConversion(unit = other, expression = this)
-}
+    data class Divider(val numerator: UnitType, val denominator: UnitType) : ConversionsExpression {
+        override fun contains(unit: UnitType): Boolean = unit == numerator || unit == denominator
+    }
 
-fun UnitsWithConversions.unit(name: String, baseUnit: String, block: UnitType.() -> Unit = {}) = object : ReadOnlyProperty<Any?, UnitType> {
-    val unit = UnitType(name = name, baseUnit = baseUnit).apply(block).also(units::add)
+    operator fun contains(unit: UnitType): Boolean
 
-    override fun getValue(thisRef: Any?, property: KProperty<*>) = unit
-}
-
-fun UnitsWithConversions.conversion(conversion: UnitConversion) = object : ReadOnlyProperty<Any?, UnitConversion> {
-    val conversion = conversion.also(conversions::add)
-
-    override fun getValue(thisRef: Any?, property: KProperty<*>) = conversion
+    fun equalTo(other: UnitType) = UnitConversion(result = other, expression = this)
 }
