@@ -28,3 +28,6 @@ value class Density(val kgPerCubicMeter: Double) : Units<Density> {
     operator fun times(volume: Volume): Mass = volume * this
     operator fun div(mass: Mass): Volume = mass / this
 }
+
+val Number.kgPerCubicMeter get() = Density(kgPerCubicMeter = toDouble())
+val Number.gramsPerCubicCentimeter get() = Density(kgPerCubicMeter = toDouble() * 1000)
