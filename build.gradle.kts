@@ -1,8 +1,9 @@
 plugins {
-    kotlin("multiplatform") version "1.7.10"
+    kotlin("multiplatform") version "1.8.20"
+    id("maven-publish")
 }
-group = "amagi82"
-version = "0.2"
+group = "com.dapperlizard"
+version = "0.3.0"
 
 repositories {
     mavenCentral()
@@ -14,20 +15,12 @@ buildscript {
 }
 kotlin {
     jvm {
-//        withJava()
         compilations.all {
             kotlinOptions.jvmTarget = "11"
         }
     }
-    js {
-        browser {
-            testTask {
-                useKarma {
-                    useChromeHeadless()
-                    webpackConfig.cssSupport.enabled = true
-                }
-            }
-        }
+    js(IR){
+        nodejs()
     }
     val hostOs = System.getProperty("os.name")
     val isMingwX64 = hostOs.startsWith("Windows")
@@ -60,5 +53,17 @@ kotlin {
         }
         val nativeMain by getting
         val nativeTest by getting
+    }
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "com.dapperlizard"
+            artifactId = "faraday"
+            version = "0.3.0"
+
+            from(components["kotlin"])
+        }
     }
 }
