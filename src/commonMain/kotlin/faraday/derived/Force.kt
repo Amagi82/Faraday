@@ -5,6 +5,7 @@ import faraday.base.Distance
 import faraday.base.Mass
 import faraday.derived.kinematic.Acceleration
 import faraday.derived.mechanical.Area
+import faraday.derived.mechanical.Stiffness
 import kotlin.jvm.JvmInline
 
 /**
@@ -43,6 +44,8 @@ value class Force(val newtons: Double) : Units<Force> {
     operator fun div(mass: Mass) = Acceleration(metersPerSecondSquared = newtons / mass.kilograms)
     operator fun div(acceleration: Acceleration) = Mass(kilograms = newtons / acceleration.metersPerSecondSquared)
     operator fun div(area: Area) = Pressure(pascals = newtons / area.squareMeters)
+    operator fun div(distance: Distance) = Stiffness(newtonsPerMeter = newtons / distance.meters)
+    operator fun div(stiffness: Stiffness) = Distance(meters = newtons / stiffness.newtonsPerMeter)
 
     companion object {
         const val POUND = Mass.POUND * Acceleration.EARTH_GRAVITY

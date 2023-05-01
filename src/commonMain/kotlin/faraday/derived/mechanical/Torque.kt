@@ -2,6 +2,7 @@ package faraday.derived.mechanical
 
 import faraday.Units
 import faraday.base.Distance
+import faraday.derived.Angle
 import faraday.derived.Force
 import kotlin.jvm.JvmInline
 
@@ -27,6 +28,9 @@ value class Torque(val newtonMeters: Double) : Units<Torque> {
     override fun times(factor: Number) = Torque(newtonMeters = newtonMeters * factor.toDouble())
     override fun div(factor: Number) = Torque(newtonMeters = newtonMeters / factor.toDouble())
     override fun compareTo(other: Torque): Int = newtonMeters.compareTo(other.newtonMeters)
+
+    operator fun div(angle: Angle) = RotationalStiffness(newtonMetersPerRadian = newtonMeters / angle.radians)
+    operator fun div(stiffness: RotationalStiffness) = Angle(radians = newtonMeters / stiffness.newtonMetersPerRadian)
 
     companion object {
         const val POUND_FOOT = Force.POUND * Distance.FOOT

@@ -7,6 +7,7 @@ import faraday.derived.Force
 import faraday.derived.kinematic.Velocity
 import faraday.derived.mechanical.Area
 import faraday.derived.mechanical.FuelEfficiency
+import faraday.derived.mechanical.Stiffness
 import faraday.derived.mechanical.Volume
 import kotlin.jvm.JvmInline
 import kotlin.math.PI
@@ -54,6 +55,7 @@ value class Distance(val meters: Double) : Units<Distance> {
     operator fun times(distance: Distance) = Area(squareMeters = meters * distance.meters)
     operator fun times(area: Area): Volume = area * this
     operator fun times(force: Force): Energy = force * this
+    operator fun times(stiffness: Stiffness): Force = stiffness * this
     operator fun div(time: Time) = Velocity(metersPerSecond = meters / time.seconds)
     operator fun div(velocity: Velocity) = Time(seconds = meters / velocity.metersPerSecond)
     operator fun div(volume: Volume) = FuelEfficiency(metersPerCubicMeter = meters / volume.cubicMeters)

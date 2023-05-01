@@ -2,6 +2,7 @@ package faraday.derived
 
 import faraday.Prefixes
 import faraday.Units
+import faraday.derived.mechanical.Area
 import faraday.derived.mechanical.Volume
 import kotlin.jvm.JvmInline
 
@@ -56,6 +57,10 @@ value class Pressure(val pascals: Double) : Units<Pressure> {
     override fun compareTo(other: Pressure): Int = pascals.compareTo(other.pascals)
 
     operator fun times(volume: Volume) = Energy(joules = pascals * volume.cubicMeters)
+    operator fun times(area: Area) = Force(newtons = pascals * area.squareMeters)
+
+    operator fun div(force: Force) = Area(squareMeters = pascals / force.newtons)
+    operator fun div(energy: Energy) = Volume(cubicMeters = pascals / energy.joules)
 
     companion object {
         const val ATM = 101_325
@@ -69,6 +74,7 @@ typealias Stress = Pressure
 
 val Number.pascals get() = Pressure(toDouble())
 val Number.kilopascals get() = Pressure(pascals = toDouble() * Prefixes.KILO)
+val Number.megapascals get() = Pressure(pascals = toDouble() * Prefixes.MEGA)
 val Number.gigapascals get() = Pressure(pascals = toDouble() * Prefixes.GIGA)
 val Number.poundsPerSquareInch get() = Pressure(pascals = toDouble() * Pressure.PSI)
 val Number.atmospheres get() = Pressure(pascals = toDouble() * Pressure.ATM)

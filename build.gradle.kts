@@ -3,7 +3,7 @@ plugins {
     id("maven-publish")
 }
 group = "com.dapperlizard"
-version = "0.4.0"
+version = "0.5.0"
 
 repositories {
     mavenCentral()
@@ -61,7 +61,7 @@ publishing {
         create<MavenPublication>("maven") {
             groupId = "com.dapperlizard"
             artifactId = "faraday"
-            version = "0.4.0"
+            version = "0.5.0"
 
             from(components["kotlin"])
         }

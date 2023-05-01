@@ -1,6 +1,8 @@
 package faraday.derived
 
 import faraday.Units
+import faraday.derived.mechanical.RotationalStiffness
+import faraday.derived.mechanical.Torque
 import kotlin.jvm.JvmInline
 import kotlin.math.PI
 
@@ -38,6 +40,8 @@ value class Angle private constructor(val radians: Double) : Units<Angle> {
     override fun times(factor: Number) = Angle(radians = (radians * factor.toDouble()) % TURN)
     override fun div(factor: Number) = Angle(radians = (radians / factor.toDouble()) % TURN)
     override fun compareTo(other: Angle): Int = radians.compareTo(other.radians)
+
+    operator fun times(rotationalStiffness: RotationalStiffness): Torque = rotationalStiffness * this
 
     companion object {
         const val TURN = 2 * PI
