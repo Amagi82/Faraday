@@ -12,7 +12,7 @@ import kotlin.jvm.JvmInline
  * dominant in heat transfer, astrophysics and astronomy. "Intensity" has many other meanings in
  * physics, with the most common being power per unit area.
  *
- * @see [Wiki](https://en.wikipedia.org/wiki/Radiance)
+ * [Wiki](https://en.wikipedia.org/wiki/Radiance)
  */
 @JvmInline
 value class Radiance(val wattsPerSteradianSquareMeter: Double) : Units<Radiance> {

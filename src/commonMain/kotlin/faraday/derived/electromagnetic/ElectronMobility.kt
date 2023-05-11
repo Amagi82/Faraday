@@ -11,7 +11,7 @@ import kotlin.jvm.JvmInline
  * Electron and hole mobility are special cases of electrical mobility of charged particles in a fluid
  * under an applied electric field.
  *
- * @see [Wiki](https://en.wikipedia.org/wiki/Electron_mobility)
+ * [Wiki](https://en.wikipedia.org/wiki/Electron_mobility)
  */
 @JvmInline
 value class ElectronMobility(val squareMetersPerVoltSecond: Double) : Units<ElectronMobility> {

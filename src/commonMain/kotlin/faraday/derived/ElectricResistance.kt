@@ -35,7 +35,7 @@ import kotlin.jvm.JvmInline
  * curve. In other situations, the derivative dV/dI may be most useful; this is called the differential
  * resistance.
  *
- * @see [Wiki](https://en.wikipedia.org/wiki/Electrical_resistance_and_conductance)
+ * [Wiki](https://en.wikipedia.org/wiki/Electrical_resistance_and_conductance)
  */
 @JvmInline
 value class ElectricResistance(val ohms: Double) : Units<ElectricResistance> {

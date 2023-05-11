@@ -21,7 +21,7 @@ import kotlin.jvm.JvmInline
  * magnetization as the quantity of magnetic moment per unit volume. It is represented by a
  * pseudovector M.
  *
- * @see [Wiki](https://en.wikipedia.org/wiki/Magnetization)
+ * [Wiki](https://en.wikipedia.org/wiki/Magnetization)
  */
 @JvmInline
 value class Magnetization(val amperesPerMeter: Double) : Units<Magnetization> {

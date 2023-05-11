@@ -7,7 +7,7 @@ import kotlin.jvm.JvmInline
 /**
  * Stiffness is the extent to which an object resists deformation in response to an applied force.
  *
- * @see [Wiki](https://en.wikipedia.org/wiki/Stiffness)
+ * [Wiki](https://en.wikipedia.org/wiki/Stiffness)
  */
 @JvmInline
 value class RotationalStiffness(val newtonMetersPerRadian: Double) : Units<RotationalStiffness> {

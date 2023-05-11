@@ -8,7 +8,7 @@ import kotlin.jvm.JvmInline
  * its mass. It is the reciprocal of density and an intrinsic property of matter as well. Specific
  * volume is defined as the number of cubic meters occupied by one kilogram of a particular substance.
  *
- * @see [Wiki](https://en.wikipedia.org/wiki/Specific_volume)
+ * [Wiki](https://en.wikipedia.org/wiki/Specific_volume)
  */
 @JvmInline
 value class SpecificVolume(val cubicMetersPerKilogram: Double) : Units<SpecificVolume> {

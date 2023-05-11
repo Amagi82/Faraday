@@ -19,7 +19,7 @@ import kotlin.jvm.JvmInline
  *
  * The SI unit for acceleration is metre per second squared, m/s^2.
  *
- * @see [Wiki](https://en.wikipedia.org/wiki/Acceleration)
+ * [Wiki](https://en.wikipedia.org/wiki/Acceleration)
  */
 @JvmInline
 value class Acceleration(val metersPerSecondSquared: Double) : Units<Acceleration> {

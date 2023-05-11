@@ -12,7 +12,7 @@ import kotlin.jvm.JvmInline
  * solid cube of material has sheet contacts on two opposite faces, and the resistance between these
  * contacts is 1Ω, then the resistivity of the material is 1 Ω⋅m.
  *
- * @see [Wiki](https://en.wikipedia.org/wiki/Electrical_resistivity_and_conductivity)
+ * [Wiki](https://en.wikipedia.org/wiki/Electrical_resistivity_and_conductivity)
  */
 @JvmInline
 value class ElectricalResistivity(val ohmMeters: Double) : Units<ElectricalResistivity> {

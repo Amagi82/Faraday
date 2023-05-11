@@ -4,7 +4,7 @@ import faraday.Units
 import kotlin.jvm.JvmInline
 
 /**
- * @see [Wiki](https://en.wikipedia.org/wiki/Energy)
+ * [Wiki](https://en.wikipedia.org/wiki/Energy)
  */
 @JvmInline
 value class MolarEnergy(val joulesPerMole: Double) : Units<MolarEnergy> {

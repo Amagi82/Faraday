@@ -20,7 +20,7 @@ import kotlin.jvm.JvmInline
  * metres would have the same area as three such squares. In mathematics, the unit square is defined to
  * have area one, and the area of any other shape or surface is a dimensionless real number.
  *
- * @see [Wiki](https://en.wikipedia.org/wiki/Area)
+ * [Wiki](https://en.wikipedia.org/wiki/Area)
  */
 @JvmInline
 value class Area(val squareMeters: Double) : Units<Area> {

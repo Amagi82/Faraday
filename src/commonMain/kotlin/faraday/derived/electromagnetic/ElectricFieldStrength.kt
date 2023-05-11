@@ -9,7 +9,7 @@ import kotlin.jvm.JvmInline
  * varying magnetic fields. Electric fields and magnetic fields are both manifestations of the
  * electromagnetic force, one of the four fundamental forces (or interactions) of nature.
  *
- * @see [Wiki](https://en.wikipedia.org/wiki/Electric_field)
+ * [Wiki](https://en.wikipedia.org/wiki/Electric_field)
  */
 @JvmInline
 value class ElectricFieldStrength(val voltsPerMeter: Double) : Units<ElectricFieldStrength> {

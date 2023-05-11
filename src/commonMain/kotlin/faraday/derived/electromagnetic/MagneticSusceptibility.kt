@@ -11,7 +11,7 @@ import kotlin.jvm.JvmInline
  * the magnetic field, χ > 0, called paramagnetism, or an alignment against the field, χ < 0, called
  * diamagnetism.
  *
- * @see [Wiki](https://en.wikipedia.org/wiki/Magnetic_susceptibility)
+ * [Wiki](https://en.wikipedia.org/wiki/Magnetic_susceptibility)
  */
 @JvmInline
 value class MagneticSusceptibility(val metersPerHenry: Double) : Units<MagneticSusceptibility> {

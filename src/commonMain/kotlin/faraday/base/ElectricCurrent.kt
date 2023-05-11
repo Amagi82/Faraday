@@ -18,7 +18,7 @@ import kotlin.jvm.JvmInline
  * across a surface at the rate of one coulomb per second. The ampere (symbol: A) is an
  * SI base unit. Electric current is measured using a device called an ammeter.
  *
- * @see [Wiki](https://en.wikipedia.org/wiki/Electric_current)
+ * [Wiki](https://en.wikipedia.org/wiki/Electric_current)
  */
 @JvmInline
 value class ElectricCurrent(val amperes: Double) : Units<ElectricCurrent> {

@@ -12,7 +12,7 @@ import kotlin.jvm.JvmInline
  * 1 M. To avoid confusion with SI prefix mega, which has the same abbreviation, small caps ᴍ or
  * italicized M are also used in journals and textbooks.
  *
- * @see [Wiki](https://en.wikipedia.org/wiki/Molar_concentration)
+ * [Wiki](https://en.wikipedia.org/wiki/Molar_concentration)
  */
 @JvmInline
 value class Molarity(val molesPerCubicMeter: Double) : Units<Molarity> {

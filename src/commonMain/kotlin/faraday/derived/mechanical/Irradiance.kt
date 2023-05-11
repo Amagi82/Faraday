@@ -9,7 +9,7 @@ import kotlin.jvm.JvmInline
  * usage leads to confusion with radiant intensity. In astrophysics, irradiance is called
  * radiant flux.
  *
- * @see [Wiki](https://en.wikipedia.org/wiki/Irradiance)
+ * [Wiki](https://en.wikipedia.org/wiki/Irradiance)
  */
 @JvmInline
 value class Irradiance(val wattsPerSquareMeter: Double) : Units<Irradiance> {

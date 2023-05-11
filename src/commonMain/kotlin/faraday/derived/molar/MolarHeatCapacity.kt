@@ -10,7 +10,7 @@ import kotlin.jvm.JvmInline
  * amount of substance of the sample; or also the specific heat capacity of the substance times
  * its molar mass.
  *
- * @see [Wiki](https://en.wikipedia.org/wiki/Molar_heat_capacity)
+ * [Wiki](https://en.wikipedia.org/wiki/Molar_heat_capacity)
  */
 @JvmInline
 value class MolarHeatCapacity(val joulesPerKelvinMole: Double) : Units<MolarHeatCapacity> {

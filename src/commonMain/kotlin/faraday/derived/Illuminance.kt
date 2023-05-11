@@ -21,7 +21,7 @@ import kotlin.jvm.JvmInline
  * description, but only for nonquantitative references to physiological sensations and
  * perceptions of light.
  *
- * @see [Wiki](https://en.wikipedia.org/wiki/Illuminance)
+ * [Wiki](https://en.wikipedia.org/wiki/Illuminance)
  */
 @JvmInline
 value class Illuminance(val lux: Double) : Units<Illuminance> {

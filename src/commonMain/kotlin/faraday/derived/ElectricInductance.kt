@@ -24,7 +24,7 @@ import kotlin.jvm.JvmInline
  * In the SI system, the unit of inductance is the henry (H), which is the amount of inductance that
  * causes a ElectricInductance of one volt, when the current is changing at a rate of one ampere per second.
  *
- * @see [Wiki](https://en.wikipedia.org/wiki/Inductance)
+ * [Wiki](https://en.wikipedia.org/wiki/Inductance)
  */
 @JvmInline
 value class ElectricInductance(val henrys: Double) : Units<ElectricInductance> {

@@ -10,7 +10,7 @@ import kotlin.jvm.JvmInline
  * low permittivity, thereby storing more energy in the material. In electrostatics, the permittivity
  * plays an important role in determining the capacitance of a capacitor.
  *
- * @see [Wiki](https://en.wikipedia.org/wiki/Permittivity)
+ * [Wiki](https://en.wikipedia.org/wiki/Permittivity)
  */
 @JvmInline
 value class Permittivity(val faradsPerMeter: Double) : Units<Permittivity> {

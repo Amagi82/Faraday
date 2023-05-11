@@ -10,7 +10,7 @@ import kotlin.jvm.JvmInline
  * electric dipole moment and the dielectric is said to be polarized. The electric dipole moment induced
  * per unit volume of the dielectric material is called the electric polarization of the dielectric.
  *
- * @see [Wiki](https://en.wikipedia.org/wiki/Polarization_density)
+ * [Wiki](https://en.wikipedia.org/wiki/Polarization_density)
  */
 @JvmInline
 value class PolarizationDensity(val coulombsPerSquareMeter: Double) : Units<PolarizationDensity> {

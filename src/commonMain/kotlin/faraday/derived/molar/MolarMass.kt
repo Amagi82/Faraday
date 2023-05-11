@@ -12,7 +12,7 @@ import kotlin.jvm.JvmInline
  * abundance of the isotopes of the constituent atoms on earth. The molar mass is appropriate for
  * converting between the mass of a substance and the amount of a substance for bulk quantities.
  *
- * @see [Wiki](https://en.wikipedia.org/wiki/Molar_mass)
+ * [Wiki](https://en.wikipedia.org/wiki/Molar_mass)
  */
 @JvmInline
 value class MolarMass(val kilogramsPerMole: Double) : Units<MolarMass> {

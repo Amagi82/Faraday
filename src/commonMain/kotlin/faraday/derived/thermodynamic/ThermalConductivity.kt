@@ -14,7 +14,7 @@ import kotlin.jvm.JvmInline
  * applications, and materials of low thermal conductivity are used as thermal insulation. The
  * reciprocal of thermal conductivity is called thermal resistivity.
  *
- * @see [Wiki](https://en.wikipedia.org/wiki/Thermal_conductivity)
+ * [Wiki](https://en.wikipedia.org/wiki/Thermal_conductivity)
  */
 @JvmInline
 value class ThermalConductivity(val wattsPerMeterKelvin: Double) : Units<ThermalConductivity> {

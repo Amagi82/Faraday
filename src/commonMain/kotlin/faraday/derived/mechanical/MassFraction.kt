@@ -16,7 +16,7 @@ import kotlin.jvm.JvmInline
  * term is mass percent composition. The mass fraction of an element in a compound can be
  * calculated from the compound's empirical formula or its chemical formula.
  *
- * @see [Wiki](https://en.wikipedia.org/wiki/Mass_fraction_(chemistry)
+ * [Wiki](https://en.wikipedia.org/wiki/Mass_fraction_(chemistry)
  */
 @JvmInline
 value class MassFraction(val ppm: Double) : Units<MassFraction> {

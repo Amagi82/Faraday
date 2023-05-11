@@ -11,7 +11,7 @@ import kotlin.jvm.JvmInline
  * the potentials φ and A. In more advanced theories such as quantum mechanics, most equations use
  * potentials rather than fields.
  *
- * @see [Wiki](https://en.wikipedia.org/wiki/Magnetic_vector_potential)
+ * [Wiki](https://en.wikipedia.org/wiki/Magnetic_vector_potential)
  */
 @JvmInline
 value class MagneticVectorPotential(val webersPerMeter: Double) : Units<MagneticVectorPotential> {

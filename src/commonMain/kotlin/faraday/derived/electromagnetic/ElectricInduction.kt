@@ -11,7 +11,7 @@ import kotlin.jvm.JvmInline
  * that lends understanding to Gauss's law. In the International System of Units (SI), it is expressed
  * in units of coulomb per meter square.
  *
- * @see [Wiki](https://en.wikipedia.org/wiki/Electric_displacement_field)
+ * [Wiki](https://en.wikipedia.org/wiki/Electric_displacement_field)
  */
 @JvmInline
 value class ElectricInduction(val coulombsPerSquareMeter: Double) : Units<ElectricInduction> {

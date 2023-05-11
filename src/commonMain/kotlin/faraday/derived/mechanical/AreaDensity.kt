@@ -10,7 +10,7 @@ import kotlin.jvm.JvmInline
  * grammage and is expressed in grams per square meter (gsm); for paper in particular, it may
  * be expressed as pounds per ream of standard sizes ("basis ream").
  *
- * @see [Wiki](https://en.wikipedia.org/wiki/Area_density)
+ * [Wiki](https://en.wikipedia.org/wiki/Area_density)
  */
 @JvmInline
 value class AreaDensity(val kgPerSquareMeter: Double) : Units<AreaDensity> {

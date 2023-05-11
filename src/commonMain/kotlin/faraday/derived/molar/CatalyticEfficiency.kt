@@ -4,7 +4,7 @@ import faraday.Units
 import kotlin.jvm.JvmInline
 
 /**
- * @see [Wiki](https://en.wikipedia.org/wiki/Specificity_constant)
+ * [Wiki](https://en.wikipedia.org/wiki/Specificity_constant)
  */
 @JvmInline
 value class CatalyticEfficiency(val cubicMetersPerMoleSecond: Double) : Units<CatalyticEfficiency> {

@@ -6,7 +6,7 @@ import kotlin.jvm.JvmInline
 /**
  * Energy flux is the rate of transfer of energy through a surface.
  *
- * @see [Wiki](https://en.wikipedia.org/wiki/Energy_flux)
+ * [Wiki](https://en.wikipedia.org/wiki/Energy_flux)
  */
 @JvmInline
 value class EnergyFluxDensity(val joulesPerSquareMeterSecond: Double) : Units<EnergyFluxDensity> {

@@ -11,7 +11,7 @@ import kotlin.jvm.JvmInline
  * the volume of fluid which passes per unit time; usually represented by the symbol Q (sometimes V̇).
  * The SI unit is cubic metres per second (m3/s).
  *
- * @see [Wiki](https://en.wikipedia.org/wiki/Volumetric_flow_rate)
+ * [Wiki](https://en.wikipedia.org/wiki/Volumetric_flow_rate)
  */
 @JvmInline
 value class VolumetricFlowRate(val cubicMetersPerSecond: Double) : Units<VolumetricFlowRate> {

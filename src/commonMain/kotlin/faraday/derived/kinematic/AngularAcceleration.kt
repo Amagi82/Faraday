@@ -12,7 +12,7 @@ import kotlin.jvm.JvmInline
  * rotation, and orbital angular acceleration refers to the angular acceleration of a point
  * particle about a fixed origin.
  *
- * @see [Wiki](https://en.wikipedia.org/wiki/Angular_acceleration)
+ * [Wiki](https://en.wikipedia.org/wiki/Angular_acceleration)
  */
 @JvmInline
 value class AngularAcceleration(val radiansPerSecondSquared: Double) : Units<AngularAcceleration> {

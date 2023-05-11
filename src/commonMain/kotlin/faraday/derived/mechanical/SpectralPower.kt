@@ -9,7 +9,7 @@ import kotlin.jvm.JvmInline
  * flux per unit frequency or wavelength, depending on whether the spectrum is taken as a
  * function of frequency or of wavelength.
  *
- * @see [Wiki](https://en.wikipedia.org/wiki/Radiant_flux)
+ * [Wiki](https://en.wikipedia.org/wiki/Radiant_flux)
  */
 @JvmInline
 value class SpectralPower(val wattsPerMeter: Double) : Units<SpectralPower> {

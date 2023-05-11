@@ -14,7 +14,7 @@ import kotlin.jvm.JvmInline
  * fluxmeter, which contains measuring coils and electronics, that evaluates the change of MagneticFlux
  * in the measuring coils to calculate the measurement of magnetic flux.
  *
- * @see [Wiki](https://en.wikipedia.org/wiki/Magnetic_flux)
+ * [Wiki](https://en.wikipedia.org/wiki/Magnetic_flux)
  */
 @JvmInline
 value class MagneticFlux(val webers: Double) : Units<MagneticFlux> {

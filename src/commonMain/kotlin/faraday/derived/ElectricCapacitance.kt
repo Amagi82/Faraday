@@ -21,7 +21,7 @@ import kotlin.jvm.JvmInline
  * A 1 farad capacitor, when charged with 1 coulomb of electrical charge, has a potential difference of
  * 1 volt between its plates. The reciprocal of capacitance is called elastance.
  *
- * @see [Wiki](https://en.wikipedia.org/wiki/Capacitance)
+ * [Wiki](https://en.wikipedia.org/wiki/Capacitance)
  */
 @JvmInline
 value class ElectricCapacitance(val farads: Double) : Units<ElectricCapacitance> {

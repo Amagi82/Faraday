@@ -13,7 +13,7 @@ import kotlin.jvm.JvmInline
  * As a measure of radiation damage exposure has been superseded by the concept of absorbed dose which
  * takes into account the absorption characteristic of the target material.
  *
- * @see [Wiki](https://en.wikipedia.org/wiki/Radiation_exposure)
+ * [Wiki](https://en.wikipedia.org/wiki/Radiation_exposure)
  */
 @JvmInline
 value class RadiationExposure(val coulombsPerKg: Double) : Units<RadiationExposure> {

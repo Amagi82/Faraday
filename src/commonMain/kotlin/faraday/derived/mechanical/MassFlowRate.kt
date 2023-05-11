@@ -9,7 +9,7 @@ import kotlin.jvm.JvmInline
  * In physics and engineering, mass flow rate is the mass of a substance which passes per unit of
  * time.
  *
- * @see [Wiki](https://en.wikipedia.org/wiki/Mass_flow_rate)
+ * [Wiki](https://en.wikipedia.org/wiki/Mass_flow_rate)
  */
 @JvmInline
 value class MassFlowRate(val kilogramsPerSecond: Double) : Units<MassFlowRate> {

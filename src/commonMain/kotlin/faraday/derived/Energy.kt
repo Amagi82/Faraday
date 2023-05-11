@@ -30,7 +30,7 @@ import kotlin.math.pow
  * an object, its increase in energy could be measured as a small increase in mass, with a sensitive
  * enough scale.
  *
- * @see [Wiki](https://en.wikipedia.org/wiki/Energy)
+ * [Wiki](https://en.wikipedia.org/wiki/Energy)
  */
 @JvmInline
 value class Energy(val joules: Double) : Units<Energy> {

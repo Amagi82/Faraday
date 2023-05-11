@@ -25,7 +25,7 @@ import kotlin.jvm.JvmInline
  * mass of about 18.015 daltons on average, whereas a mole of water (which contains 6.02214076×1023
  * water molecules) has a total mass of about 18.015 grams.
  *
- * @see [Wiki](https://en.wikipedia.org/wiki/Amount_of_substance)
+ * [Wiki](https://en.wikipedia.org/wiki/Amount_of_substance)
  */
 @JvmInline
 value class ChemicalAmount(val moles: Double) : Units<ChemicalAmount> {

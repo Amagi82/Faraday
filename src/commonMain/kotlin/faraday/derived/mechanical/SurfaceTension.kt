@@ -11,7 +11,7 @@ import kotlin.jvm.JvmInline
  * At liquid–air interfaces, surface tension results from the greater attraction of liquid
  * molecules to each other (due to cohesion) than to the molecules in the air (due to adhesion).
  *
- * @see [Wiki](https://en.wikipedia.org/wiki/Surface_tension)
+ * [Wiki](https://en.wikipedia.org/wiki/Surface_tension)
  */
 @JvmInline
 value class SurfaceTension(val newtonsPerMeter: Double) : Units<SurfaceTension> {

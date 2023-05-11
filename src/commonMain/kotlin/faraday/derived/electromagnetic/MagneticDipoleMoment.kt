@@ -16,7 +16,7 @@ import kotlin.jvm.JvmInline
  *  the magnetic field. The magnetic moment may be considered, therefore, to be a vector. The direction
  *  of the magnetic moment points from the south to north pole of the magnet (inside the magnet).
  *
- * @see [Wiki](https://en.wikipedia.org/wiki/Magnetic_moment)
+ * [Wiki](https://en.wikipedia.org/wiki/Magnetic_moment)
  */
 @JvmInline
 value class MagneticDipoleMoment(val joulesPerTesla: Double) : Units<MagneticDipoleMoment> {

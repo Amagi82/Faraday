@@ -4,7 +4,7 @@ import faraday.Units
 import kotlin.jvm.JvmInline
 
 /**
- * @see [Wiki](https://en.wikipedia.org/wiki/Linear_density)
+ * [Wiki](https://en.wikipedia.org/wiki/Linear_density)
  */
 @JvmInline
 value class LinearChargeDensity(val coulombsPerMeter: Double) : Units<LinearChargeDensity> {

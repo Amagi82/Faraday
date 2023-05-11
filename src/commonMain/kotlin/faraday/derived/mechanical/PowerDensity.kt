@@ -14,7 +14,7 @@ import kotlin.jvm.JvmInline
  * horsepower per cubic centimeter —is an important metric. This is based on the internal capacity
  * of the engine, not its external size.
  *
- * @see [Wiki](https://en.wikipedia.org/wiki/Power_density)
+ * [Wiki](https://en.wikipedia.org/wiki/Power_density)
  */
 @JvmInline
 value class PowerDensity(val wattsPerCubicMeter: Double) : Units<PowerDensity> {

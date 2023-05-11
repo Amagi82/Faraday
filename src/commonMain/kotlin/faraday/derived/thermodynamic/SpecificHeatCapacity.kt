@@ -9,7 +9,7 @@ import kotlin.jvm.JvmInline
  * be added, in the form of heat, to one unit of mass of the substance in order to cause an
  * increase of one unit in its temperature.
  *
- * @see [Wiki](https://en.wikipedia.org/wiki/Specific_heat_capacity)
+ * [Wiki](https://en.wikipedia.org/wiki/Specific_heat_capacity)
  */
 @JvmInline
 value class SpecificHeatCapacity(val joulesPerKilogramKelvin: Double) : Units<SpecificHeatCapacity> {

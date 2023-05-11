@@ -14,7 +14,7 @@ import kotlin.jvm.JvmInline
  * Charge density can be either positive or negative, since electric charge can be either
  * positive or negative.
  *
- * @see [Wiki](https://en.wikipedia.org/wiki/Charge_density)
+ * [Wiki](https://en.wikipedia.org/wiki/Charge_density)
  */
 @JvmInline
 value class ElectricChargeDensity(val coulombsPerCubicMeter: Double) : Units<ElectricChargeDensity> {
