@@ -9,8 +9,8 @@ import kotlin.jvm.JvmInline
  * spectral exposure is the radiant exposure per unit frequency or wavelength, depending on whether
  * the spectrum is taken as a function of frequency or of wavelength.
  *
- * @see https://en.wikipedia.org/wiki/Radiant_exposure
- * */
+ * @see [Wiki](https://en.wikipedia.org/wiki/Radiant_exposure)
+ */
 @JvmInline
 value class RadiantExposure(val joulesPerSquareMeter: Double) : Units<RadiantExposure> {
     override fun plus(other: RadiantExposure) = RadiantExposure(joulesPerSquareMeter = joulesPerSquareMeter + other.joulesPerSquareMeter)

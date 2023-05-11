@@ -34,8 +34,8 @@ import kotlin.jvm.JvmInline
  * potential is continuous across an idealized surface charge. An idealized linear charge has ln(r) potential,
  * which is continuous everywhere except on the linear charge.
  *
- * @see https://en.wikipedia.org/wiki/Electric_potential
- * */
+ * @see [Wiki](https://en.wikipedia.org/wiki/Electric_potential)
+ */
 @JvmInline
 value class Voltage(val volts: Double) : Units<Voltage> {
     override fun plus(other: Voltage) = Voltage(volts = volts + other.volts)

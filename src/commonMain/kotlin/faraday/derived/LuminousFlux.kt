@@ -15,8 +15,8 @@ import kotlin.jvm.JvmInline
  * is adjusted to reflect the varying sensitivity of the human eye to different wavelengths
  * of light.
  *
- * @see https://en.wikipedia.org/wiki/Luminous_flux
- * */
+ * @see [Wiki](https://en.wikipedia.org/wiki/Luminous_flux)
+ */
 @JvmInline
 value class LuminousFlux(val lumens: Double) : Units<LuminousFlux> {
     override fun plus(other: LuminousFlux) = LuminousFlux(lumens = lumens + other.lumens)

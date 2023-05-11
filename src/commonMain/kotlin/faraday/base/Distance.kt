@@ -27,8 +27,8 @@ import kotlin.math.PI
  * refer to a shorter dimension when length is the longest one. Depth is used for the third
  * dimension of a three dimensional object.
  *
- * @see https://en.wikipedia.org/wiki/Length
- * */
+ * @see [Wiki](https://en.wikipedia.org/wiki/Length)
+ */
 @JvmInline
 value class Distance(val meters: Double) : Units<Distance> {
     val angstroms get() = meters / ANGSTROM

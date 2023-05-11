@@ -24,8 +24,8 @@ import kotlin.jvm.JvmInline
  * reach the speed of light, as this would require an infinite amount of energy. In relativity physics,
  * the concept of rapidity replaces the classical idea of speed.
  *
- * @see https://en.wikipedia.org/wiki/Speed
- * */
+ * @see [Wiki](https://en.wikipedia.org/wiki/Speed)
+ */
 @JvmInline
 value class Velocity(val metersPerSecond: Double) : Units<Velocity> {
     val kilometersPerSecond get() = metersPerSecond / Prefixes.KILO

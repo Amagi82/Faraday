@@ -4,8 +4,8 @@ import faraday.Units
 import kotlin.jvm.JvmInline
 
 /**
- * @see https://en.wikipedia.org/wiki/Linear_density
- * */
+ * @see [Wiki](https://en.wikipedia.org/wiki/Linear_density)
+ */
 @JvmInline
 value class LinearChargeDensity(val coulombsPerMeter: Double) : Units<LinearChargeDensity> {
     override fun plus(other: LinearChargeDensity) = LinearChargeDensity(coulombsPerMeter = coulombsPerMeter + other.coulombsPerMeter)

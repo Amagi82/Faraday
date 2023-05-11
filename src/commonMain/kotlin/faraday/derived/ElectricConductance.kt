@@ -33,8 +33,8 @@ import kotlin.jvm.JvmInline
  * curve. In other situations, the derivative dV/dI may be most useful; this is called the differential
  * resistance.
  *
- * @see https://en.wikipedia.org/wiki/Electrical_resistance_and_conductance
- * */
+ * @see [Wiki](https://en.wikipedia.org/wiki/Electrical_resistance_and_conductance)
+ */
 @JvmInline
 value class ElectricConductance(val siemens: Double) : Units<ElectricConductance> {
     override fun plus(other: ElectricConductance) = ElectricConductance(siemens = siemens + other.siemens)

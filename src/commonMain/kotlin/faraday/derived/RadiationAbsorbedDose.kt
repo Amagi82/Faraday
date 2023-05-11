@@ -15,8 +15,8 @@ import kotlin.jvm.JvmInline
  * absorbed per kilogram of matter. The older, non-SI CGS unit rad, is sometimes also
  * used, predominantly in the USA.
  *
- * @see https://en.wikipedia.org/wiki/Absorbed_dose
- * */
+ * @see [Wiki](https://en.wikipedia.org/wiki/Absorbed_dose)
+ */
 @JvmInline
 value class RadiationAbsorbedDose(val grays: Double) : Units<RadiationAbsorbedDose> {
     val ergsPerGram get() = grays / 1e-4

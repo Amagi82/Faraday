@@ -11,8 +11,8 @@ import kotlin.jvm.JvmInline
  * quantity, possessing a magnitude and a direction. If m is an object's mass and v is
  * its velocity (also a vector quantity), then the object's momentum is: p = mv
  *
- * @see https://en.wikipedia.org/wiki/Momentum
- * */
+ * @see [Wiki](https://en.wikipedia.org/wiki/Momentum)
+ */
 @JvmInline
 value class Momentum(val newtonSeconds: Double) : Units<Momentum> {
     override fun plus(other: Momentum) = Momentum(newtonSeconds = newtonSeconds + other.newtonSeconds)

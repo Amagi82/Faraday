@@ -10,8 +10,8 @@ import kotlin.jvm.JvmInline
  * takes into account the biological effectiveness of the radiation, which is dependent on the
  * radiation type and energy. In the SI system of units, the unit of measure is the sievert (Sv).
  *
- * @see https://en.wikipedia.org/wiki/Equivalent_dose
- * */
+ * @see [Wiki](https://en.wikipedia.org/wiki/Equivalent_dose)
+ */
 @JvmInline
 value class RadiationEquivalentDose(val sieverts: Double) : Units<RadiationEquivalentDose> {
     val rems get() = sieverts / REM

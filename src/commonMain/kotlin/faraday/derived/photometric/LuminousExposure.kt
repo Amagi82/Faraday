@@ -12,8 +12,8 @@ import kotlin.jvm.JvmInline
  * measured in lux seconds, and can be computed from exposure value (EV) and scene luminance in a
  * specified region.
  *
- * @see https://en.wikipedia.org/wiki/Exposure_(photography)#Photometric_and_radiometric_exposure
- * */
+ * @see [Wiki](https://en.wikipedia.org/wiki/Exposure_(photography)#Photometric_and_radiometric_exposure
+ */
 @JvmInline
 value class LuminousExposure(val luxSeconds: Double) : Units<LuminousExposure> {
     override fun plus(other: LuminousExposure): LuminousExposure = LuminousExposure(luxSeconds + other.luxSeconds)

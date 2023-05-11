@@ -28,8 +28,8 @@ import kotlin.jvm.JvmInline
  * many small forces applied over an area of a body, is a simple type of stress that if unbalanced can
  * cause the body to accelerate. Stress usually causes deformation of solid materials, or flow in fluids.
  *
- * @see https://en.wikipedia.org/wiki/Force
- * */
+ * @see [Wiki](https://en.wikipedia.org/wiki/Force)
+ */
 @JvmInline
 value class Force(val newtons: Double) : Units<Force> {
     val lbs get() = newtons / POUND

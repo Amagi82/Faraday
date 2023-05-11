@@ -10,8 +10,8 @@ import kotlin.jvm.JvmInline
  * the Latin letter D can also be used. Mathematically, density is defined as mass divided by
  * volume: ρ = m/V where ρ is the density, m is the mass, and V is the volume.
  *
- * @see https://en.wikipedia.org/wiki/Density
- * */
+ * @see [Wiki](https://en.wikipedia.org/wiki/Density)
+ */
 @JvmInline
 value class Density(val kgPerCubicMeter: Double) : Units<Density> {
     val gramsPerCubicCentimeter get() = kgPerCubicMeter / 1000

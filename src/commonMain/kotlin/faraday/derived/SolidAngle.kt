@@ -21,8 +21,8 @@ import kotlin.jvm.JvmInline
  * any point on Earth, both objects have approximately the same solid angle as well as apparent size. This
  * is evident during a solar eclipse.
  *
- * @see https://en.wikipedia.org/wiki/Solid_angle
- * */
+ * @see [Wiki](https://en.wikipedia.org/wiki/Solid_angle)
+ */
 @JvmInline
 value class SolidAngle(val steradians: Double) : Units<SolidAngle> {
     override fun plus(other: SolidAngle) = SolidAngle(steradians = steradians + other.steradians)

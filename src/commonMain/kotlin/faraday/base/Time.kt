@@ -26,8 +26,8 @@ import kotlin.jvm.JvmInline
  * in the conduct of both advanced experiments and everyday affairs of life. To describe
  * observations of an event, a location (position in space) and time are typically noted.
  *
- * @see https://en.wikipedia.org/wiki/Time
- * */
+ * @see [Wiki](https://en.wikipedia.org/wiki/Time)
+ */
 @JvmInline
 value class Time(val seconds: Double) : Units<Time> {
     val nanoseconds get() = seconds / Prefixes.NANO

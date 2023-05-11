@@ -19,8 +19,8 @@ import kotlin.jvm.JvmInline
  *
  * The SI unit for acceleration is metre per second squared, m/s^2.
  *
- * @see https://en.wikipedia.org/wiki/Acceleration
- * */
+ * @see [Wiki](https://en.wikipedia.org/wiki/Acceleration)
+ */
 @JvmInline
 value class Acceleration(val metersPerSecondSquared: Double) : Units<Acceleration> {
     val G get() = metersPerSecondSquared / EARTH_GRAVITY

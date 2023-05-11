@@ -26,8 +26,8 @@ import kotlin.jvm.JvmInline
  * of the solid catalyst. Enzymes and other biocatalysts are often considered as a
  * third category.
  *
- * @see https://en.wikipedia.org/wiki/Catalysis
- * */
+ * @see [Wiki](https://en.wikipedia.org/wiki/Catalysis)
+ */
 @JvmInline
 value class Catalysis(val katals: Double) : Units<Catalysis> {
     override fun plus(other: Catalysis) = Catalysis(katals = katals + other.katals)

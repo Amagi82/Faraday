@@ -23,9 +23,9 @@ import kotlin.jvm.JvmInline
  * Electric power is the rate, per unit time, at which electrical energy is transferred by an electric
  * circuit. The SI unit of power is the watt, one joule per second.
  *
- * @see https://en.wikipedia.org/wiki/Power_(physics)
- * @see https://en.wikipedia.org/wiki/Electric_power
- * */
+ * @see [Wiki](https://en.wikipedia.org/wiki/Power_(physics)
+ * @see [Wiki](https://en.wikipedia.org/wiki/Electric_power)
+ */
 @JvmInline
 value class Power(val watts: Double) : Units<Power> {
     val milliwatts get() = watts / Prefixes.MILLI

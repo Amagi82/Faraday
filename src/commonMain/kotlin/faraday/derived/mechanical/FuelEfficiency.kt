@@ -11,8 +11,8 @@ import kotlin.jvm.JvmInline
  * application, and this spectrum of variance is often illustrated as a continuous energy
  * profile.
  *
- * @see https://en.wikipedia.org/wiki/Fuel_efficiency
- * */
+ * @see [Wiki](https://en.wikipedia.org/wiki/Fuel_efficiency)
+ */
 @JvmInline
 value class FuelEfficiency(val metersPerCubicMeter: Double) : Units<FuelEfficiency> {
     val milesPerGallon get() = metersPerCubicMeter / MPG

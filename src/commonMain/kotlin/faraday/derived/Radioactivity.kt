@@ -25,8 +25,8 @@ import kotlin.jvm.JvmInline
  * and thus the exposure or absorbed dose. The absorbed dose is the quantity important in
  * assessing the effects of ionizing radiation on humans.
  *
- * @see https://en.wikipedia.org/wiki/Specific_activity
- * */
+ * @see [Wiki](https://en.wikipedia.org/wiki/Specific_activity)
+ */
 @JvmInline
 value class Radioactivity(val becquerels: Double) : Units<Radioactivity> {
     val curies get() = becquerels / CURIE

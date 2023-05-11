@@ -10,8 +10,8 @@ import kotlin.jvm.JvmInline
  * desired acceleration. It depends on the body's mass distribution and the axis chosen, with larger
  * moments requiring more torque to change the body's rate of rotation.
  *
- * @see https://en.wikipedia.org/wiki/Moment_of_inertia
- * */
+ * @see [Wiki](https://en.wikipedia.org/wiki/Moment_of_inertia)
+ */
 @JvmInline
 value class MomentOfInertia(val kilogramMetersPerSecond: Double) : Units<MomentOfInertia> {
     override fun plus(other: MomentOfInertia) = MomentOfInertia(kilogramMetersPerSecond = kilogramMetersPerSecond + other.kilogramMetersPerSecond)

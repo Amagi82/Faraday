@@ -8,8 +8,8 @@ import kotlin.jvm.JvmInline
  * which an object or material resists a heat flow. Thermal resistance is the reciprocal
  * of thermal conductance.
  *
- * @see https://en.wikipedia.org/wiki/Thermal_resistance
- * */
+ * @see [Wiki](https://en.wikipedia.org/wiki/Thermal_resistance)
+ */
 @JvmInline
 value class ThermalResistance(val kelvinsPerWatt: Double) : Units<ThermalResistance> {
     override fun plus(other: ThermalResistance) = ThermalResistance(kelvinsPerWatt = kelvinsPerWatt + other.kelvinsPerWatt)

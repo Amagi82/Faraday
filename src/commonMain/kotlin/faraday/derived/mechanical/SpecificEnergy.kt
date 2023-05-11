@@ -12,8 +12,8 @@ import kotlin.jvm.JvmInline
  * the kinetic energy or potential energy of a body. Specific energy is an intensive property,
  * whereas energy and mass are extensive properties.
  *
- * @see https://en.wikipedia.org/wiki/Specific_energy
- * */
+ * @see [Wiki](https://en.wikipedia.org/wiki/Specific_energy)
+ */
 @JvmInline
 value class SpecificEnergy(val joulesPerKilogram: Double) : Units<SpecificEnergy> {
     override fun plus(other: SpecificEnergy) = SpecificEnergy(joulesPerKilogram = joulesPerKilogram + other.joulesPerKilogram)

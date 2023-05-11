@@ -34,8 +34,8 @@ import kotlin.jvm.JvmInline
  * In short, Isp is the amount of time a rocket engine can generate thrust given a quantity of propellant
  * with weight equal to the engine's thrust
  *
- * @see https://en.wikipedia.org/wiki/Specific_impulse
- * */
+ * @see [Wiki](https://en.wikipedia.org/wiki/Specific_impulse)
+ */
 @JvmInline
 value class SpecificImpulse(val isp: Double) : Units<SpecificImpulse> {
     override fun plus(other: SpecificImpulse) = SpecificImpulse(isp = isp + other.isp)

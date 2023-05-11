@@ -16,8 +16,8 @@ import kotlin.jvm.JvmInline
  * is well outside the visible spectrum has a luminous energy of zero, regardless of the amount of
  * radiant energy present.
  *
- * @see https://en.wikipedia.org/wiki/Luminous_energy
- * */
+ * @see [Wiki](https://en.wikipedia.org/wiki/Luminous_energy)
+ */
 @JvmInline
 value class LuminousEnergy(val lumenSeconds: Double) : Units<LuminousEnergy> {
     override fun plus(other: LuminousEnergy): LuminousEnergy = LuminousEnergy(lumenSeconds + other.lumenSeconds)

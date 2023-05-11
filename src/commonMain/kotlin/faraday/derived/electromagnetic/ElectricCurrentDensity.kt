@@ -10,8 +10,8 @@ import kotlin.jvm.JvmInline
  * direction being that of the motion of the positive charges at this point. In SI base units,
  * the electric current density is measured in amperes per square metre.
  *
- * @see https://en.wikipedia.org/wiki/Current_density
- * */
+ * @see [Wiki](https://en.wikipedia.org/wiki/Current_density)
+ */
 @JvmInline
 value class ElectricCurrentDensity(val amperesPerSquareMeter: Double) : Units<ElectricCurrentDensity> {
     override fun plus(other: ElectricCurrentDensity) = ElectricCurrentDensity(amperesPerSquareMeter = amperesPerSquareMeter + other.amperesPerSquareMeter)

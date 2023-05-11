@@ -8,8 +8,8 @@ import kotlin.jvm.JvmInline
  * flux in a magnetic circuit, often called Ohm's law for magnetic circuits. It is the property of
  * certain substances or phenomena that give rise to magnetic fields.
  *
- * @see https://en.wikipedia.org/wiki/Magnetomotive_force
- * */
+ * @see [Wiki](https://en.wikipedia.org/wiki/Magnetomotive_force)
+ */
 @JvmInline
 value class MagnetomotiveForce(val ampereRadians: Double) : Units<MagnetomotiveForce> {
     override fun plus(other: MagnetomotiveForce) = MagnetomotiveForce(ampereRadians = ampereRadians + other.ampereRadians)

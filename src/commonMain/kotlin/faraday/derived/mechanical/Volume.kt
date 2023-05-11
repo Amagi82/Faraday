@@ -26,8 +26,8 @@ import kotlin.jvm.JvmInline
  * volume of two substances is usually greater than the volume of just one of the substances. However,
  * sometimes one substance dissolves in the other and in such cases the combined volume is not additive.
  *
- * @see https://en.wikipedia.org/wiki/Volume
- * */
+ * @see [Wiki](https://en.wikipedia.org/wiki/Volume)
+ */
 @JvmInline
 value class Volume(val cubicMeters: Double) : Units<Volume> {
     val cubicCentimeters get() = cubicMeters / CUBIC_CENTIMETER

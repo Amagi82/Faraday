@@ -9,8 +9,8 @@ import kotlin.jvm.JvmInline
  * gradient is a dimensional quantity expressed in units of degrees (on a particular temperature
  * scale) per unit length.
  *
- * @see https://en.wikipedia.org/wiki/Temperature_gradient
- * */
+ * @see [Wiki](https://en.wikipedia.org/wiki/Temperature_gradient)
+ */
 @JvmInline
 value class TemperatureGradient(val kelvinsPerMeter: Double) : Units<TemperatureGradient> {
     override fun plus(other: TemperatureGradient) = TemperatureGradient(kelvinsPerMeter = kelvinsPerMeter + other.kelvinsPerMeter)

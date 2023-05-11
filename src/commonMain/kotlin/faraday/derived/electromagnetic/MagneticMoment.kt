@@ -10,8 +10,8 @@ import kotlin.jvm.JvmInline
  * (such as electrons), various molecules, and many astronomical objects (such as many planets,
  * some moons, stars, etc).
  *
- * @see https://en.wikipedia.org/wiki/Magnetic_moment
- * */
+ * @see [Wiki](https://en.wikipedia.org/wiki/Magnetic_moment)
+ */
 @JvmInline
 value class MagneticMoment(val weberMeters: Double) : Units<MagneticMoment> {
     override fun plus(other: MagneticMoment) = MagneticMoment(weberMeters = weberMeters + other.weberMeters)

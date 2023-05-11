@@ -15,8 +15,8 @@ import kotlin.jvm.JvmInline
  * of oscillatory and vibratory phenomena, such as faraday.derived.mechanical vibrations, audio signals
  * (sound), radio waves, and light.
  *
- * @see https://en.wikipedia.org/wiki/Frequency
- * */
+ * @see [Wiki](https://en.wikipedia.org/wiki/Frequency)
+ */
 @JvmInline
 value class Frequency(val hertz: Double) : Units<Frequency> {
     val rpm get() = hertz / 60

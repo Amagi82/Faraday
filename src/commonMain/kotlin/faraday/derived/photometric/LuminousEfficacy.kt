@@ -12,8 +12,8 @@ import kotlin.jvm.JvmInline
  * The former sense is sometimes called luminous efficacy of radiation, and the latter luminous
  * efficacy of a source or overall luminous efficacy.
  *
- * @see https://en.wikipedia.org/wiki/Luminous_efficacy
- * */
+ * @see [Wiki](https://en.wikipedia.org/wiki/Luminous_efficacy)
+ */
 @JvmInline
 value class LuminousEfficacy(val lumensPerWatt: Double) : Units<LuminousEfficacy> {
     override fun plus(other: LuminousEfficacy): LuminousEfficacy = LuminousEfficacy(lumensPerWatt + other.lumensPerWatt)

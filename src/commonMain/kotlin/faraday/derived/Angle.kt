@@ -20,9 +20,9 @@ import kotlin.math.PI
  * vertex and delimited by the sides. In the case of a rotation, the arc is centered at the center of the
  * rotation and delimited by any other point and its image by the rotation.
  *
- * @see https://en.wikipedia.org/wiki/Angle
- * @see https://en.wikipedia.org/wiki/Angular_unit
- * */
+ * @see [Wiki](https://en.wikipedia.org/wiki/Angle)
+ * @see [Wiki](https://en.wikipedia.org/wiki/Angular_unit)
+ */
 @JvmInline
 value class Angle private constructor(val radians: Double) : Units<Angle> {
     constructor(radians: Number) : this(radians = radians.toDouble() % TURN)

@@ -20,7 +20,7 @@ import kotlin.jvm.JvmInline
  * the centimetre of water, millimetre of mercury, and inch of mercury are used to express
  * pressures in terms of the height of column of a particular fluid in a manometer.
  *
- * @see https://en.wikipedia.org/wiki/Pressure
+ * @see [Wiki](https://en.wikipedia.org/wiki/Pressure)
  *
  * Energy density is the amount of energy stored in a given system or region of space per unit
  * volume. Colloquially it may also be used for energy per unit mass, though the accurate term
@@ -38,8 +38,8 @@ import kotlin.jvm.JvmInline
  * volume of a system. A pressure gradient has the potential to perform work on the surroundings
  * by converting enthalpy to work until equilibrium is reached.
  *
- * @see https://en.wikipedia.org/wiki/Energy_density
- * */
+ * @see [Wiki](https://en.wikipedia.org/wiki/Energy_density)
+ */
 @JvmInline
 value class Pressure(val pascals: Double) : Units<Pressure> {
     val joulesPerCubicMeter: Double get() = pascals

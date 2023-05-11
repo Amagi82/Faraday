@@ -16,8 +16,8 @@ import kotlin.jvm.JvmInline
  * The symbol for torque is typically τ, the lowercase Greek letter tau. When being referred
  * to as moment of force, it is commonly denoted by M.
  *
- * @see https://en.wikipedia.org/wiki/Torque
- * */
+ * @see [Wiki](https://en.wikipedia.org/wiki/Torque)
+ */
 @JvmInline
 value class Torque(val newtonMeters: Double) : Units<Torque> {
     val poundFeet get() = newtonMeters / POUND_FOOT

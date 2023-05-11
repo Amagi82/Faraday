@@ -10,8 +10,8 @@ import kotlin.jvm.JvmInline
  * is typically more practical to use the units cubic decimetres per mole (dm3/mol) for gases and
  * cubic centimetres per mole (cm3/mol) for liquids and solids.
  *
- * @see https://en.wikipedia.org/wiki/Molar_volume
- * */
+ * @see [Wiki](https://en.wikipedia.org/wiki/Molar_volume)
+ */
 @JvmInline
 value class MolarVolume(val cubicMetersPerMole: Double) : Units<MolarVolume> {
     override fun plus(other: MolarVolume) = MolarVolume(cubicMetersPerMole = cubicMetersPerMole + other.cubicMetersPerMole)

@@ -9,8 +9,8 @@ import kotlin.jvm.JvmInline
  * (also known as volume flow rate, rate of fluid flow, or volume velocity) is the
  * volume of fluid which passes per unit time.
  *
- * @see https://en.wikipedia.org/wiki/Volumetric_flow_rate
- * */
+ * @see [Wiki](https://en.wikipedia.org/wiki/Volumetric_flow_rate)
+ */
 @JvmInline
 value class VolumetricFlowRate(val cubicMetersPerSecond: Double) : Units<VolumetricFlowRate> {
     val litersPerMinute get() = cubicMetersPerSecond / (1000 / Time.MINUTE)

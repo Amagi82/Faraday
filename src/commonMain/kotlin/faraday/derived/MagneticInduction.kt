@@ -38,8 +38,8 @@ import kotlin.jvm.JvmInline
  * is 1 T = 10000 G.) One nanotesla is equivalent to 1 gamma (symbol: γ). The H-field is measured in amperes
  * per metre (A/m) in SI units, and in oersteds (Oe) in cgs
  *
- * @see https://en.wikipedia.org/wiki/Magnetic_field#The_B-field
- * */
+ * @see [Wiki](https://en.wikipedia.org/wiki/Magnetic_field#The_B-field)
+ */
 @JvmInline
 value class MagneticInduction(val teslas: Double) : Units<MagneticInduction> {
     val gauss get() = teslas / 1e-4

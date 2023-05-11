@@ -13,8 +13,8 @@ import kotlin.jvm.JvmInline
  * position relative to the origin. Spin angular velocity is independent of the choice of
  * origin, in contrast to orbital angular velocity which depends on the choice of origin.
  *
- * @see https://en.wikipedia.org/wiki/Angular_velocity
- * */
+ * @see [Wiki](https://en.wikipedia.org/wiki/Angular_velocity)
+ */
 @JvmInline
 value class AngularVelocity(val radiansPerSecond: Double) : Units<AngularVelocity> {
     override fun plus(other: AngularVelocity) = AngularVelocity(radiansPerSecond = radiansPerSecond + other.radiansPerSecond)

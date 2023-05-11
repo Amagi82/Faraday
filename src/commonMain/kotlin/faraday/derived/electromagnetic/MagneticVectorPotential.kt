@@ -11,8 +11,8 @@ import kotlin.jvm.JvmInline
  * the potentials φ and A. In more advanced theories such as quantum mechanics, most equations use
  * potentials rather than fields.
  *
- * @see https://en.wikipedia.org/wiki/Magnetic_vector_potential
- * */
+ * @see [Wiki](https://en.wikipedia.org/wiki/Magnetic_vector_potential)
+ */
 @JvmInline
 value class MagneticVectorPotential(val webersPerMeter: Double) : Units<MagneticVectorPotential> {
     override fun plus(other: MagneticVectorPotential) = MagneticVectorPotential(webersPerMeter = webersPerMeter + other.webersPerMeter)

@@ -22,8 +22,8 @@ import kotlin.jvm.JvmInline
  * known as the luminosity function. This curve, denoted V(λ), is based on an average of
  * widely differing experimental data from scientists using different measurement techniques.
  *
- * @see https://en.wikipedia.org/wiki/Luminous_intensity
- * */
+ * @see [Wiki](https://en.wikipedia.org/wiki/Luminous_intensity)
+ */
 @JvmInline
 value class LuminousIntensity(val candelas: Double) : Units<LuminousIntensity> {
     override fun plus(other: LuminousIntensity) = LuminousIntensity(candelas = candelas + other.candelas)

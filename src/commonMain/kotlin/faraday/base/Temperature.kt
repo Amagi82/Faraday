@@ -15,8 +15,8 @@ import kotlin.jvm.JvmInline
  * is predominantly used for scientific purposes by conventions of the International System of
  * Units (SI).
  *
- * @see https://en.wikipedia.org/wiki/Temperature
- * */
+ * @see [Wiki](https://en.wikipedia.org/wiki/Temperature)
+ */
 @JvmInline
 value class Temperature(val kelvin: Double) : Units<Temperature> {
     val celsius get() = kelvin + KELVIN_TO_CELSIUS

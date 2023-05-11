@@ -12,8 +12,8 @@ import kotlin.jvm.JvmInline
  * R = Bρ = p/q, where B is the magnetic field, ρ is the gyroradius of the particle due to this field,
  * p is the particle momentum, and q is its charge. It is frequently referred to as simply "Bρ".
  *
- * @see https://en.wikipedia.org/wiki/Rigidity_(electromagnetism)
- * */
+ * @see [Wiki](https://en.wikipedia.org/wiki/Rigidity_(electromagnetism)
+ */
 @JvmInline
 value class MagneticRigidity(val teslaMeters: Double) : Units<MagneticRigidity> {
     override fun plus(other: MagneticRigidity) = MagneticRigidity(teslaMeters = teslaMeters + other.teslaMeters)

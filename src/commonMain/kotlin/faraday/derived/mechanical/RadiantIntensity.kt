@@ -9,8 +9,8 @@ import kotlin.jvm.JvmInline
  * are often called intensity in branches of physics other than radiometry. In radio-frequency
  * engineering, radiant intensity is sometimes called radiation intensity.
  *
- * @see https://en.wikipedia.org/wiki/Radiant_intensity
- * */
+ * @see [Wiki](https://en.wikipedia.org/wiki/Radiant_intensity)
+ */
 @JvmInline
 value class RadiantIntensity(val wattsPerSteradian: Double) : Units<RadiantIntensity> {
     override fun plus(other: RadiantIntensity) = RadiantIntensity(wattsPerSteradian = wattsPerSteradian + other.wattsPerSteradian)

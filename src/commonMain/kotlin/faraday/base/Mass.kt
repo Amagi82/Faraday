@@ -23,8 +23,8 @@ import kotlin.math.pow
  * have the same mass. This is because weight is a force, while mass is the property that
  * (along with gravity) determines the strength of this force.
  *
- * @see https://en.wikipedia.org/wiki/Mass
- * */
+ * @see [Wiki](https://en.wikipedia.org/wiki/Mass)
+ */
 @JvmInline
 value class Mass(val kilograms: Double) : Units<Mass> {
     val grams get() = kilograms * 1000

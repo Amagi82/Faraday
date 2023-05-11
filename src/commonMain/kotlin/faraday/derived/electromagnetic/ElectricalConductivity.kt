@@ -9,8 +9,8 @@ import kotlin.jvm.JvmInline
  * the Greek letter σ (sigma), but κ (kappa) (especially in electrical engineering) and γ
  * (gamma) are sometimes used.
  *
- * @see https://en.wikipedia.org/wiki/Electrical_resistivity_and_conductivity
- * */
+ * @see [Wiki](https://en.wikipedia.org/wiki/Electrical_resistivity_and_conductivity)
+ */
 @JvmInline
 value class ElectricalConductivity(val siemensPerMeter: Double) : Units<ElectricalConductivity> {
     override fun plus(other: ElectricalConductivity) = ElectricalConductivity(siemensPerMeter = siemensPerMeter + other.siemensPerMeter)

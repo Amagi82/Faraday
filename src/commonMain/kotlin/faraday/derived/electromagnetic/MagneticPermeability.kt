@@ -11,8 +11,8 @@ import kotlin.jvm.JvmInline
  * Greek letter μ. The term was coined in September 1885 by Oliver Heaviside. The reciprocal
  * of magnetic permeability is magnetic reluctivity.
  *
- * @see https://en.wikipedia.org/wiki/Permeability_(electromagnetism)
- * */
+ * @see [Wiki](https://en.wikipedia.org/wiki/Permeability_(electromagnetism)
+ */
 @JvmInline
 value class MagneticPermeability(val henrysPerMeter: Double) : Units<MagneticPermeability> {
     override fun plus(other: MagneticPermeability) = MagneticPermeability(henrysPerMeter = henrysPerMeter + other.henrysPerMeter)

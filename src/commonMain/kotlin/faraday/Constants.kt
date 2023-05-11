@@ -12,8 +12,8 @@ object Constants {
      * it quantifies the relation between the geometry of spacetime and the energy–momentum tensor (also referred
      * to as the stress–energy tensor).
      *
-     * @see https://en.wikipedia.org/wiki/Gravitational_constant
-     * */
+     * @see [Wiki](https://en.wikipedia.org/wiki/Gravitational_constant)
+     */
     const val GRAVITATIONAL_CONSTANT = 6.6743015e-11
 
     /**
@@ -40,8 +40,8 @@ object Constants {
      * similarly relates its molar volume (in mL/mol), the volume of the repeating unit cell of the crystals
      * (in mL), and the number of molecules in that cell.
      *
-     * @see https://en.wikipedia.org/wiki/Avogadro_constant
-     * */
+     * @see [Wiki](https://en.wikipedia.org/wiki/Avogadro_constant)
+     */
     const val AVOGADRO_CONSTANT = 6.02214076e23
 
     /**
@@ -54,8 +54,8 @@ object Constants {
      * constants" that have been given exact definitions. They are used in various combinations to define the
      * seven SI base units.
      *
-     * @see https://en.wikipedia.org/wiki/Boltzmann_constant
-     * */
+     * @see [Wiki](https://en.wikipedia.org/wiki/Boltzmann_constant)
+     */
     const val BOLTZMANN_CONSTANT = 1.380649e-23
 
     /**
@@ -73,8 +73,8 @@ object Constants {
      * used for the counting of particles. The last factor is not a consideration in the value of the Boltzmann
      * constant, which does a similar job of equating linear energy and temperature scales.
      *
-     * @see https://en.wikipedia.org/wiki/Gas_constant
-     * */
+     * @see [Wiki](https://en.wikipedia.org/wiki/Gas_constant)
+     */
     const val GAS_CONSTANT = AVOGADRO_CONSTANT * BOLTZMANN_CONSTANT
 
     /**
@@ -89,8 +89,8 @@ object Constants {
      * special and general theories of relativity, c interrelates space and time, and also appears in the famous
      * equation of mass–energy equivalence E = mc2.
      *
-     * @see https://en.wikipedia.org/wiki/Speed_of_light
-     * */
+     * @see [Wiki](https://en.wikipedia.org/wiki/Speed_of_light)
+     */
     const val LIGHT_SPEED = 299_792_458.0
 
     /**
@@ -99,8 +99,8 @@ object Constants {
      * has charge −1 e. This elementary charge is a fundamental physical constant. To avoid confusion over its
      * sign, e is sometimes called the elementary positive charge.
      *
-     * @see https://en.wikipedia.org/wiki/Elementary_charge
-     * */
+     * @see [Wiki](https://en.wikipedia.org/wiki/Elementary_charge)
+     */
     const val ELEMENTARY_CHARGE = 1.602176634e-19
 
     /**
@@ -109,8 +109,8 @@ object Constants {
      * energy. The Planck constant is a fundamental physical constant denoted as h, and of fundamental importance
      * in quantum mechanics. In metrology it is used to define the kilogram in SI units.
      *
-     * @see https://en.wikipedia.org/wiki/Planck_constant
-     * */
+     * @see [Wiki](https://en.wikipedia.org/wiki/Planck_constant)
+     */
     const val PLANCK_CONSTANT = 6.62607015e-34
 
     /**
@@ -126,7 +126,7 @@ object Constants {
      * measurement involving time had been as precise, the effect of the change was less than the experimental
      * uncertainty of all existing measurements.
      *
-     * @see https://en.wikipedia.org/wiki/Caesium_standard
-     * */
+     * @see [Wiki](https://en.wikipedia.org/wiki/Caesium_standard)
+     */
     const val CAESIUM_STANDARD_FREQUENCY = 9_192_631_770
 }

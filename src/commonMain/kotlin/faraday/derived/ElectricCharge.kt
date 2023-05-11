@@ -37,8 +37,8 @@ import kotlin.jvm.JvmInline
  * also uses the Faraday constant as the charge on a mole of electrons. The lowercase symbol q often
  * denotes charge.
  *
- * @see https://en.wikipedia.org/wiki/Electric_charge
- * */
+ * @see [Wiki](https://en.wikipedia.org/wiki/Electric_charge)
+ */
 @JvmInline
 value class ElectricCharge(val coulombs: Double) : Units<ElectricCharge> {
     override fun plus(other: ElectricCharge) = ElectricCharge(coulombs = coulombs + other.coulombs)
