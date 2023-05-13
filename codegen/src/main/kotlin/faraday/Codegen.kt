@@ -193,3 +193,20 @@ sealed interface ConversionsExpression {
 
     fun equalTo(other: UnitType) = UnitConversion(result = other, expression = this)
 }
+
+/**
+ * Copy all the documentation over from the cage units
+ */
+fun copyDocs(){
+    val copyDir = File("codegen/src/main/kotlin/faraday/docs/").apply(File::mkdirs)
+    File("cage/src/commonMain/kotlin/faraday").walkTopDown().forEach {file ->
+        if(file.isDirectory) return@forEach
+        file.bufferedReader().use {
+            val comment = it.readText().substringAfter("/**").substringBefore("*/")
+            if(comment.isNotBlank()){
+                val output = File(copyDir, file.name).apply(File::createNewFile)
+                output.writeText("/**$comment*/")
+            }
+        }
+    }
+}
