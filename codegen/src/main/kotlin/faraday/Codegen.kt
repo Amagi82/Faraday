@@ -31,12 +31,16 @@ data class UnitsWithConversions(
 
         units.forEach { unitType ->
             val (unitName, baseUnit, subUnits, constants, createNumberExtension) = unitType
+            val docsFile = File("codegen/src/main/kotlin/faraday/docs/$unitName.kt")
             File(baseDir, "$unitName.kt").also(File::createNewFile).writeText(
                 buildString {
                     appendLine("package faraday")
                     appendLine()
                     appendLine("import kotlin.jvm.JvmInline")
                     appendLine()
+                    if(docsFile.exists()){
+                        appendLine(docsFile.readText())
+                    }
                     appendLine("@JvmInline")
                     appendLine("value class $unitName(val $baseUnit: Double) : Units<$unitName> {")
                     subUnits.forEach { appendLine("\tval ${it.name} get() = $baseUnit / ${it.factor}") }
