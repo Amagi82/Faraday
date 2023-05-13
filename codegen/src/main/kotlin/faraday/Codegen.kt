@@ -47,7 +47,7 @@ data class UnitsWithConversions(
                     appendLine("\toverride fun div(factor: Number) = $unitName($baseUnit = $baseUnit / factor.toDouble())")
                     appendLine("\toverride fun compareTo(other: $unitName): Int = $baseUnit.compareTo(other.$baseUnit)")
 
-                    val unitConversions = conversions.flatMap { it.generateOperators(unitName) }
+                    val unitConversions = conversions.flatMap { it.generateOperators(unitName) }.distinct()
                     if (unitConversions.isNotEmpty()) {
                         appendLine()
                         unitConversions.forEach { conversion ->

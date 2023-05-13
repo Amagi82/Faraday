@@ -1,3 +1,5 @@
+@file:Suppress("DuplicatedCode")
+
 package faraday
 
 fun main() {
@@ -76,7 +78,6 @@ fun main() {
         val angularVelocity by unit("radiansPerSecond", enableExtensions = false)
         val velocity by unit("metersPerSecond", enableExtensions = true)
 
-        conversions += acceleration equalTo velocity * time
         conversions += angularAcceleration equalTo angularVelocity / time
         conversions += angularVelocity equalTo angle / time
         conversions += velocity equalTo distance / time
@@ -105,7 +106,7 @@ fun main() {
         val spectralIrradiance by unit("wattsPerCubicMeter", enableExtensions = false)
         val spectralPower by unit("wattsPerMeter", enableExtensions = false)
         val spectralRadiance by unit("wattsPerSteradianCubicMeter", enableExtensions = false)
-        val stiffness by unit("joulesPerSquareMeter", enableExtensions = false)
+        val stiffness by unit("newtonsPerMeter", enableExtensions = false)
         val surfaceTension by unit("newtonsPerMeter", enableExtensions = false)
         val torque by unit("newtonMeters", enableExtensions = false)
         val volumetricFlowRate by unit("cubicMetersPerSecond", enableExtensions = false)
@@ -118,7 +119,7 @@ fun main() {
         conversions += irradiance equalTo power / area
         conversions += massFlowRate equalTo mass / time
         conversions += massFraction equalTo mass / mass
-        conversions += momentOfInertia equalTo mass * velocity
+//        conversions += momentOfInertia equalTo mass * velocity // Same formula as momentum
         conversions += momentum equalTo mass * velocity
         conversions += momentum equalTo force * time
         conversions += powerDensity equalTo power / volume
@@ -128,12 +129,11 @@ fun main() {
         conversions += specificEnergy equalTo energy / mass
         conversions += specificVolume equalTo volume / mass
         conversions += spectralRadiance equalTo radiantIntensity / volume
-        conversions += spectralIntensity equalTo radiantIntensity / area
-        conversions += spectralIrradiance equalTo power / volume
+        conversions += spectralIntensity equalTo radiantIntensity / distance
+//        conversions += spectralIrradiance equalTo power / volume // Same formula as powerDensity
         conversions += spectralPower equalTo power / distance
-        conversions += stiffness equalTo energy / area
-        conversions += surfaceTension equalTo force / distance
-        conversions += torque equalTo force * distance
+        conversions += stiffness equalTo force / distance
+//        conversions += surfaceTension equalTo force / distance // Same formula as stiffness
         conversions += volumetricFlowRate equalTo volume / time
 
 
@@ -174,7 +174,7 @@ fun main() {
         conversions += magnetization equalTo electricCurrent / distance
         conversions += magnetomotiveForce equalTo electricCurrent / angle
         conversions += permittivity equalTo electricCapacitance / distance
-        conversions += polarizationDensity equalTo electricCharge / area
+//        conversions += polarizationDensity equalTo electricCharge / area // Same formula as electricInduction
         conversions += radiationExposure equalTo electricCharge / mass
 
 
