@@ -1,31 +1,26 @@
 plugins {
     kotlin("multiplatform")
-    kotlin("kapt")
+    id("maven-publish")
 }
-
-group = "amagi82"
-version = "0.1"
+group = "com.dapperlizard"
+version = "0.5.0"
 
 repositories {
     mavenCentral()
 }
-
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
 kotlin {
     jvm {
-//        withJava()
         compilations.all {
             kotlinOptions.jvmTarget = "11"
         }
     }
-    js {
-        browser {
-            testTask {
-                useKarma {
-                    useChromeHeadless()
-                    webpackConfig.cssSupport.enabled = true
-                }
-            }
-        }
+    js(IR){
+        nodejs()
     }
     val hostOs = System.getProperty("os.name")
     val isMingwX64 = hostOs.startsWith("Windows")
@@ -37,20 +32,14 @@ kotlin {
     }
 
     sourceSets {
-        val commonMain by getting{
-            dependencies{
-//                kapt(project(":codegen"))
-            }
-        }
+        val commonMain by getting
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
             }
         }
-        val jvmMain by getting{
-
-        }
+        val jvmMain by getting
         val jvmTest by getting {
             dependencies {
                 implementation(kotlin("test-junit"))
@@ -64,5 +53,17 @@ kotlin {
         }
         val nativeMain by getting
         val nativeTest by getting
+    }
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "com.dapperlizard"
+            artifactId = "faraday"
+            version = "0.5.0"
+
+            from(components["kotlin"])
+        }
     }
 }

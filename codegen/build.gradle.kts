@@ -1,10 +1,12 @@
 plugins {
-    kotlin("jvm") //version "1.4.21"
+    kotlin("jvm")
     id("java-library")
 }
 
 group = "amagi82"
-version = "0.1"
+version = "0.5"
+
+kotlin.sourceSets.main.get().kotlin.srcDir("$buildDir/generated/kotlin/faraday")
 
 repositories {
     mavenCentral()
