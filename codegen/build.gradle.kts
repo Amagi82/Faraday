@@ -16,3 +16,10 @@ dependencies {
     implementation(kotlin("stdlib"))
     implementation("com.squareup:kotlinpoet:1.12.0")
 }
+
+tasks.clean{
+    doFirst {
+        delete("${buildDir}/generated/")
+        println("cleaned ${buildDir}/generated/")
+    }
+}
