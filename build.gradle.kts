@@ -1,9 +1,11 @@
+import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
+
 plugins {
     kotlin("multiplatform") version "2.3.0"
     id("maven-publish")
 }
 group = "com.dapperlizard"
-version = "0.6.0"
+version = "0.7.0"
 
 repositories {
     mavenCentral()
@@ -14,11 +16,25 @@ buildscript {
     }
 }
 kotlin {
-    jvm {
+    listOf(
+        iosArm64(),
+        iosSimulatorArm64()
+    ).forEach { iosTarget ->
+        iosTarget.binaries.framework {
+            baseName = "ComposeApp"
+            isStatic = true
+        }
     }
-    js(IR){
+
+    jvm()
+    js(IR) {
         nodejs()
     }
+    @OptIn(ExperimentalWasmDsl::class)
+    wasmJs {
+        nodejs()
+    }
+
     val hostOs = System.getProperty("os.name")
     val isMingwX64 = hostOs.startsWith("Windows")
     val nativeTarget = when {
@@ -58,7 +74,7 @@ publishing {
         create<MavenPublication>("maven") {
             groupId = "com.dapperlizard"
             artifactId = "faraday"
-            version = "0.6.0"
+            version = "0.7.0"
 
             from(components["kotlin"])
         }
