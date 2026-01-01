@@ -1,9 +1,9 @@
 plugins {
-    kotlin("multiplatform") version "1.8.20"
+    kotlin("multiplatform") version "2.3.0"
     id("maven-publish")
 }
 group = "com.dapperlizard"
-version = "0.5.0"
+version = "0.6.0"
 
 repositories {
     mavenCentral()
@@ -15,9 +15,6 @@ buildscript {
 }
 kotlin {
     jvm {
-        compilations.all {
-            kotlinOptions.jvmTarget = "11"
-        }
     }
     js(IR){
         nodejs()
@@ -61,7 +58,7 @@ publishing {
         create<MavenPublication>("maven") {
             groupId = "com.dapperlizard"
             artifactId = "faraday"
-            version = "0.5.0"
+            version = "0.6.0"
 
             from(components["kotlin"])
         }
