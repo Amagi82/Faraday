@@ -44,6 +44,7 @@ import kotlin.jvm.JvmInline
 value class Pressure(val pascals: Double) : Units<Pressure> {
     val joulesPerCubicMeter: Double get() = pascals
     val kilopascals get() = pascals / Prefixes.KILO
+    val megapascals get() = pascals / Prefixes.MEGA
     val gigapascals get() = pascals / Prefixes.GIGA
     val bar get() = pascals / 100_000
     val psi get() = pascals / PSI
