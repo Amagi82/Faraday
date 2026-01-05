@@ -1,0 +1,8 @@
+include("core")
+include("electromagnetics")
+include("kinematics")
+include("mechanical")
+include("molar")
+include("photometrics")
+include("thermodynamics")
+include("core-testing")

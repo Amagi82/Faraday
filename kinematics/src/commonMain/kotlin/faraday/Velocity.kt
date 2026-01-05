@@ -1,0 +1,53 @@
+package faraday
+
+import kotlin.jvm.JvmInline
+
+/**
+ * In everyday use and in kinematics, the speed of an object is the magnitude of the change of its
+ * position; it is thus a scalar quantity. The average speed of an object in an interval of time is
+ * the distance traveled by the object divided by the duration of the interval; the instantaneous
+ * speed is the limit of the average speed as the duration of the time interval approaches zero.
+ *
+ * Speed has the dimensions of distance divided by time. The SI unit of speed is the metre per second,
+ * but the most common unit of speed in everyday usage is the kilometre per hour or, in the US and the
+ * UK, miles per hour. For air and marine travel the knot is commonly used.
+ *
+ * The fastest possible speed at which energy or information can travel, according to special
+ * relativity, is the speed of light in a vacuum c = 299792458 metres per second. Matter cannot quite
+ * reach the speed of light, as this would require an infinite amount of energy. In relativity physics,
+ * the concept of rapidity replaces the classical idea of speed.
+ *
+ * [Wiki](https://en.wikipedia.org/wiki/Speed)
+ */
+@JvmInline
+value class Velocity(val metersPerSecond: Double) : Units<Velocity> {
+    val kilometersPerSecond get() = metersPerSecond / Prefixes.KILO
+    val kilometersPerHour get() = metersPerSecond / KPH
+    val milesPerHour get() = metersPerSecond / MPH
+    val knots get() = metersPerSecond / KNOT
+    val feetPerSecond get() = metersPerSecond / FOOT_PER_SEC
+
+    @InternalUnitApi
+    override val rawValue: Double get() = metersPerSecond
+
+    @InternalUnitApi
+    override fun create(value: Double) = Velocity(value)
+
+    companion object {
+        const val KPH = 0.27
+        const val MPH = 0.44704
+        const val KNOT = 0.514
+        const val FOOT_PER_SEC = 0.3048
+        const val LIGHT = Constants.LIGHT_SPEED
+        val light get() = Velocity(LIGHT)
+    }
+}
+
+typealias Speed = Velocity
+
+val Number.metersPerSecond get() = Velocity(metersPerSecond = toDouble())
+val Number.kilometersPerSecond get() = Velocity(metersPerSecond = toDouble() * Prefixes.KILO)
+val Number.kilometersPerHour get() = Velocity(metersPerSecond = toDouble() * Velocity.KPH)
+val Number.milesPerHour get() = Velocity(metersPerSecond = toDouble() * Velocity.MPH)
+val Number.knots get() = Velocity(metersPerSecond = toDouble() * Velocity.KNOT)
+val Number.feetPerSecond get() = Velocity(metersPerSecond = toDouble() * Velocity.FOOT_PER_SEC)

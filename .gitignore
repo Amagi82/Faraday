@@ -2,3 +2,6 @@
 /.gradle
 /.idea
 /build
+*/build/
+.kotlin
+/kotlin-js-store
