@@ -4,7 +4,6 @@ import kotlin.math.abs
 import kotlin.test.assertEquals
 
 interface BaseTest {
-
     /**
      * Verifies that:
      * 1. a * b = c
@@ -12,7 +11,6 @@ interface BaseTest {
      * 3. c / b = a
      * 4. c / a = b
      */
-    @OptIn(InternalUnitApi::class)
     fun <A : Units<A>, B : Units<B>, C : Units<C>> assertFormula(
         a: A,
         b: B,
@@ -23,15 +21,19 @@ interface BaseTest {
         divCA: (C, A) -> B
     ) {
         // Check Multiplications
-        assertRelative(expected = c.rawValue, actual = multiplyAB(a, b).rawValue, message = "A * B != C")
-        assertRelative(expected = c.rawValue, actual = multiplyBA(b, a).rawValue, message = "B * A != C")
+        assertApproximatelyEqual(expected = c, actual = multiplyAB(a, b), message = "A * B != C")
+        assertApproximatelyEqual(expected = c, actual = multiplyBA(b, a), message = "B * A != C")
 
         // Check Divisions
-        assertRelative(expected = a.rawValue, actual = divCB(c, b).rawValue, message = "C / B != A")
-        assertRelative(expected = b.rawValue, actual = divCA(c, a).rawValue, message = "C / A != B")
+        assertApproximatelyEqual(expected = a, actual = divCB(c, b), message = "C / B != A")
+        assertApproximatelyEqual(expected = b, actual = divCA(c, a), message = "C / A != B")
     }
 
-    fun assertRelative(expected: Double, actual: Double, message: String) {
+    @OptIn(InternalUnitApi::class)
+    fun <T : Units<T>> assertApproximatelyEqual(expected: Units<T>, actual: Units<T>, message: String) =
+        assertApproximatelyEqual(expected = expected.rawValue, actual = actual.rawValue, message = message)
+
+    fun assertApproximatelyEqual(expected: Double, actual: Double, message: String) {
         val diff = abs(expected - actual)
         if (diff > EPSILON && diff / abs(expected) > EPSILON) {
             assertEquals(expected, actual, "$message (Values: Exp $expected, Act $actual)")
