@@ -1,5 +1,5 @@
 plugins {
-    kotlin("multiplatform") version "2.3.0" apply false
+    kotlin("multiplatform") apply false
     id("maven-publish")
 }
 
@@ -14,7 +14,7 @@ buildscript {
 
 allprojects {
     group = "com.dapperlizard.faraday"
-    version = "0.9.0"
+    version = "0.10.0"
 
     repositories {
         mavenCentral()

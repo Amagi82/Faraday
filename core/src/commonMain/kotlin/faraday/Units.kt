@@ -13,10 +13,5 @@ interface Units<T : Units<T>> : Comparable<T> {
     @InternalUnitApi
     fun create(value: Double): T
 
-    operator fun plus(other: T): T = create(rawValue + other.rawValue)
-    operator fun minus(other: T): T = create(rawValue - other.rawValue)
-    operator fun times(factor: Number): T = create(rawValue * factor.toDouble())
-    operator fun div(factor: Number): T = create(rawValue / factor.toDouble())
-
     override fun compareTo(other: T): Int = rawValue.compareTo(other.rawValue)
 }

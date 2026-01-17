@@ -1,33 +1,34 @@
+import com.google.devtools.ksp.gradle.KspAATask
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
+
 
 plugins {
     kotlin("multiplatform")
+    id("com.google.devtools.ksp")
     id("maven-publish")
 }
 
 kotlin {
     jvm()
+    js(IR) { nodejs() }
+
+    @OptIn(ExperimentalWasmDsl::class)
+    wasmJs { nodejs() }
+
+    linuxX64()
+    mingwX64()
+
     iosArm64()
     iosSimulatorArm64()
-    js(IR) {
-        nodejs()
-    }
-    @OptIn(ExperimentalWasmDsl::class)
-    wasmJs {
-        nodejs()
-    }
+    macosX64()
+    macosArm64()
 
-    val hostOs = System.getProperty("os.name")
-    val nativeTarget = when {
-        hostOs == "Mac OS X" -> macosX64("native")
-        hostOs == "Linux" -> linuxX64("native")
-        hostOs.startsWith("Windows") -> mingwX64("native")
-        else -> throw GradleException("Host OS is not supported in Kotlin/Native.")
-    }
+    applyDefaultHierarchyTemplate()
 
     sourceSets {
         val commonMain by getting {
-            dependencies{
+            kotlin.srcDir("build/generated/ksp/metadata/commonMain/kotlin")
+            dependencies {
                 implementation(project(":core"))
             }
         }
@@ -43,15 +44,21 @@ kotlin {
                 implementation(kotlin("test-junit"))
             }
         }
-        val jsMain by getting
-        val jsTest by getting {
-            dependencies {
-                implementation(kotlin("test-js"))
-            }
-        }
-        val nativeMain by getting
-        val nativeTest by getting
     }
+}
+
+dependencies {
+    add("kspCommonMainMetadata", project(":processor"))
+}
+
+tasks.withType<KspAATask>().configureEach {
+    if (name != "kspCommonMainKotlinMetadata") {
+        dependsOn("kspCommonMainKotlinMetadata")
+    }
+}
+
+tasks.sourcesJar.configure {
+    dependsOn("kspCommonMainKotlinMetadata")
 }
 
 publishing {
