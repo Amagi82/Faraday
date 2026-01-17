@@ -42,7 +42,7 @@ private fun UnitProcessor.processUnitConversionAnnotation(identity: KSClassDecla
     }.build().writeTo(codeGenerator, Dependencies(aggregating = true))
 }
 
-private fun UnitProcessor.unitConversion(
+private fun unitConversion(
     receiver: KSType,
     param: KSType,
     returns: KSType,
@@ -55,19 +55,16 @@ private fun UnitProcessor.unitConversion(
     val paramParamName = param.primaryConstructorParameterName()
     val returnsParamName = returns.primaryConstructorParameterName()
 
-    val isJvm = platformName?.lowercase() == "jvm"
     return FunSpec.build(op.operator) {
         addModifiers(KModifier.OPERATOR)
         receiver(receiver.toTypeName())
         addParameter(paramName.replaceFirstChar { it.lowercase() }, param.toTypeName())
         returns(returns.toTypeName())
-        if (isJvm) {
-            addAnnotation(
-                AnnotationSpec.builder(JvmName::class)
-                    .addMember("%S", "${receiverName.replaceFirstChar { it.lowercase() }}${op.name}$paramName")
-                    .build()
-            )
-        }
+        addAnnotation(
+            AnnotationSpec.builder(JvmName::class)
+                .addMember("%S", "${receiverName.replaceFirstChar { it.lowercase() }}${op.name}$paramName")
+                .build()
+        )
         addStatement(
             "return %T($returnsParamName = $receiverParamName ${op.symbol} ${paramName.replaceFirstChar { it.lowercase() }}.$paramParamName)",
             returns.toTypeName()

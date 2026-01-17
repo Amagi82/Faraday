@@ -30,7 +30,6 @@ kotlin {
             kotlin.srcDir("build/generated/ksp/metadata/commonMain/kotlin")
             dependencies {
                 implementation(project(":core"))
-                implementation(project(":kinematics"))
             }
         }
         val commonTest by getting {

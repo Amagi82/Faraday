@@ -9,7 +9,6 @@ import com.google.devtools.ksp.symbol.KSClassDeclaration
 class UnitProcessor(
     val codeGenerator: CodeGenerator,
     val logger: KSPLogger,
-    val platformName: String?,
 ) : SymbolProcessor {
 
     override fun process(resolver: Resolver): List<KSAnnotated> {
