@@ -21,17 +21,22 @@ value class Energy(val joules: Double) : Units<Energy> {
     val gigajoules get() = joules / Prefixes.GIGA
     val terajoules get() = joules / Prefixes.TERA
 
-    val btus get() = joules / 1.0545e3
-    val cal get() = joules / 4.1868
+    val btus get() = joules / BTU
+    val cal get() = joules / CALORIE
     val kcal get() = cal / 1000
-    val kWh get() = joules / 3.6e6
     val wattHour get() = joules / Time.HOUR
+    val kWh get() = wattHour / 1000
 
     @InternalUnitApi
     override val rawValue: Double get() = joules
 
     @InternalUnitApi
     override fun create(value: Double) = Energy(value)
+
+    companion object {
+        const val BTU = 1.0545e3
+        const val CALORIE = 4.1868
+    }
 }
 
 val Number.joules get() = Energy(toDouble())
@@ -39,3 +44,8 @@ val Number.kilojoules get() = Energy(joules = toDouble() * Prefixes.KILO)
 val Number.megajoules get() = Energy(joules = toDouble() * Prefixes.MEGA)
 val Number.gigajoules get() = Energy(joules = toDouble() * Prefixes.GIGA)
 val Number.terajoules get() = Energy(joules = toDouble() * Prefixes.TERA)
+val Number.btus get() = Energy(joules = toDouble() * Energy.BTU)
+val Number.calories get() = Energy(joules = toDouble() * Energy.CALORIE)
+val Number.kilocalories get() = Energy(joules = toDouble() * Energy.CALORIE * 1000)
+val Number.wattHours get() = Energy(joules = toDouble() * Time.HOUR)
+val Number.kilowattHours get() = Energy(joules = toDouble() * Time.HOUR * 1000)
