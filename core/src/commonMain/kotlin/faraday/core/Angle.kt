@@ -22,6 +22,7 @@ value class Angle(val radians: Double) : Units<Angle> {
     val milliArcSeconds get() = radians / MILLI_ARC_SECOND
     val microArcSeconds get() = radians / MICRO_ARC_SECOND
     val gradians get() = radians / GRADIAN
+    val turns get() = radians / TURN
 
     @InternalUnitApi
     override val rawValue: Double get() = radians
@@ -36,7 +37,7 @@ value class Angle(val radians: Double) : Units<Angle> {
         const val ARC_SECOND = ARC_MINUTE * 60
         const val MILLI_ARC_SECOND = ARC_SECOND * 1000
         const val MICRO_ARC_SECOND = MILLI_ARC_SECOND * 1000
-        const val GRADIAN = 200 / PI
+        const val GRADIAN = PI / 200
     }
 }
 
