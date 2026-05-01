@@ -13,7 +13,7 @@ import kotlin.jvm.JvmInline
  */
 @JvmInline
 value class Temperature(val kelvin: Double) : Units<Temperature> {
-    val celsius get() = kelvin + KELVIN_TO_CELSIUS
+    val celsius get() = kelvin - KELVIN_TO_CELSIUS
     val fahrenheit get() = celsius * 1.8 + 32
 
     init {
@@ -32,5 +32,5 @@ value class Temperature(val kelvin: Double) : Units<Temperature> {
 }
 
 val Number.kelvin get() = Temperature(kelvin = toDouble())
-val Number.celsius get() = Temperature(kelvin = toDouble() - Temperature.KELVIN_TO_CELSIUS)
+val Number.celsius get() = Temperature(kelvin = toDouble() + Temperature.KELVIN_TO_CELSIUS)
 val Number.fahrenheit get() = Temperature(kelvin = (toDouble() + 459.67) / 1.8)
