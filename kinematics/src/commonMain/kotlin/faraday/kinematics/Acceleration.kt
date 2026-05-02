@@ -15,6 +15,8 @@ import kotlin.jvm.JvmInline
  */
 @JvmInline
 value class Acceleration(val metersPerSecondSquared: Double) : Units<Acceleration> {
+    val feetPerSecondSquared: Double get() = metersPerSecondSquared / FOOT_PER_SECOND_SQUARED
+
     @Suppress("PropertyName")
     val G get() = metersPerSecondSquared / EARTH_GRAVITY
 
@@ -26,6 +28,7 @@ value class Acceleration(val metersPerSecondSquared: Double) : Units<Acceleratio
 
     companion object {
         const val EARTH_GRAVITY = 9.807
+        const val FOOT_PER_SECOND_SQUARED = 0.3048
         val earthGravity = Acceleration(EARTH_GRAVITY)
     }
 }

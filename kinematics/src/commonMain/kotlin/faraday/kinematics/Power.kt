@@ -25,7 +25,7 @@ value class Power(val watts: Double) : Units<Power> {
     val gigawatts get() = watts / Prefixes.GIGA
     val terawatts get() = watts / Prefixes.TERA
 
-    val btusPerSecond get() = watts / 1.05505585262e3
+    val btusPerSecond get() = watts / BTU_PER_SECOND
     val btusPerMinute get() = btusPerSecond / Time.MINUTE
     val btusPerHour get() = btusPerSecond / Time.HOUR
     val horsepower get() = watts / MECHANICAL_HORSEPOWER
@@ -41,6 +41,7 @@ value class Power(val watts: Double) : Units<Power> {
     companion object {
         const val MECHANICAL_HORSEPOWER = 550 * Distance.FOOT * Weight.POUND
         const val METRIC_HORSEPOWER = 75 * Acceleration.EARTH_GRAVITY
+        const val BTU_PER_SECOND = 1.05505585262e3
     }
 }
 typealias RadiantFlux = Power
